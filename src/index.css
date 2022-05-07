@@ -1,0 +1,18 @@
+:root {
+  --backgroundColor: #161616;
+  --foregroundColor: #5e5e5e;
+  --borderColor: #c4c4c4;
+  --primaryFamily: "Oswald", sans-serif;
+  --primarySize: 18pt;
+  --secondarySize: 12pt;
+  --secondaryFamily: "Montserrat", sans-serif;
+}
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--backgroundColor);
+  font-family: var(--secondaryFamily);
+  font-size: var(--normalFontSize);
+  box-sizing: border-box;
+  color: white;
+}

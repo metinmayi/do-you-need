@@ -1,9 +1,0 @@
-@use "./assets/stylesscss" as stylesscss;
-body {
-  margin: 0;
-  padding: 0;
-  background-color: stylesscss.$backgroundColor;
-  font-family: stylesscss.$normalFontFamily;
-  font-size: stylesscss.$normalFontSize;
-  box-sizing: border-box;
-}
