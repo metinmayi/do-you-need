@@ -19,7 +19,7 @@ const Button = styled.a<ButtonProps>`
   display: flex;
   border-radius: 3px;
   width: 8vw;
-  height: 4vh;
+  height: 3.5vh;
   justify-content: center;
   align-items: center;
   background: transparent;

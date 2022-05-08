@@ -3,7 +3,7 @@ import styled from "styled-components";
 import DefaultButton from "../components/DefaultButton";
 import RosterBackgroundImage from "../assets/images/Roster.jpg";
 import UpgradesBackgroundImage from "../assets/images/UpgradesCopy.jpg";
-
+import ImageTitle from "../components/ImageTitle";
 type Props = {};
 const LandingPage: React.FC<Props> = () => {
   return (
@@ -18,7 +18,7 @@ const LandingPage: React.FC<Props> = () => {
           <p>Raid Managment Tool</p>
         </Section>
         <Section direction="column">
-          <ImageTitle bgImg={RosterBackgroundImage}>
+          <ImageTitle image={RosterBackgroundImage}>
             <h2>Manage Your Roster</h2>
           </ImageTitle>
           <p>
@@ -28,16 +28,11 @@ const LandingPage: React.FC<Props> = () => {
             nisi ullam. Quam rem distinctio, non dolores dolor cum recusandae
             sit ratione! Vero blanditiis, voluptatibus dolorem eveniet molestias
             nam alias reprehenderit, nemo sapiente consequuntur voluptas
-            doloremque qui reiciendis aperiam! Perferendis suscipit,
-            perspiciatis, odit quisquam id nam maxime minus hic maiores
-            doloremque ipsam enim. Ipsum animi dignissimos voluptate veritatis
-            modi magnam qui ab. Iste sit impedit cum dolor laudantium, voluptate
-            reiciendis, iusto officiis commodi deleniti tenetur ducimus maxime
-            odio accusamus esse laboriosam quod perspiciatis.
+            doloremque
           </p>
         </Section>
         <Section direction="column">
-          <ImageTitle bgImg={UpgradesBackgroundImage}>
+          <ImageTitle image={UpgradesBackgroundImage}>
             <h2>Track Upgrades</h2>
           </ImageTitle>
           <p>
@@ -71,31 +66,15 @@ const Section = styled.section<SectionType>`
   align-items: center;
   justify-content: center;
   gap: 5%;
-  width: 50%;
+  width: 62%;
   margin-top: 5vh;
 `;
 const Title = styled.p`
   margin: 0;
-  font-size: 3rem;
+  font-size: 3.5rem;
   font-family: var(--primaryFamily);
 `;
-type ImageTitle = {
-  bgImg: string;
-};
-const ImageTitle = styled.div<ImageTitle>`
-  width: 100%;
-  border: 1px solid gray;
-  height: 12vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-image: url(${(props) => props.bgImg});
-  background-position: center;
-  background-size: cover;
-  color: white;
-  font-size: 1.5rem;
-  font-family: var(--primaryFamily);
-`;
+
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
