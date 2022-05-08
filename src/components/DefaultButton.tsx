@@ -28,5 +28,5 @@ const Button = styled.a<ButtonProps>`
   border: 2px solid white;
   font-family: var(--primaryFamily);
   font-size: var(--secondarySize);
-  cursor: default;
+  cursor: pointer;
 `;
