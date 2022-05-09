@@ -4,12 +4,13 @@ import styled from "styled-components";
 type Props = {
   children: React.ReactNode;
   id: string;
+  type: string;
 };
-const InputComponent: React.FC<Props> = ({ children, id }) => {
+const InputComponent: React.FC<Props> = ({ children, id, type }) => {
   return (
     <Wrapper className="dennis">
       <Label htmlFor={id}>{children}</Label>
-      <Input type="text" id={id} />
+      <Input type={type} id={id} />
     </Wrapper>
   );
 };
@@ -22,11 +23,11 @@ const Wrapper = styled.div`
   font-family: var(--primaryFamily);
 `;
 const Label = styled.label`
-  height: 40%;
+  height: 60%;
 `;
 const Input = styled.input`
   width: 100%;
-  height: 60%;
+  height: 40%;
   background-color: var(--borderColor);
   border-radius: 9px;
   border: 0;
@@ -34,4 +35,5 @@ const Input = styled.input`
   font-family: var(--secondaryFamily);
   font-weight: 600;
   outline: none;
+  padding: 3%;
 `;
