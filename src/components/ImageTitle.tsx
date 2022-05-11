@@ -11,10 +11,10 @@ const ImageTitle: React.FC<Props> = ({ image, children }) => {
 
 export default ImageTitle;
 
-type Container = {
+type ContainerProps = {
   image: string;
 };
-const Container = styled.div<Container>`
+const Container = styled.div<ContainerProps>`
   width: 100%;
   // border: 1px solid gray;
   height: 10vh;
