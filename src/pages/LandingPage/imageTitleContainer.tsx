@@ -1,22 +1,10 @@
-import React from "react";
 import styled from "styled-components";
-
-type Props = {
-  image: string;
-  children: React.ReactNode;
-};
-const ImageTitle: React.FC<Props> = ({ image, children }) => {
-  return <Container image={image}>{children}</Container>;
-};
-
-export default ImageTitle;
 
 type ContainerProps = {
   image: string;
 };
-const Container = styled.div<ContainerProps>`
+export const Container = styled.div<ContainerProps>`
   width: 100%;
-  // border: 1px solid gray;
   height: 10vh;
   display: flex;
   justify-content: center;
