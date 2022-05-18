@@ -1,11 +1,14 @@
 describe("Tests for the landingpage", () => {
-  it("Visit the page", () => {
+  beforeEach(() => {
     cy.visit("/");
   });
-  it("Check for buttons", () => {
-    cy.visit("/");
-    cy.get("a").should(($a) => {
-      expect($a).to.have.length(2);
-    });
+  it("Visit the page", () => {});
+  it("Check loginbutton redirect", () => {
+    cy.get("[data-cypress=defaultButton]").contains("Login").click();
+    cy.location("href").should("eq", "http://localhost:3000/login");
+  });
+  it("Check registerbutton redirect", () => {
+    cy.get("[data-cypress=defaultButton]").contains("Register").click();
+    cy.location("href").should("eq", "http://localhost:3000/register");
   });
 });

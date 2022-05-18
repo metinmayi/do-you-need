@@ -11,8 +11,8 @@ const LandingPage: React.FC = () => {
   return (
     <IndexWrapper>
       <Section direction="row">
-        <Button>Login</Button>
-        <Button>Register</Button>
+        <Button url="/login">Login</Button>
+        <Button url="/register">Register</Button>
       </Section>
       <Section direction="column">
         <Title>Do You Need</Title>
