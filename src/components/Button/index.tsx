@@ -11,7 +11,6 @@ type Props = {
   url?: string;
 };
 const Button: React.FC<Props> = ({ children, clickFunction, url }) => {
-  if (!url) console.log("No URL");
   return (
     <>
       <StyledLink
