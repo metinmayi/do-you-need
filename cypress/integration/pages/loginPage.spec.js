@@ -7,4 +7,8 @@ describe("Tests for the loginpage", () => {
     cy.get("[data-cypress=defaultButton]").contains("Register").click();
     cy.location("href").should("eq", "http://localhost:3000/register");
   });
+  it("Check recovery button redirect", () => {
+    cy.get("[data-cypress=recoveryLink]").click();
+    cy.location("href").should("eq", "http://localhost:3000/register");
+  });
 });

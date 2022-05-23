@@ -18,7 +18,9 @@ const LoginRegistration: React.FC = () => {
       <Button>Register</Button>
       <p>
         Forgot your password? Worry not, click{" "}
-        <StyledLink to="/recover">here</StyledLink>
+        <StyledLink to="/recover" data-cypress="recoveryLink">
+          here
+        </StyledLink>
       </p>
     </Container>
   );
