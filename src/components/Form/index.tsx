@@ -1,6 +1,16 @@
+import React, { ReactFragment } from "react";
 import styled from "styled-components";
 
-export const Container = styled.div`
+type Props = {
+  children?: ReactFragment;
+};
+const Form: React.FC<Props> = ({ children }) => {
+  return <Container>{children}</Container>;
+};
+
+export { Form };
+
+export const Container = styled.form`
   width: min(50vw, 600px);
   height: 50vh;
   border: 1px solid #c4c4c4;
