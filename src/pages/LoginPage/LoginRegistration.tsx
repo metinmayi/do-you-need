@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
+import { StyledLink } from "./link";
 import { Container } from "./loginRegistrationContainer";
 
 const LoginRegistration: React.FC = () => {
@@ -16,7 +17,8 @@ const LoginRegistration: React.FC = () => {
       <p style={{ margin: 0 }}>Or</p>
       <Button>Register</Button>
       <p>
-        Forgot your password? Worry not, click <b>here</b>
+        Forgot your password? Worry not, click{" "}
+        <StyledLink to="/recover">here</StyledLink>
       </p>
     </Container>
   );
