@@ -12,13 +12,11 @@ export { Form };
 
 export const Container = styled.form`
   width: min(50vw, 600px);
-  height: 50vh;
+  padding: 2% 0;
   border: 1px solid #c4c4c4;
   border-radius: 5%;
   display: flex;
   flex-direction: column;
-  gap: 3%;
-  justify-content: center;
   align-items: center;
   color: white;
   font-family: var(--primaryFamily);

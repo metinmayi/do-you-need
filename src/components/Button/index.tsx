@@ -12,27 +12,25 @@ type Props = {
 };
 const Button: React.FC<Props> = ({ children, clickFunction, url }) => {
   return (
-    <>
+    <Wrapper>
       <StyledLink
         to={url ? url : ""}
         data-cypress="defaultButton"
         onClick={clickFunction && clickFunction}>
         {children}
       </StyledLink>
-    </>
+    </Wrapper>
   );
 };
 
 export { Button };
 
-export const StyledLink = styled(Link)`
+const StyledLink = styled(Link)`
   display: flex;
   border-radius: 3px;
   width: 8vw;
-  height: 3.5vh;
+  padding: 3%;
   justify-content: center;
-  align-items: center;
-  background: transparent;
   color: white;
   background-color: var(--foregroundColor);
   border: 2px solid white;
@@ -40,4 +38,8 @@ export const StyledLink = styled(Link)`
   font-size: var(--secondarySize);
   cursor: pointer;
   text-decoration: none;
+`;
+
+const Wrapper = styled.div`
+  padding: 2%;
 `;
