@@ -1,5 +1,5 @@
 import React from "react";
-import { Wrapper } from "./wrapper";
+import { PageWrapper } from "./pageWrapper";
 import { Title } from "./title";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
@@ -9,7 +9,7 @@ import { StyledLink } from "./styledLink";
 type Props = {};
 const LoginPage: React.FC<Props> = () => {
   return (
-    <Wrapper>
+    <PageWrapper>
       <Title>Do You Need</Title>
       <Form>
         <Input id="username" type="text">
@@ -28,7 +28,7 @@ const LoginPage: React.FC<Props> = () => {
           </StyledLink>
         </p>
       </Form>
-    </Wrapper>
+    </PageWrapper>
   );
 };
 
