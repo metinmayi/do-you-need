@@ -1,5 +1,6 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BossPage } from "./pages/BossPage";
 import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { MissingPage } from "./pages/MissingPage";
@@ -12,6 +13,7 @@ const App: React.FC = () => {
         <Route path="/" element={<LandingPage />}></Route>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
+        <Route path="/bossPage" element={<BossPage />}></Route>
         <Route path="*" element={<MissingPage />}></Route>
       </Routes>
     </BrowserRouter>
