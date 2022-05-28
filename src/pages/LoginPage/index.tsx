@@ -20,7 +20,7 @@ const LoginPage: React.FC<Props> = () => {
         </Input>
         <Button>Login</Button>
         <p style={{ margin: 0 }}>Or</p>
-        <Button>Register</Button>
+        <Button url="/register">Register</Button>
         <p>
           Forgot your password? Worry not, click{" "}
           <StyledLink to="/recover" data-cypress="recoveryLink">
