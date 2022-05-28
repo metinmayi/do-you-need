@@ -1,0 +1,28 @@
+import React from "react";
+import { Button } from "../Button";
+import { Title } from "./title";
+import { HeaderSection } from "./headerSection";
+import { HeaderWrapper } from "./headerWrapper";
+import Logo from "../../assets/images/Logo.png";
+
+const Header: React.FC = () => {
+  return (
+    <HeaderWrapper>
+      <HeaderSection>
+        <img src={Logo} alt="" style={{ height: "10vh" }} />
+        <p>Do You Need</p>
+      </HeaderSection>
+      <HeaderSection>
+        <Title> Vigilant Guardian </Title>
+      </HeaderSection>
+      <HeaderSection>
+        <Button type="dropdown">Flowchart </Button>
+        <Button>Bosses</Button>
+        <Button>Settings</Button>
+        <Button>Logout</Button>
+      </HeaderSection>
+    </HeaderWrapper>
+  );
+};
+
+export { Header };
