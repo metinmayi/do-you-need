@@ -17,4 +17,5 @@ export interface Player {
   twoHand?: string;
   offHand?: string;
   shield?: string;
+  upgradeCount?: string;
 }
