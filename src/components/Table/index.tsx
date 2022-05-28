@@ -1,13 +1,17 @@
 import React from "react";
+import { BossData } from "../../models/BossData";
+import { TableBody } from "./TableBody";
+import { TableHead } from "./TableHead";
 import { TableWrapper } from "./tableWrapper";
 
 type Props = {
-  data: Object; // Object to structure the table from.
+  data: BossData; // Object to structure the table from.
 };
 const Table: React.FC<Props> = ({ data }) => {
   return (
     <TableWrapper>
-      <thead></thead>
+      <TableHead data={data.bossItems}></TableHead>
+      <TableBody data={data.players}></TableBody>
     </TableWrapper>
   );
 };

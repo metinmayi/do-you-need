@@ -7,7 +7,14 @@ import { PageWrapper } from "./pageWrapper";
 const BossPage: React.FC = () => {
   // Mock boss data
   const bossData: BossData = {
-    bossItems: {},
+    bossItems: {
+      twoHand: true,
+      gloves: true,
+      legs: true,
+      shield: true,
+      trinket: true,
+      feet: true,
+    },
     players: [
       {
         name: "Maestro",
