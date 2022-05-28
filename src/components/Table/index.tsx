@@ -9,7 +9,7 @@ type Props = {
 };
 const Table: React.FC<Props> = ({ data }) => {
   return (
-    <TableWrapper>
+    <TableWrapper width={"60%"}>
       <TableHead data={data.bossItems}></TableHead>
       <TableBody data={data.players}></TableBody>
     </TableWrapper>
