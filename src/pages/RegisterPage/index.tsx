@@ -27,7 +27,10 @@ const RegisterPage: React.FC<Props> = () => {
         <Button>Register</Button>
         <p>
           Already a user? Click{" "}
-          <Link to={"/login"} style={{ color: "white" }}>
+          <Link
+            to={"/login"}
+            style={{ color: "white" }}
+            data-cypress="loginLink">
             here
           </Link>{" "}
           to login!

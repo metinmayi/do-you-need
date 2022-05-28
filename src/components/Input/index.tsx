@@ -11,7 +11,7 @@ const Input: React.FC<Props> = ({ children, id, type }) => {
   return (
     <Wrapper>
       <label htmlFor={id}>{children}</label>
-      <StyledInput type={type} id={id} name={id} />
+      <StyledInput type={type} id={id} name={id} data-cypress="defaultInput" />
     </Wrapper>
   );
 };
