@@ -14,6 +14,20 @@ export interface Player {
     | "druid"
     | "demon hunter"
     | "death knight";
+  classColor:
+    | "#C41E3A"
+    | "#A330C9"
+    | "#FF7C0A"
+    | "#33937F"
+    | "#AAD372"
+    | "#3FC7EB"
+    | "#00FF98"
+    | "#F48CBA"
+    | "#FFFFFF"
+    | "#FFF468"
+    | "#0070DD"
+    | "#8788EE"
+    | "#C69B6D";
   head?: string;
   neck?: string;
   shoulders?: string;

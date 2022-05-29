@@ -19,6 +19,8 @@ const BossPage: React.FC = () => {
     players: [
       {
         name: "Maestro",
+        class: "warrior",
+        classColor: "#C69B6D",
         role: "tank",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -30,6 +32,8 @@ const BossPage: React.FC = () => {
       },
       {
         name: "Maestro",
+        class: "demon hunter",
+        classColor: "#A330C9",
         role: "dps",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -41,6 +45,8 @@ const BossPage: React.FC = () => {
       },
       {
         name: "Maestro",
+        class: "druid",
+        classColor: "#FF7C0A",
         role: "healer",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -52,6 +58,8 @@ const BossPage: React.FC = () => {
       },
       {
         name: "Dennis",
+        class: "hunter",
+        classColor: "#AAD372",
         role: "dps",
         twoHand: "3.6%,200",
         gloves: "0",
