@@ -5,9 +5,7 @@ const TableWrapper = styled.table`
   text-align: center;
   color: black;
   background-color: var(--borderColor);
-  border-style: solid;
-  border-color: white;
-  border-width: 1px;
+  border-collapse: collapse;
 `;
 
 export { TableWrapper };
