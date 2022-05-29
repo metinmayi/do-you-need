@@ -1,6 +1,19 @@
 export interface Player {
   name: string;
   role: "tank" | "healer" | "dps";
+  class:
+    | "warrior"
+    | "mage"
+    | "paladin"
+    | "hunter"
+    | "rogue"
+    | "priest"
+    | "shaman"
+    | "warlock"
+    | "monk"
+    | "druid"
+    | "demon hunter"
+    | "death knight";
   head?: string;
   neck?: string;
   shoulders?: string;
