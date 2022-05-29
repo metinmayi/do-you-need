@@ -1,6 +1,6 @@
 export interface Player {
   name: string;
-  role: "tank";
+  role: "tank" | "healer" | "dps";
   head?: string;
   neck?: string;
   shoulders?: string;
