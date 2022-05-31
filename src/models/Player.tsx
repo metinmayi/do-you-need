@@ -1,6 +1,25 @@
 export interface Player {
-  name: string;
-  role: "tank" | "healer" | "dps";
+  tableData: {
+    name: string;
+    role: "tank" | "healer" | "dps";
+    head?: string;
+    neck?: string;
+    shoulders?: string;
+    back?: string;
+    chest?: string;
+    wrist?: string;
+    gloves?: string;
+    waist?: string;
+    legs?: string;
+    feet?: string;
+    ring?: string;
+    trinket?: string;
+    oneHand?: string;
+    twoHand?: string;
+    offHand?: string;
+    shield?: string;
+    upgradeCount?: string;
+  };
   class:
     | "warrior"
     | "mage"
@@ -28,21 +47,5 @@ export interface Player {
     | "#0070DD"
     | "#8788EE"
     | "#C69B6D";
-  head?: string;
-  neck?: string;
-  shoulders?: string;
-  back?: string;
-  chest?: string;
-  wrist?: string;
-  gloves?: string;
-  waist?: string;
-  legs?: string;
-  feet?: string;
-  ring?: string;
-  trinket?: string;
-  oneHand?: string;
-  twoHand?: string;
-  offHand?: string;
-  shield?: string;
-  upgradeCount?: string;
+  selected: boolean;
 }
