@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-const Td = styled.td`
+type Props = {
+  color?: string;
+};
+const Td = styled.td<Props>`
+  // color: ${({ color }) => (color ? color : null)};
   padding: 0.25rem;
   border-top: 1px solid black;
   border-bottom: 1px solid black;

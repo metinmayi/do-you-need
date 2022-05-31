@@ -2,25 +2,24 @@ import React from "react";
 import { Header } from "../../components/Header";
 import { Table } from "../../components/Table";
 import { BossData } from "../../models/BossData";
+import { Player } from "../../models/Player";
 import { BodyWrapper } from "./bodyWrapper";
 import { PageWrapper } from "./pageWrapper";
 
 const BossPage: React.FC = () => {
   // Mock boss data
   const bossData: BossData = {
-    bossItems: {
-      twoHand: true,
-      gloves: true,
-      legs: true,
-      shield: true,
-      trinket: true,
-      feet: true,
-    },
-    players: [
-      {
+    twoHand: true,
+    gloves: true,
+    legs: true,
+    shield: true,
+    trinket: true,
+    feet: true,
+  };
+  const playerData: Player[] = [
+    {
+      tableData: {
         name: "Maestro",
-        class: "warrior",
-        classColor: "#C69B6D",
         role: "tank",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -30,10 +29,13 @@ const BossPage: React.FC = () => {
         feet: "0",
         upgradeCount: "3/6",
       },
-      {
+      class: "warrior",
+      classColor: "#C69B6D",
+      selected: true,
+    },
+    {
+      tableData: {
         name: "Maestro",
-        class: "demon hunter",
-        classColor: "#A330C9",
         role: "dps",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -43,10 +45,13 @@ const BossPage: React.FC = () => {
         feet: "0",
         upgradeCount: "3/6",
       },
-      {
+      class: "demon hunter",
+      classColor: "#A330C9",
+      selected: true,
+    },
+    {
+      tableData: {
         name: "Maestro",
-        class: "druid",
-        classColor: "#FF7C0A",
         role: "healer",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -56,10 +61,13 @@ const BossPage: React.FC = () => {
         feet: "0",
         upgradeCount: "3/6",
       },
-      {
+      class: "druid",
+      classColor: "#FF7C0A",
+      selected: false,
+    },
+    {
+      tableData: {
         name: "Dennis",
-        class: "hunter",
-        classColor: "#AAD372",
         role: "dps",
         twoHand: "3.6%,200",
         gloves: "0",
@@ -69,14 +77,17 @@ const BossPage: React.FC = () => {
         feet: "0",
         upgradeCount: "3/6",
       },
-    ],
-  };
+      class: "hunter",
+      classColor: "#AAD372",
+      selected: false,
+    },
+  ];
+
   return (
     <PageWrapper>
       <Header></Header>
-
       <BodyWrapper>
-        <Table data={bossData}></Table>
+        <Table bossData={bossData} playerData={playerData}></Table>
         <div>test</div>
       </BodyWrapper>
     </PageWrapper>

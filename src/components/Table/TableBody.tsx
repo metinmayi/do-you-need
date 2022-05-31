@@ -1,36 +1,38 @@
 import React from "react";
 import { Player } from "../../models/Player";
-import { Checkbox } from "../Checkbox";
 import { Td } from "./td";
 import TankIcon from "../../assets/images/tankIcon.webp";
 import HealerIcon from "../../assets/images/healerIcon.webp";
 import DPSIcon from "../../assets/images/dpsIcon.webp";
+import { Tr } from "./tr";
 
+// This should be an iterable object rather than what it currently is.
+// NO logic should need to occor in the component for the rendering to work. (Except for the iteration itself, lel)
 type Props = {
-  data: Player[];
+  playerData: Player[];
 };
-const TableBody: React.FC<Props> = ({ data }) => {
+const TableBody: React.FC<Props> = ({ playerData }) => {
   return (
     <tbody>
-      {data.map((player) => (
-        <tr>
+      {playerData.map((player, index) => (
+        <Tr key={index} color={player.classColor}>
           <Td>
-            <Checkbox></Checkbox>
+            <input type="checkbox" checked={player.selected}></input>
           </Td>
-          {Object.entries(player).map((item) => (
-            <Td>
+          {Object.entries(player.tableData).map((item, index) => (
+            <Td key={index}>
               {item[1] === "tank" ? (
-                <img src={TankIcon} width="30%"></img>
+                <img src={TankIcon} alt="Tank Icon" width="30%"></img>
               ) : item[1] === "healer" ? (
-                <img src={HealerIcon} width="30%"></img>
+                <img src={HealerIcon} alt="Healer Icon" width="30%"></img>
               ) : item[1] === "dps" ? (
-                <img src={DPSIcon} width="30%"></img>
+                <img src={DPSIcon} alt="DPSIcon" width="30%"></img>
               ) : (
                 item[1]
               )}
             </Td>
           ))}
-        </tr>
+        </Tr>
       ))}
     </tbody>
   );

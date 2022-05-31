@@ -1,21 +1,23 @@
 import React from "react";
-import { BossItems } from "../../models/BossItems";
+import { BossData } from "../../models/BossData";
 import { Th } from "./th";
 
 type Props = {
-  data: BossItems;
+  bossData: BossData;
 };
-const TableHead: React.FC<Props> = ({ data }) => {
+const TableHead: React.FC<Props> = ({ bossData }) => {
+  // remove this later. We want the responsible function to simply send already iterable data.
+  const iterableData = Object.entries(bossData);
   return (
     <thead>
       <tr>
         <Th>Selected</Th>
         <Th>Name</Th>
         <Th>Role</Th>
-        {Object.entries(data).map(
-          (keyValue) =>
+        {iterableData.map(
+          (keyValue, index) =>
             keyValue[1] && (
-              <Th>
+              <Th key={index}>
                 {
                   // Uppercases The strings
                   keyValue[0].slice(0, 1).toUpperCase() + keyValue[0].slice(1)
