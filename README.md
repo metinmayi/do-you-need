@@ -6,5 +6,6 @@ A guild and raid managment system for World of Warcraft.
 * Cypress - Framework for testing.
 ## Tech Stack (Planned)
 * SQL
+* NodeTS (For API)
 * AWS Hosting
 * BCrypt encryption
