@@ -4,23 +4,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faAngleDown } from "@fortawesome/free-solid-svg-icons";
 
 type Props = {
   children?: React.ReactNode;
   clickFunction?: () => void;
   url?: string;
-  type?: string;
 };
-const Button: React.FC<Props> = ({ children, clickFunction, url, type }) => {
+const Button: React.FC<Props> = ({ children, clickFunction, url }) => {
   return (
     <StyledLink
       to={url ? url : ""}
       data-cypress="defaultButton"
       onClick={clickFunction && clickFunction}>
       {children}
-      {type === "dropdown" && <FontAwesomeIcon icon={faAngleDown} />}
     </StyledLink>
   );
 };

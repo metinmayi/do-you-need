@@ -16,7 +16,7 @@ const Header: React.FC = () => {
         <Title> Vigilant Guardian </Title>
       </HeaderSection>
       <HeaderSection>
-        <Button type="dropdown">Flowchart </Button>
+        <Button>Flowchart </Button>
         <Button>Bosses</Button>
         <Button>Settings</Button>
         <Button>Logout</Button>

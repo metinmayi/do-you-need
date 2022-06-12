@@ -17,7 +17,7 @@ const TableBody: React.FC<Props> = ({ playerData }) => {
       {playerData.map((player, index) => (
         <Tr key={index} color={player.classColor}>
           <Td>
-            <input type="checkbox" checked={player.selected}></input>
+            <input type="checkbox" checked={player.selected} readOnly></input>
           </Td>
           {Object.entries(player.tableData).map((item, index) => (
             <Td key={index}>
