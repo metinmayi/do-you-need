@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button } from "../../components/Button";
+import { Button } from "react-bootstrap";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
 import { Title } from "./title";
@@ -24,7 +24,7 @@ const RegisterPage: React.FC<Props> = () => {
         <Input id="registerRepeatPassword" type="password">
           Repeat Password
         </Input>
-        <Button>Register</Button>
+        <Button variant="secondary">Register</Button>
         <p>
           Already a user? Click{" "}
           <Link
