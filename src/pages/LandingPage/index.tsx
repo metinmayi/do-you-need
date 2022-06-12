@@ -1,18 +1,24 @@
 import React from "react";
-import { Button } from "../../components/Button";
+import { Button } from "react-bootstrap";
 import RosterBackgroundImage from "../../assets/images/Roster.jpg";
 import UpgradesBackgroundImage from "../../assets/images/Upgrades.jpg";
 import { ImageTitle } from "./ImageTitle";
 import { Section } from "./section";
 import { IndexWrapper } from "./indexWrapper";
 import { Title } from "./title";
+import { useRedirect } from "../../utils/utils";
 
 const LandingPage: React.FC = () => {
+  const redirect = useRedirect();
   return (
     <IndexWrapper>
       <Section direction="row">
-        <Button url="/login">Login</Button>
-        <Button url="/register">Register</Button>
+        <Button variant="secondary" onClick={() => redirect("/login")}>
+          Login
+        </Button>
+        <Button variant="secondary" onClick={() => redirect("/register")}>
+          Register
+        </Button>
       </Section>
       <Section direction="column">
         <Title>Do You Need</Title>
