@@ -3,11 +3,13 @@ import { PageWrapper } from "./pageWrapper";
 import { Title } from "./title";
 import { Form } from "../../components/Form";
 import { Input } from "../../components/Input";
-import { Button } from "../../components/Button";
+import { Button } from "react-bootstrap";
 import { StyledLink } from "./styledLink";
+import { useRedirect } from "../../utils/utils";
 
 type Props = {};
 const LoginPage: React.FC<Props> = () => {
+  const redirect = useRedirect();
   return (
     <PageWrapper>
       <Title>Do You Need</Title>
@@ -18,9 +20,13 @@ const LoginPage: React.FC<Props> = () => {
         <Input id="password" type="password">
           Password
         </Input>
-        <Button>Login</Button>
+        <Button variant="secondary" onClick={() => redirect("/login")}>
+          Login
+        </Button>
         <p style={{ margin: 0 }}>Or</p>
-        <Button url="/register">Register</Button>
+        <Button variant="secondary" onClick={() => redirect("/register")}>
+          Register
+        </Button>
         <p>
           Forgot your password? Worry not, click{" "}
           <StyledLink to="/recover" data-cypress="recoveryLink">
