@@ -4,9 +4,11 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link } from "react-router-dom";
+import { useRedirect } from "../../utils/utils";
 
 type Props = {};
 const LoginPage: React.FC<Props> = () => {
+  const redirect = useRedirect();
   return (
     <Container fluid>
       <Row className="text-center mb-5">
@@ -24,15 +26,19 @@ const LoginPage: React.FC<Props> = () => {
               <Form.Control type="password"></Form.Control>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2">
-              <Button variant="secondary" type="submit" className="border">
+              <Button variant="success" type="submit" className="border">
                 Login
               </Button>
-              <Button variant="danger" type="submit" className="border">
+              <Button
+                variant="secondary"
+                type="submit"
+                className="border"
+                onClick={() => redirect("/register")}>
                 Register
               </Button>
             </Form.Group>
             <Form.Text>
-              Forgot your password? Click <Link to="/register">here</Link> to
+              Forgot your password? Click <Link to="/restore">here</Link> to
               restore it.
             </Form.Text>
           </FormComponent>
