@@ -24,15 +24,16 @@ const LoginPage: React.FC<Props> = () => {
               <Form.Control type="password"></Form.Control>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2">
-              <Button variant="secondary" type="submit">
+              <Button variant="secondary" type="submit" className="border">
                 Login
               </Button>
-              <Button variant="danger" type="submit">
+              <Button variant="danger" type="submit" className="border">
                 Forgot Password
               </Button>
             </Form.Group>
             <Form.Text>
-              Already registered? Click <Link to="/login">here</Link> to login
+              Don't have an account? Click <Link to="/register">here</Link> to
+              register
             </Form.Text>
           </FormComponent>
         </Col>
