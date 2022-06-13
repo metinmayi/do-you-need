@@ -1,15 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import RosterBackgroundImage from "../../assets/images/Roster.jpg";
 import UpgradesBackgroundImage from "../../assets/images/Upgrades.jpg";
 import { ImageTitle } from "./ImageTitle";
 import { Title } from "./title";
-import { useRedirect } from "../../utils/utils";
+import { hasVisitedBefore, useRedirect } from "../../utils/utils";
+import { ModalComponent } from "../../components/ModalComponent";
+import { LandingPageModal } from "./LandingPageModal";
 
 const LandingPage: React.FC = () => {
   const redirect = useRedirect();
+  const [hasVisited, setHasVisited] = useState(hasVisitedBefore());
+  const toggleModal = () => {
+    setHasVisited(!hasVisited);
+    localStorage.setItem("hasVisited", "yes");
+  };
   return (
     <Container fluid className="d-grid gap-5">
+      {!hasVisited && (
+        <ModalComponent
+          Component={LandingPageModal}
+          title="Demo"
+          handleClick={toggleModal}></ModalComponent>
+      )}
       <Row className="mt-2 justify-content-end">
         <Col xs={7} lg={3} className="d-flex gap-2">
           <Button
