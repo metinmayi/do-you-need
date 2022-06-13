@@ -1,18 +1,18 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@300&family=Oswald:wght@200;300;400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 :root {
-  --backgroundColor: #161616;
-  --foregroundColor: #5e5e5e;
-  --borderColor: #c4c4c4;
-  --primaryFamily: "Oswald", sans-serif;
+  --backgroundColor: #292929;
+  --foregroundColor: #8b8b8b;
+  --borderColor: white;
+  --buttonSize: 18pt;
+  --buttonWeight: 500;
   --primarySize: 18pt;
-  --secondarySize: 12pt;
-  --secondaryFamily: "Montserrat", sans-serif;
+  --fontFamily: "Montserrat", sans-serif;
 }
 body {
   margin: 0;
   padding: 0;
   background-color: var(--backgroundColor);
-  font-family: var(--secondaryFamily);
+  font-family: var(--fontFamily);
   font-size: var(--normalFontSize);
   box-sizing: border-box;
   color: white;

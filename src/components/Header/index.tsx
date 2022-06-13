@@ -1,9 +1,9 @@
 import React from "react";
-import { Button } from "../Button";
 import { Title } from "./title";
 import { HeaderSection } from "./headerSection";
 import { HeaderWrapper } from "./headerWrapper";
 import Logo from "../../assets/images/Logo.png";
+import { Button } from "react-bootstrap";
 
 const Header: React.FC = () => {
   return (
