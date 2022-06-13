@@ -2,7 +2,8 @@
 A guild and raid managment system for World of Warcraft.
 
 ## Tech Stack (So far along)
-* React - Using typescript and styled components.
+* React - With Typescript
+* React Bootstrap
 * Cypress - Framework for testing.
 ## Tech Stack (Planned)
 * SQL
