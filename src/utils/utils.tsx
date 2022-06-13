@@ -4,4 +4,11 @@ const useRedirect = () => {
   return useNavigate();
 };
 
-export { useRedirect };
+/**
+ * remove later
+ */
+const hasVisitedBefore = () => {
+  return localStorage.getItem("hasVisited") ? true : false;
+};
+
+export { useRedirect, hasVisitedBefore };
