@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Button } from "react-bootstrap";
-import { Form } from "../../components/Form";
+import { FormComponent } from "../../components/Form";
 import { Input } from "../../components/Input";
 import { Title } from "./title";
 import { Wrapper } from "./wrapper";
@@ -11,7 +11,7 @@ const RegisterPage: React.FC<Props> = () => {
   return (
     <Wrapper>
       <Title>Do You Need</Title>
-      <Form>
+      <FormComponent>
         <Input id="registerUsername" type="text">
           Username
         </Input>
@@ -35,7 +35,7 @@ const RegisterPage: React.FC<Props> = () => {
           </Link>{" "}
           to login!
         </p>
-      </Form>
+      </FormComponent>
     </Wrapper>
   );
 };
