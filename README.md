@@ -6,7 +6,8 @@ A guild and raid managment system for World of Warcraft.
 * React Bootstrap
 * Cypress - Framework for testing.
 ## Tech Stack (Planned)
-* SQL
-* NodeTS (For API)
-* AWS Hosting
+* Redux - For performant state managment
+* NodeTS - For the API
+* MySQL - As DB
+* AWS Hosting - RDS
 * BCrypt encryption
