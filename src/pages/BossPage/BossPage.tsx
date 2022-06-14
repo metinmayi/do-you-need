@@ -1,10 +1,10 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { Table } from "../../components/Table";
 import { BossData } from "../../models/BossData";
 import { Player } from "../../models/Player";
 import { BodyWrapper } from "./bodyWrapper";
-import { PageWrapper } from "./pageWrapper";
 
 const BossPage: React.FC = () => {
   // Mock boss data
@@ -84,13 +84,13 @@ const BossPage: React.FC = () => {
   ];
 
   return (
-    <PageWrapper>
+    <Container fluid>
       <DesktopHeader></DesktopHeader>
       <BodyWrapper>
         <Table bossData={bossData} playerData={playerData}></Table>
         <div>test</div>
       </BodyWrapper>
-    </PageWrapper>
+    </Container>
   );
 };
 
