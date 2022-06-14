@@ -9,19 +9,14 @@ import {
   Row,
 } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
-import { Title } from "./title";
 import { renderTooltip } from "./TooltipModal/TooltipModal";
-import Logo from "../../assets/images/Lootbag.png";
+import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 
 type Props = {};
 const RegisterPage: React.FC<Props> = () => {
   return (
     <Container fluid>
-      <Row className="d-flex justify-content-center mt-5">
-        <Col xs={2}>
-          <img src={Logo} style={{ height: "100%", width: "100%" }} />
-        </Col>
-      </Row>
+      <LoggedOutHeader />
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>
           <FormComponent>
@@ -55,34 +50,6 @@ const RegisterPage: React.FC<Props> = () => {
         </Col>
       </Row>
     </Container>
-    // <Wrapper>
-    //   <Title>Do You Need</Title>
-    //   <FormComponent>
-    //     <Input id="registerUsername" type="text">
-    //       Username
-    //     </Input>
-    //     <Input id="registerEmail" type="email">
-    //       Email
-    //     </Input>
-    //     <Input id="registerPassword" type="password">
-    //       Password
-    //     </Input>
-    //     <Input id="registerRepeatPassword" type="password">
-    //       Repeat Password
-    //     </Input>
-    //     <Button variant="secondary">Register</Button>
-    //     <p>
-    //       Already a user? Click{" "}
-    //       <Link
-    //         to={"/login"}
-    //         style={{ color: "white" }}
-    //         data-cypress="loginLink">
-    //         here
-    //       </Link>{" "}
-    //       to login!
-    //     </p>
-    //   </FormComponent>
-    // </Wrapper>
   );
 };
 
