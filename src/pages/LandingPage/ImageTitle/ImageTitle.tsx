@@ -1,5 +1,5 @@
 import React from "react";
-import { Container } from "./imageTitleContainer";
+import { Container } from "../ImageTitle/imageTitleContainer";
 
 type Props = {
   image: string;

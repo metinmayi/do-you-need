@@ -1,17 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import {
+  Button,
+  Col,
+  Container,
+  Form,
+  OverlayTrigger,
+  Row,
+} from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
-import { Input } from "../../components/Input";
 import { Title } from "./title";
-import { Wrapper } from "./wrapper";
+import { renderTooltip } from "./TooltipModal/TooltipModal";
+import Logo from "../../assets/images/Lootbag.png";
 
 type Props = {};
 const RegisterPage: React.FC<Props> = () => {
   return (
     <Container fluid>
-      <Row className="text-center mb-5">
-        <Title>Do You Need</Title>
+      <Row className="d-flex justify-content-center mt-5">
+        <Col xs={2}>
+          <img src={Logo} style={{ height: "100%", width: "100%" }} />
+        </Col>
       </Row>
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>
@@ -33,12 +42,11 @@ const RegisterPage: React.FC<Props> = () => {
               <Form.Control type="password"></Form.Control>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2 mt-3">
-              <Button variant="success" type="submit" className="border">
-                Register
-              </Button>
-              {/* <Button variant="danger" type="submit" className="border">
-                Register
-              </Button> */}
+              <OverlayTrigger placement="right" overlay={renderTooltip}>
+                <Button variant="success" className="border">
+                  Register
+                </Button>
+              </OverlayTrigger>
             </Form.Group>
             <Form.Text>
               Already a member? Click <Link to="/login">here</Link> to login.

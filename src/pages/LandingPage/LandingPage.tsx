@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import RosterBackgroundImage from "../../assets/images/Roster.jpg";
 import UpgradesBackgroundImage from "../../assets/images/Upgrades.jpg";
-import { ImageTitle } from "./ImageTitle";
 import { Title } from "./title";
 import { hasVisitedBefore, useRedirect } from "../../utils/utils";
 import { ModalComponent } from "../../components/ModalComponent";
 import { LandingPageModal } from "./LandingPageModal";
+import Logo from "../../assets/images/Lootbag.png";
+import { ImageTitle } from "./ImageTitle/ImageTitle";
+import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 
 const LandingPage: React.FC = () => {
   const redirect = useRedirect();
@@ -23,11 +25,12 @@ const LandingPage: React.FC = () => {
           title="Demo"
           handleClick={toggleModal}></ModalComponent>
       )}
-      <Row className="mt-2 justify-content-end">
+      <LoggedOutHeader />
+      <Row className="mt-2 justify-content-center">
         <Col xs={7} lg={3} className="d-flex gap-2">
           <Button
             className="flex-grow-1 border"
-            variant="secondary"
+            variant="success"
             onClick={() => redirect("/login")}>
             Login
           </Button>
@@ -39,9 +42,7 @@ const LandingPage: React.FC = () => {
           </Button>
         </Col>
       </Row>
-      <Row className="text-center">
-        <Title className="mb-5">Do You Need</Title>
-      </Row>
+
       <Row className="justify-content-center">
         <Col md={10} xl={7}>
           <ImageTitle image={RosterBackgroundImage}>

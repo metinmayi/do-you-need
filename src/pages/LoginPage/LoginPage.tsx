@@ -5,15 +5,15 @@ import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link } from "react-router-dom";
 import { useRedirect } from "../../utils/utils";
+import Logo from "../../assets/images/Lootbag.png";
+import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 
 type Props = {};
 const LoginPage: React.FC<Props> = () => {
   const redirect = useRedirect();
   return (
     <Container fluid>
-      <Row className="text-center mb-5">
-        <Title>Do You Need</Title>
-      </Row>
+      <LoggedOutHeader />
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>
           <FormComponent className="mt-5">
@@ -26,7 +26,10 @@ const LoginPage: React.FC<Props> = () => {
               <Form.Control type="password"></Form.Control>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2">
-              <Button variant="success" type="submit" className="border">
+              <Button
+                variant="success"
+                onClick={() => redirect("/bossPage")}
+                className="border">
                 Login
               </Button>
               <Button
