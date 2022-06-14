@@ -5,7 +5,7 @@ import { HeaderWrapper } from "./headerWrapper";
 import Logo from "../../assets/images/Logo.png";
 import { Button } from "react-bootstrap";
 
-const Header: React.FC = () => {
+const DesktopHeader: React.FC = () => {
   return (
     <HeaderWrapper>
       <HeaderSection>
@@ -25,4 +25,4 @@ const Header: React.FC = () => {
   );
 };
 
-export { Header };
+export { DesktopHeader };

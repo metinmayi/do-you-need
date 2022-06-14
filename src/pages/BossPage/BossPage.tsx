@@ -1,5 +1,5 @@
 import React from "react";
-import { Header } from "../../components/Header";
+import { DesktopHeader } from "../../components/DesktopHeader";
 import { Table } from "../../components/Table";
 import { BossData } from "../../models/BossData";
 import { Player } from "../../models/Player";
@@ -85,7 +85,7 @@ const BossPage: React.FC = () => {
 
   return (
     <PageWrapper>
-      <Header></Header>
+      <DesktopHeader></DesktopHeader>
       <BodyWrapper>
         <Table bossData={bossData} playerData={playerData}></Table>
         <div>test</div>
