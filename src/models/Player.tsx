@@ -1,5 +1,6 @@
 export interface Player {
   tableData: {
+    selected: boolean;
     name: string;
     role: "tank" | "healer" | "dps";
     head?: string;
@@ -47,5 +48,4 @@ export interface Player {
     | "#0070DD"
     | "#8788EE"
     | "#C69B6D";
-  selected: boolean;
 }

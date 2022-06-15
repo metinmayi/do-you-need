@@ -1,11 +1,9 @@
 import React from "react";
-import { Title } from "./title";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link } from "react-router-dom";
-import { useRedirect } from "../../utils/utils";
-import Logo from "../../assets/images/Lootbag.png";
+import { useRedirect } from "../../customHooks/customHooks";
 import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 
 type Props = {};

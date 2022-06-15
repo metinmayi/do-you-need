@@ -1,4 +1,7 @@
-export type BossData =
+export type TableData =
+  | "selected"
+  | "name"
+  | "role"
   | "head"
   | "neck"
   | "shoulders"
@@ -15,5 +18,4 @@ export type BossData =
   | "oneHand"
   | "twoHand"
   | "offHand"
-  | "shield"
-  | "upgradeCount";
+  | "shield";
