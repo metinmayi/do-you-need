@@ -12,11 +12,13 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ player }) => {
     <tr>
       {iterable.map((keyValue, index) =>
         index === 0 ? (
-          <td key={keyValue[0] + keyValue[1]} className="text-center">
+          <td key={keyValue[0] + keyValue[1]} style={{ textAlign: "center" }}>
             <input type="checkbox" />
           </td>
         ) : (
-          <td key={keyValue[0] + keyValue[1]}>
+          <td
+            key={keyValue[0] + keyValue[1]}
+            style={{ color: index === 1 ? player.classColor : "white" }}>
             {capitalizeFirstLetter(keyValue[1])}
           </td>
         )
