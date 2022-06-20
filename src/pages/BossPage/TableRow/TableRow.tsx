@@ -1,30 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import { Player } from "../../../models/Player";
-import { capitalizeFirstLetter } from "../../../utils/utils";
 
-interface TableRowProps {
-  player: Player;
+interface PlayerRowProps {
+  players: Player[];
+  setPlayers: Function;
+  index: number;
 }
-const TableRow: React.FC<TableRowProps> = ({ player }) => {
-  const iterable = Object.entries(player.tableData);
-  console.log(iterable);
+const PlayerRow: React.FC<PlayerRowProps> = ({ players, index }) => {
+  // Breaks the player object into an array
+  const player = Object.entries(players[index]);
+  const filteredPlayer = player.filter((keyValue) => {
+    if (keyValue[0] === "id" || keyValue[0] === "class") {
+      return;
+    }
+    return keyValue;
+  });
+  const [checked, setChecked] = useState(players[index].selected);
   return (
     <tr>
-      {iterable.map((keyValue, index) =>
-        index === 0 ? (
-          <td key={keyValue[0] + keyValue[1]} style={{ textAlign: "center" }}>
-            <input type="checkbox" />
-          </td>
-        ) : (
-          <td
-            key={keyValue[0] + keyValue[1]}
-            style={{ color: index === 1 ? player.classColor : "white" }}>
-            {capitalizeFirstLetter(keyValue[1])}
-          </td>
-        )
-      )}
+      {filteredPlayer.map(([key, value]) => (
+        <td key={Math.random()}>
+          {key === "selected" ? (
+            <input
+              type="checkbox"
+              checked={checked}
+              onChange={() => setChecked(!checked)}></input>
+          ) : key === "id" || key === "class" ? null : (
+            value
+          )}
+        </td>
+      ))}
     </tr>
   );
 };
 
-export default TableRow;
+export default PlayerRow;
