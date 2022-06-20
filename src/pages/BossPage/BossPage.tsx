@@ -8,8 +8,7 @@ import { Player } from "../../models/Player";
 import { TableData } from "../../models/TableData";
 import { useMediaQuery } from "../../customHooks/customHooks";
 import { capitalizeFirstLetter } from "../../utils/utils";
-import PlayerRow from "./PlayerRow/PlayerRow";
-import { RosterList } from "./RosterList";
+import TableRow from "./TableRow/TableRow";
 
 const BossPage: React.FC = () => {
   // Mock boss data
@@ -97,7 +96,7 @@ const BossPage: React.FC = () => {
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
       <Row>
-        <Col xs={12} xl={7}>
+        <Col xs={12} sm={10}>
           <Table variant="dark" striped hover responsive>
             <thead>
               <tr>
@@ -108,15 +107,12 @@ const BossPage: React.FC = () => {
             </thead>
             <tbody>
               {playerData.map((player) => (
-                <PlayerRow
+                <TableRow
                   key={player.tableData.name + player.class}
-                  player={player}></PlayerRow>
+                  player={player}></TableRow>
               ))}
             </tbody>
           </Table>
-        </Col>
-        <Col>
-          <RosterList />
         </Col>
       </Row>
     </Container>

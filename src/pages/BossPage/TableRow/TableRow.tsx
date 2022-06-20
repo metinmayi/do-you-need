@@ -2,10 +2,10 @@ import React from "react";
 import { Player } from "../../../models/Player";
 import { capitalizeFirstLetter } from "../../../utils/utils";
 
-interface PlayerRowProps {
+interface TableRowProps {
   player: Player;
 }
-const PlayerRow: React.FC<PlayerRowProps> = ({ player }) => {
+const TableRow: React.FC<TableRowProps> = ({ player }) => {
   const iterable = Object.entries(player.tableData);
   console.log(iterable);
   return (
@@ -27,4 +27,4 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ player }) => {
   );
 };
 
-export default PlayerRow;
+export default TableRow;
