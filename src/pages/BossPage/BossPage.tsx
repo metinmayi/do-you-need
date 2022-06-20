@@ -1,92 +1,61 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useEffect, useState } from "react";
+import { Col, Container, Table, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { MobileHeader } from "../../components/MobileHeader";
-import { BossData } from "../../models/BossData";
 import { Player } from "../../models/Player";
-import { useMediaQuery } from "../../utils/utils";
+import { useMediaQuery } from "../../customHooks/customHooks";
+import { capitalizeFirstLetter } from "../../utils/utils";
+import TableRow from "./TableRow/TableRow";
+import { VigilantGuardian } from "../../models/Bosses";
+import { getPlayers } from "../../api/players";
+import Spinner from "../../assets/images/loadingSpinner.svg";
 
 const BossPage: React.FC = () => {
-  // Mock boss data
-  const bossData: BossData = {
-    twoHand: true,
-    gloves: true,
-    legs: true,
-    shield: true,
-    trinket: true,
-    feet: true,
-  };
-  const playerData: Player[] = [
-    {
-      tableData: {
-        name: "Maestro",
-        role: "tank",
-        twoHand: "3.6%,200",
-        gloves: "0",
-        legs: "1%,100",
-        shield: "0",
-        trinket: "8%, 340",
-        feet: "0",
-        upgradeCount: "3/6",
-      },
-      class: "warrior",
-      classColor: "#C69B6D",
-      selected: true,
-    },
-    {
-      tableData: {
-        name: "Maestro",
-        role: "dps",
-        twoHand: "3.6%,200",
-        gloves: "0",
-        legs: "1%,100",
-        shield: "0",
-        trinket: "8%, 340",
-        feet: "0",
-        upgradeCount: "3/6",
-      },
-      class: "demon hunter",
-      classColor: "#A330C9",
-      selected: true,
-    },
-    {
-      tableData: {
-        name: "Maestro",
-        role: "healer",
-        twoHand: "3.6%,200",
-        gloves: "0",
-        legs: "1%,100",
-        shield: "0",
-        trinket: "8%, 340",
-        feet: "0",
-        upgradeCount: "3/6",
-      },
-      class: "druid",
-      classColor: "#FF7C0A",
-      selected: false,
-    },
-    {
-      tableData: {
-        name: "Dennis",
-        role: "dps",
-        twoHand: "3.6%,200",
-        gloves: "0",
-        legs: "1%,100",
-        shield: "0",
-        trinket: "8%, 340",
-        feet: "0",
-        upgradeCount: "3/6",
-      },
-      class: "hunter",
-      classColor: "#AAD372",
-      selected: false,
-    },
-  ];
+  // Load Boss
+  const boss = VigilantGuardian;
+
+  // Fetch players - MOCK atm
+  const [players, setPlayers] = useState<Player[]>([]);
+  useEffect(() => {
+    const fetchPlayers = async () => {
+      const fetchedPlayers: Player[] = await getPlayers(2);
+      setPlayers(fetchedPlayers);
+    };
+    fetchPlayers();
+  }, []);
+
+  // Checks if mobile
 
   const isMobile = useMediaQuery(900);
   return (
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
+      <Row>
+        <Col xs={12} sm={10}>
+          {players.length > 0 ? (
+            <Table variant="dark" striped hover responsive>
+              <thead>
+                <tr>
+                  {boss.map((item) => (
+                    <td key={item}>{capitalizeFirstLetter(item)}</td>
+                  ))}
+                </tr>
+              </thead>
+              <tbody>
+                {players.map((_, index) => (
+                  <TableRow
+                    players={players}
+                    key={players[index].id}
+                    index={index}
+                    setPlayers={setPlayers}></TableRow>
+                ))}
+              </tbody>
+            </Table>
+          ) : (
+            <img src={Spinner}></img>
+          )}
+        </Col>
+      </Row>
     </Container>
   );
 };

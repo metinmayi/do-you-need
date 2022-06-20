@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
 import RosterBackgroundImage from "../../assets/images/Roster.jpg";
 import UpgradesBackgroundImage from "../../assets/images/Upgrades.jpg";
-import { Title } from "./title";
-import { hasVisitedBefore, useRedirect } from "../../utils/utils";
+import { hasVisitedBefore } from "../../utils/utils";
 import { ModalComponent } from "../../components/ModalComponent";
 import { LandingPageModal } from "./LandingPageModal";
-import Logo from "../../assets/images/Lootbag.png";
 import { ImageTitle } from "./ImageTitle/ImageTitle";
 import { LoggedOutHeader } from "../../components/LoggedOutHeader";
+import { useRedirect } from "../../customHooks/customHooks";
 
 const LandingPage: React.FC = () => {
   const redirect = useRedirect();

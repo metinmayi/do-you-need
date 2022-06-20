@@ -10,7 +10,7 @@ const MobileHeader: React.FC = () => {
         xs={4}
         sm={3}
         className="d-flex align-items-center justify-content-end">
-        <img src={Logo} style={{ width: "90%" }} />
+        <img src={Logo} alt="Not found" style={{ width: "90%" }} />
       </Col>
       <Col className="d-flex justify-content-end">
         <Title> Vigilant Guardian </Title>

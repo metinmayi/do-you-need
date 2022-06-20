@@ -7,7 +7,7 @@ const DesktopHeader: React.FC = () => {
   return (
     <Row className="d-flex justify-content-center p-1">
       <Col xs={1}>
-        <img src={Logo} style={{ width: "100%" }} />
+        <img src={Logo} alt="Not found" style={{ width: "100%" }} />
       </Col>
       <Col className="d-flex justify-content-end">
         <Title> Vigilant Guardian </Title>
