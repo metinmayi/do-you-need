@@ -7,7 +7,7 @@ interface TableHeadProps {
 }
 const TableHead:React.FC<TableHeadProps> = ({ headerItems }) => {
     return <thead>
-        <tr>
+        <tr style={{textAlign:'center'}}>
             <td>Selected</td>
             <td>Name</td>
             <td>Role</td>
