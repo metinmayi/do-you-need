@@ -2,9 +2,9 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { HeaderData } from "../../../models/HeaderData";
 import { Player } from "../../../models/Player";
-import { TableBody } from "../TableBody";
-import { TableHead } from "../TableHead";
 import spinner from "../../../assets/images/loadingSpinner.svg";
+import { TableHead } from "./TableHead";
+import { TableBody } from "./TableBody";
 
 interface TableComponentProps {
   boss: HeaderData[];

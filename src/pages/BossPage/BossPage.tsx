@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Container, Dropdown, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { MobileHeader } from "../../components/MobileHeader";
 import { useMediaQuery } from "../../customHooks/customHooks";
@@ -8,6 +8,7 @@ import { HeaderData } from "../../models/HeaderData";
 import { Player } from "../../models/Player";
 import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
+import { DropdownComponent } from "./DropdownComponent/DropdownComponent";
 
 const BossPage: React.FC = () => {
   // Load Boss
@@ -29,6 +30,9 @@ const BossPage: React.FC = () => {
   return (
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
+      <Row className="mt-5 mb-2">
+        <DropdownComponent />
+      </Row>
       <Row>
         <Col xs={12} sm={10} className="text-center">
           <TableComponent
