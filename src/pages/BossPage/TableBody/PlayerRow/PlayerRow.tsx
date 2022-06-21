@@ -22,10 +22,10 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ players, playerIndex, setPlayers 
   }
   return (
     <tr style={{textAlign: 'center'}}>
-      <td> <input type="checkbox" checked={player.selected} onChange={() => toggleSelected(playerIndex)}/></td>
-      <td style={{color: classToColor[player.class]}}>{player.name}</td>
-      <td><RoleIcon role={player.role} /></td>
-      {iterablePlayer.map(([key, value]) => <td key={key}>{value ? value : "-"}</td>)}
+      <td className="align-middle"> <input type="checkbox" checked={player.selected} onChange={() => toggleSelected(playerIndex)}/></td>
+      <td className="align-middle" style={{color: classToColor[player.class]}}>{player.name}</td>
+      <td className="align-middle"><RoleIcon role={player.role} /></td>
+      {iterablePlayer.map(([key, value]) => <td className="align-middle" key={key}>{value ? value : "-"}</td>)}
     </tr>
   );
 };
