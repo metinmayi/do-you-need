@@ -9,10 +9,12 @@ import TableRow from "./TableRow/TableRow";
 import { VigilantGuardian } from "../../models/Bosses";
 import { getPlayers } from "../../api/players";
 import Spinner from "../../assets/images/loadingSpinner.svg";
+import { TableHead } from "./TableHead";
+import { HeaderData } from "../../models/HeaderData";
 
 const BossPage: React.FC = () => {
   // Load Boss
-  const boss = VigilantGuardian;
+  const boss: HeaderData[] = [...VigilantGuardian];
 
   // Fetch players - MOCK atm
   const [players, setPlayers] = useState<Player[]>([]);
@@ -25,8 +27,8 @@ const BossPage: React.FC = () => {
   }, []);
 
   // Checks if mobile
-
   const isMobile = useMediaQuery(900);
+
   return (
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
@@ -34,13 +36,7 @@ const BossPage: React.FC = () => {
         <Col xs={12} sm={10}>
           {players.length > 0 ? (
             <Table variant="dark" striped hover responsive>
-              <thead>
-                <tr>
-                  {boss.map((item) => (
-                    <td key={item}>{capitalizeFirstLetter(item)}</td>
-                  ))}
-                </tr>
-              </thead>
+              <TableHead headerItems={boss}/>
               <tbody>
                 {players.map((_, index) => (
                   <TableRow
