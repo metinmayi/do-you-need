@@ -24,8 +24,9 @@ const capitalizeFirstLetter = (word: string | boolean) => {
  */
 const getIterablePlayer = (player: Player) => {
   const playerArray = Object.entries(player);
+  const unwantedKeyValues = ['selected', 'class', 'id', 'name'];
   const iterablePlayer = playerArray.filter(([key, value]) => {
-    if (key !== 'selected' && key !== 'class' && key !== 'id') {
+    if (!unwantedKeyValues.includes(key)) {
       return true;
     }
     return false;

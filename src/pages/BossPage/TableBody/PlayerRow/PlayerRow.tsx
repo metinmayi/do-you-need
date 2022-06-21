@@ -1,4 +1,5 @@
 import React from "react";
+import { classToColor } from "../../../../models/Classes";
 import { Player } from "../../../../models/Player";
 import { getIterablePlayer } from "../../../../utils/utils";
 
@@ -20,8 +21,9 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ players, playerIndex, setPlayers 
   }
   return (
     <tr>
-      <td> <input type="checkbox" checked={player.selected} onClick={() => toggleSelected(playerIndex)} onChange={() => console.log('changed')}/></td>
-      {iterablePlayer.map(([key, value]) => <td key={key}>{value}</td>)}
+      <td> <input type="checkbox" checked={player.selected} onChange={() => toggleSelected(playerIndex)}/></td>
+      <td style={{color: classToColor[player.class]}}>{player.name}</td>
+      {iterablePlayer.map(([key, value]) => <td key={key}>{value ? value : "-"}</td>)}
     </tr>
   );
 };
