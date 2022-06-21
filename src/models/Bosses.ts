@@ -1,15 +1,12 @@
 const VigilantGuardian = [
-  "selected",
-  "name",
-  "role",
   "back",
   "neck",
   "ring",
   "chest",
   "feet",
-  "hands",
+  "gloves",
   "legs",
-  "shoulder",
+  "shoulders",
   "waist",
 ] as const;
 

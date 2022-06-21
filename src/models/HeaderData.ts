@@ -1,7 +1,4 @@
 export type HeaderData =
-  | "selected"
-  | "name"
-  | "role"
   | "head"
   | "neck"
   | "shoulders"
