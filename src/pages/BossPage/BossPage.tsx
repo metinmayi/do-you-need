@@ -4,7 +4,6 @@ import { DesktopHeader } from "../../components/DesktopHeader";
 import { MobileHeader } from "../../components/MobileHeader";
 import { Player } from "../../models/Player";
 import { useMediaQuery } from "../../customHooks/customHooks";
-import { capitalizeFirstLetter } from "../../utils/utils";
 import TableRow from "./TableRow/TableRow";
 import { VigilantGuardian } from "../../models/Bosses";
 import { getPlayers } from "../../api/players";
@@ -48,7 +47,7 @@ const BossPage: React.FC = () => {
               </tbody>
             </Table>
           ) : (
-            <img src={Spinner}></img>
+            <img src={Spinner} alt="Loading..."></img>
           )}
         </Col>
       </Row>
