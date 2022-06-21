@@ -11,7 +11,7 @@ const TableHead:React.FC<TableHeadProps> = ({ headerItems }) => {
             <td>Selected</td>
             <td>Name</td>
             <td>Role</td>
-            {headerItems.map((item) => <td>{capitalizeFirstLetter(item)}</td>)}
+            {headerItems.map((item, index) => <td key={index}>{capitalizeFirstLetter(item)}</td>)}
             <td>Upgrade Count</td>
         </tr>
     </thead>
