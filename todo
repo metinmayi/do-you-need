@@ -1,5 +1,5 @@
-Tablebody
-    Center texts?
-    Add a spinner
+InputFields
+    Inputfield to add players
+    Filter dropdown
 RosterList
     Create a RosterList and base it on the players state

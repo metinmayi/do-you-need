@@ -9,6 +9,7 @@ import { HeaderData } from "../../models/HeaderData";
 import { TableBody } from "./TableBody";
 import { Player } from "../../models/Player";
 import { getPlayers } from "../../api/players";
+import spinner from "../../assets/images/loadingSpinner.svg";
 
 const BossPage: React.FC = () => {
   // Load Boss
@@ -31,11 +32,11 @@ const BossPage: React.FC = () => {
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
       <Row>
-        <Col xs={12} sm={10}>
-            <Table variant="dark" striped hover responsive>
+        <Col xs={12} sm={10} className="text-center">
+          {players.length > 0  ?             <Table variant="dark" striped hover responsive>
               <TableHead headerItems={boss}/>
               <TableBody players={players} setPlayers={setPlayers}/>
-            </Table>
+            </Table> : <><img src={spinner} alt="loading..."></img> <h3>Loading Table</h3></>}
         </Col>
       </Row>
     </Container>
