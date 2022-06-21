@@ -8,6 +8,7 @@ import { HeaderData } from "../../models/HeaderData";
 import { Player } from "../../models/Player";
 import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
+import { PlayerInput } from "./PlayerInput";
 import { DropdownComponent } from "./DropdownComponent/DropdownComponent";
 
 const BossPage: React.FC = () => {
@@ -32,6 +33,11 @@ const BossPage: React.FC = () => {
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
       <Row className="mt-5 mb-2">
         <DropdownComponent />
+      </Row>
+      <Row>
+        <Col xs={6} md={4} lg={3}>
+          <PlayerInput></PlayerInput>
+        </Col>
       </Row>
       <Row>
         <Col xs={12} sm={10} className="text-center">
