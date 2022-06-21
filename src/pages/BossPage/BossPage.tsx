@@ -10,6 +10,7 @@ import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
 import { PlayerInput } from "./PlayerInput";
 import { DropdownComponent } from "./DropdownComponent/DropdownComponent";
+import { RosterList } from "./RosterList";
 
 const BossPage: React.FC = () => {
   // Load Boss
@@ -35,17 +36,20 @@ const BossPage: React.FC = () => {
         <DropdownComponent />
       </Row>
       <Row>
-        <Col xs={6} md={4} lg={3}>
+        <Col xs={12} md={8} lg={5} xxl={3}>
           <PlayerInput></PlayerInput>
         </Col>
       </Row>
       <Row>
-        <Col xs={12} sm={10} className="text-center">
+        <Col xs={12} lg={10} className="text-center">
           <TableComponent
             boss={boss}
             players={players}
             setPlayers={setPlayers}
           />
+        </Col>
+        <Col>
+          <RosterList players={players} />
         </Col>
       </Row>
     </Container>

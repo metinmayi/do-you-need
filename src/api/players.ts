@@ -9,7 +9,7 @@ const getPlayers = async () => {
     setTimeout(() => {
       res([
         {
-          selected: true,
+          selected: false,
           name: "Maestro",
           role: "tank",
           back: "1.5% (200)",
@@ -26,7 +26,7 @@ const getPlayers = async () => {
           id: "maestro001",
         },
         {
-          selected: true,
+          selected: false,
           name: "Niklas",
           role: "healer",
           back: "0.4% (76)",
@@ -43,7 +43,7 @@ const getPlayers = async () => {
           id: "niklas001",
         },
         {
-          selected: true,
+          selected: false,
           name: "Jakob",
           role: "dps",
           back: "",
