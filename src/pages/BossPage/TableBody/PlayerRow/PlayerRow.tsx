@@ -2,6 +2,7 @@ import React from "react";
 import { classToColor } from "../../../../models/Classes";
 import { Player } from "../../../../models/Player";
 import { getIterablePlayer } from "../../../../utils/utils";
+import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {
   players: Player[];
@@ -23,6 +24,7 @@ const PlayerRow: React.FC<PlayerRowProps> = ({ players, playerIndex, setPlayers 
     <tr>
       <td> <input type="checkbox" checked={player.selected} onChange={() => toggleSelected(playerIndex)}/></td>
       <td style={{color: classToColor[player.class]}}>{player.name}</td>
+      <td style={{textAlign:'center'}}><RoleIcon role={player.role} /></td>
       {iterablePlayer.map(([key, value]) => <td key={key}>{value ? value : "-"}</td>)}
     </tr>
   );
