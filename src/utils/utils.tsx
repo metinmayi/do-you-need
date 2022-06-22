@@ -24,14 +24,14 @@ const capitalizeFirstLetter = (word: string | boolean) => {
  */
 const getIterablePlayer = (player: Player) => {
   const playerArray = Object.entries(player);
-  const unwantedKeyValues = ['selected', 'class', 'id', 'name', 'role'];
+  const unwantedKeyValues = ["selected", "class", "id", "name", "role"];
   const iterablePlayer = playerArray.filter(([key, value]) => {
     if (!unwantedKeyValues.includes(key)) {
       return true;
     }
     return false;
-  })
+  });
   return iterablePlayer;
-}
+};
 
 export { hasVisitedBefore, capitalizeFirstLetter, getIterablePlayer };
