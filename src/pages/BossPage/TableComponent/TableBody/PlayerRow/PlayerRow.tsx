@@ -1,11 +1,11 @@
 import React from "react";
 import { classToColor } from "../../../../../models/Classes";
-import { Player } from "../../../../../models/Player";
-import { getIterablePlayer } from "../../../../../utils/utils";
+import { IPlayer } from "../../../../../models/Player";
+// import { getIterablePlayer } from "../../../../../utils/utils";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {
-  players: Player[];
+  players: IPlayer[];
   setPlayers: Function;
   playerIndex: number;
 }
@@ -15,8 +15,9 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
   setPlayers,
 }) => {
   // Breaks the player object into an array
-  const player: Player = players[playerIndex];
-  const iterablePlayer = getIterablePlayer(player);
+  const player: IPlayer = players[playerIndex];
+  // const iterablePlayer = getIterablePlayer(player);
+  // const array = Object.entries(iterablePlayer);
 
   // Function for updating players state to reflect the "selected" values.
   const toggleSelected = (playerIndex: number) => {
@@ -27,7 +28,6 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
   return (
     <tr style={{ textAlign: "center" }}>
       <td className="align-middle">
-        {" "}
         <input
           type="checkbox"
           checked={player.selected}
@@ -36,21 +36,18 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
       </td>
       <td
         className="align-middle"
-        style={{ color: classToColor[player.class] }}>
+        style={{ color: classToColor[player.className] }}>
         {player.name}
       </td>
       <td className="align-middle">
         <RoleIcon role={player.role} />
       </td>
-      {iterablePlayer.map(([key, value]) => (
-        <td className="align-middle" key={key}>
-          {key === "upgradeCount"
-            ? value
-            : value.percentageDps
-            ? `${value.percentageDps} (${value.rawDps})`
-            : "-"}
+      {player.playerUpgrades.map((upgrade) => (
+        <td className="align-middle" key={`key:${upgrade.itemType}`}>
+          {`${upgrade.percentageDps}% (${upgrade.rawDps})`}
         </td>
       ))}
+      <td className="align-middle">{player.upgradeCount}</td>
     </tr>
   );
 };

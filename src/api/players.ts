@@ -1,29 +1,30 @@
-import { Player } from "../models/Player";
+import { IPlayer } from "../models/Player";
 
 /**
  * Mock getting list of players
  * @params bossId - Used in the future to get correct player stats from specified boss
  */
 const getPlayers = async () => {
-  const mockFetch: Player[] = await new Promise((res, rej) => {
+  const mockFetch: IPlayer[] = await new Promise((res, rej) => {
     setTimeout(() => {
       res([
         {
           selected: false,
           name: "Maestro",
           role: "tank",
-          back: { percentageDps: "1%", rawDps: "100" },
-          neck: { percentageDps: "5%", rawDps: "900" },
-          ring: { percentageDps: "3.6%", rawDps: "400" },
-          chest: { percentageDps: "10%", rawDps: "2150" },
-          feet: { percentageDps: "", rawDps: "" },
-          gloves: { percentageDps: "", rawDps: "" },
-          legs: { percentageDps: "", rawDps: "" },
-          shoulders: { percentageDps: "3%", rawDps: "372" },
-          waist: { percentageDps: "0.4%", rawDps: "76" },
-          upgradeCount: "6/9",
-          class: "warrior",
-          id: "maestro001",
+          playerUpgrades: [
+            { itemType: "back", percentageDps: 5, rawDps: 200 },
+            { itemType: "neck", percentageDps: 2, rawDps: 100 },
+            { itemType: "ring", percentageDps: 10, rawDps: 1001 },
+            { itemType: "chest", percentageDps: 0.2, rawDps: 50 },
+            { itemType: "feet", percentageDps: 0, rawDps: 0 },
+            { itemType: "gloves", percentageDps: 0, rawDps: 0 },
+            { itemType: "legs", percentageDps: 2, rawDps: 100 },
+            { itemType: "shoulders", percentageDps: 9.4, rawDps: 4520 },
+            { itemType: "waist", percentageDps: 2, rawDps: 100 },
+          ],
+          upgradeCount: 7,
+          className: "warrior",
         },
       ]);
     }, 3000);
@@ -49,8 +50,9 @@ const addPlayerData = async (url: string | undefined) => {
         "Content-Type": "application/json",
       },
     });
-
-    console.log(response);
+    const data = await response.json();
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }

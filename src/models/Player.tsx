@@ -1,42 +1,47 @@
-export class Player {
-  selected: boolean = false;
-  name: string = "";
-  role: "tank" | "healing" | "dps" = "tank";
-  head?: PlayerItem;
-  neck?: PlayerItem;
-  shoulders?: PlayerItem;
-  back?: PlayerItem;
-  chest?: PlayerItem;
-  wrist?: PlayerItem;
-  gloves?: PlayerItem;
-  waist?: PlayerItem;
-  legs?: PlayerItem;
-  feet?: PlayerItem;
-  ring?: PlayerItem;
-  trinket?: PlayerItem;
-  main_hand?: PlayerItem;
-  oneHand?: PlayerItem;
-  twoHand?: PlayerItem;
-  offHand?: PlayerItem;
-  shield?: PlayerItem;
-  upgradeCount?: string;
-  class:
-    | "warrior"
-    | "mage"
-    | "paladin"
-    | "hunter"
-    | "rogue"
-    | "priest"
-    | "shaman"
-    | "warlock"
-    | "monk"
-    | "druid"
-    | "demonHunter"
-    | "deathKnight" = "warrior";
-  id?: string;
+export class IPlayer {
+  constructor(
+    public selected: boolean,
+    public name: string,
+    public role: "tank" | "healing" | "dps",
+    public className:
+      | "warrior"
+      | "mage"
+      | "paladin"
+      | "hunter"
+      | "rogue"
+      | "priest"
+      | "shaman"
+      | "warlock"
+      | "monk"
+      | "druid"
+      | "demonHunter"
+      | "deathKnight",
+    public playerUpgrades: IUPgradeItem[]
+  ) {}
+  upgradeCount?: number;
 }
 
-interface PlayerItem {
-  percentageDps: string;
-  rawDps: string;
+export interface IUPgradeItem {
+  itemType: IItemType;
+  percentageDps: number;
+  rawDps: number;
 }
+
+export type IItemType =
+  | "head"
+  | "neck"
+  | "shoulders"
+  | "back"
+  | "chest"
+  | "wrist"
+  | "gloves"
+  | "waist"
+  | "legs"
+  | "feet"
+  | "ring"
+  | "trinket"
+  | "main_hand"
+  | "oneHand"
+  | "twoHand"
+  | "offHand"
+  | "shield";

@@ -1,9 +1,9 @@
 import React from "react";
-import { Player } from "../../../../models/Player";
+import { IPlayer } from "../../../../models/Player";
 import { PlayerRow } from "./PlayerRow";
 
 interface TableBodyProps {
-  players: Player[];
+  players: IPlayer[];
   setPlayers: Function;
 }
 const TableBody: React.FC<TableBodyProps> = ({ players, setPlayers }) => {

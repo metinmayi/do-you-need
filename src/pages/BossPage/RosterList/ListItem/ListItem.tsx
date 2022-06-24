@@ -1,11 +1,11 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { classToColor } from "../../../../models/Classes";
-import { Player } from "../../../../models/Player";
+import { IPlayer } from "../../../../models/Player";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
 interface ListItemProps {
-  players: Player[];
+  players: IPlayer[];
 }
 const ListItem: React.FC<ListItemProps> = ({ players }) => {
   return (
@@ -17,7 +17,7 @@ const ListItem: React.FC<ListItemProps> = ({ players }) => {
         <p
           className="m-0"
           key={player.name}
-          style={{ color: classToColor[player.class] }}>
+          style={{ color: classToColor[player.className] }}>
           {player.name}
         </p>
       ))}

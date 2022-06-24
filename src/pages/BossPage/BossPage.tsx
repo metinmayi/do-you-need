@@ -5,7 +5,7 @@ import { MobileHeader } from "../../components/MobileHeader";
 import { useMediaQuery } from "../../customHooks/customHooks";
 import { VigilantGuardian } from "../../models/Bosses";
 import { HeaderData } from "../../models/HeaderData";
-import { Player } from "../../models/Player";
+import { IPlayer } from "../../models/Player";
 import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
 import { PlayerInput } from "./PlayerInput";
@@ -17,10 +17,10 @@ const BossPage: React.FC = () => {
   const boss: HeaderData[] = [...VigilantGuardian];
 
   // Initiated the players state.
-  const [players, setPlayers] = useState<Player[]>([]);
+  const [players, setPlayers] = useState<IPlayer[]>([]);
   useEffect(() => {
     const fetchPlayers = async () => {
-      const fetchedPlayers: Player[] = await getPlayers();
+      const fetchedPlayers: IPlayer[] = await getPlayers();
       setPlayers(fetchedPlayers);
     };
     fetchPlayers();
@@ -37,7 +37,7 @@ const BossPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12} md={8} lg={5} xxl={3}>
-          <PlayerInput></PlayerInput>
+          <PlayerInput players={players} setPlayers={setPlayers}></PlayerInput>
         </Col>
       </Row>
       <Row>

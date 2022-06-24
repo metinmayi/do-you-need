@@ -1,14 +1,14 @@
 import React from "react";
 import { Table } from "react-bootstrap";
 import { HeaderData } from "../../../models/HeaderData";
-import { Player } from "../../../models/Player";
+import { IPlayer } from "../../../models/Player";
 import spinner from "../../../assets/images/loadingSpinner.svg";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
 
 interface TableComponentProps {
   boss: HeaderData[];
-  players: Player[];
+  players: IPlayer[];
   setPlayers: Function;
 }
 const TableComponent: React.FC<TableComponentProps> = ({

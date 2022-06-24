@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { Player } from "../../../models/Player";
+import { IPlayer } from "../../../models/Player";
 import { ListItem } from "./ListItem";
 
 interface RosterListProps {
-  players: Player[];
+  players: IPlayer[];
 }
 const RosterList: React.FC<RosterListProps> = ({ players }) => {
   const roles = ["tank", "healer", "dps"];
-  const bigArray: [Player[], Player[], Player[]] = [[], [], []];
+  const bigArray: [IPlayer[], IPlayer[], IPlayer[]] = [[], [], []];
 
   const [tanks, healers, dps] = players.reduce((memo, player) => {
     if (player.selected) memo[roles.indexOf(player.role)].push(player);
