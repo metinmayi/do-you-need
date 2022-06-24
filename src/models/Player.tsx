@@ -1,23 +1,24 @@
-export interface Player {
-  selected: boolean;
-  name: string;
-  role: "tank" | "healer" | "dps";
-  head?: string;
-  neck?: string;
-  shoulders?: string;
-  back?: string;
-  chest?: string;
-  wrist?: string;
-  gloves?: string;
-  waist?: string;
-  legs?: string;
-  feet?: string;
-  ring?: string;
-  trinket?: string;
-  oneHand?: string;
-  twoHand?: string;
-  offHand?: string;
-  shield?: string;
+export class Player {
+  selected: boolean = false;
+  name: string = "";
+  role: "tank" | "healing" | "dps" = "tank";
+  head?: PlayerItem;
+  neck?: PlayerItem;
+  shoulders?: PlayerItem;
+  back?: PlayerItem;
+  chest?: PlayerItem;
+  wrist?: PlayerItem;
+  gloves?: PlayerItem;
+  waist?: PlayerItem;
+  legs?: PlayerItem;
+  feet?: PlayerItem;
+  ring?: PlayerItem;
+  trinket?: PlayerItem;
+  main_hand?: PlayerItem;
+  oneHand?: PlayerItem;
+  twoHand?: PlayerItem;
+  offHand?: PlayerItem;
+  shield?: PlayerItem;
   upgradeCount?: string;
   class:
     | "warrior"
@@ -31,6 +32,11 @@ export interface Player {
     | "monk"
     | "druid"
     | "demonHunter"
-    | "deathKnight";
-  id: string;
+    | "deathKnight" = "warrior";
+  id?: string;
+}
+
+interface PlayerItem {
+  percentageDps: string;
+  rawDps: string;
 }
