@@ -12,69 +12,18 @@ const getPlayers = async () => {
           selected: false,
           name: "Maestro",
           role: "tank",
-          back: "1.5% (200)",
-          neck: "5% (900)",
-          ring: "3.6% (400)",
-          chest: "10% (2150)",
-          feet: "",
-          gloves: "",
-          legs: "",
-          shoulders: "3% (372)",
-          waist: "0.4% (76)",
-          upgradeCount: "5/9",
+          back: { percentageDps: "1%", rawDps: "100" },
+          neck: { percentageDps: "5%", rawDps: "900" },
+          ring: { percentageDps: "3.6%", rawDps: "400" },
+          chest: { percentageDps: "10%", rawDps: "2150" },
+          feet: { percentageDps: "", rawDps: "" },
+          gloves: { percentageDps: "", rawDps: "" },
+          legs: { percentageDps: "", rawDps: "" },
+          shoulders: { percentageDps: "3%", rawDps: "372" },
+          waist: { percentageDps: "0.4%", rawDps: "76" },
+          upgradeCount: "6/9",
           class: "warrior",
           id: "maestro001",
-        },
-        {
-          selected: false,
-          name: "Niklas",
-          role: "healer",
-          back: "0.4% (76)",
-          neck: "3% (372)",
-          ring: "",
-          chest: "8% (1950)",
-          feet: "",
-          gloves: "",
-          legs: "",
-          shoulders: "",
-          waist: "",
-          upgradeCount: "3/9",
-          class: "paladin",
-          id: "niklas001",
-        },
-        {
-          selected: false,
-          name: "Jakob",
-          role: "dps",
-          back: "",
-          neck: "1% (132)",
-          ring: "",
-          chest: "",
-          feet: "5.3% (637)",
-          gloves: "",
-          legs: "",
-          shoulders: "",
-          waist: "",
-          upgradeCount: "2/9",
-          class: "rogue",
-          id: "jakob001",
-        },
-        {
-          selected: false,
-          name: "Dennis",
-          role: "dps",
-          back: "3.3% (490)",
-          neck: "",
-          ring: "1.4% (149)",
-          chest: "10% (2195)",
-          feet: "",
-          gloves: "13% (2900)",
-          legs: "",
-          shoulders: "",
-          waist: "20% (3853)",
-          upgradeCount: "5/9",
-          class: "rogue",
-          id: "jakob001",
         },
       ]);
     }, 3000);
@@ -82,4 +31,29 @@ const getPlayers = async () => {
   return mockFetch;
 };
 
-export { getPlayers };
+/**
+ * Takes the url to the report and forwards it to the server.
+ * The server breaks it down into a player object.
+ */
+const addPlayerData = async (url: string | undefined) => {
+  if (!url) return;
+
+  const body = {
+    url: url,
+  };
+  try {
+    const response = await fetch("http://localhost:8000/player/addBossData", {
+      method: "POST",
+      body: JSON.stringify(body),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+
+    console.log(response);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export { getPlayers, addPlayerData };
