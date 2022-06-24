@@ -44,7 +44,11 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
       </td>
       {iterablePlayer.map(([key, value]) => (
         <td className="align-middle" key={key}>
-          {value ? value : "-"}
+          {key === "upgradeCount"
+            ? value
+            : value.percentageDps
+            ? `${value.percentageDps} (${value.rawDps})`
+            : "-"}
         </td>
       ))}
     </tr>
