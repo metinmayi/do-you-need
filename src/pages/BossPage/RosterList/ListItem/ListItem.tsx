@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { classToColor } from "../../../../models/Classes";
+import { ClassColor } from "../../../../models/Classes";
 import { IPlayer } from "../../../../models/Player";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
@@ -17,7 +17,7 @@ const ListItem: React.FC<ListItemProps> = ({ players }) => {
         <p
           className="m-0"
           key={player.name}
-          style={{ color: classToColor[player.className] }}>
+          style={{ color: ClassColor[player.className] }}>
           {player.name}
         </p>
       ))}

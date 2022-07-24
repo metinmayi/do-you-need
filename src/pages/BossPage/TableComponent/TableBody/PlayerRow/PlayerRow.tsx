@@ -1,5 +1,5 @@
 import React from "react";
-import { classToColor } from "../../../../../models/Classes";
+import { ClassColor } from "../../../../../models/Classes";
 import { IPlayer } from "../../../../../models/Player";
 // import { getIterablePlayer } from "../../../../../utils/utils";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
@@ -36,7 +36,7 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
       </td>
       <td
         className="align-middle"
-        style={{ color: classToColor[player.className] }}>
+        style={{ color: ClassColor[player.className] }}>
         {player.name}
       </td>
       <td className="align-middle">
