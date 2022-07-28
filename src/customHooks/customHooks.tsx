@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { AppDispatch, RootState } from "../store/store";
 
-const useRedirect = () => {
+export const useRedirect = () => {
   return useNavigate();
 };
 
@@ -10,7 +13,7 @@ const useRedirect = () => {
  * @param query Pixels to compare against
  * @returns True if smaller, false if larger
  */
-const useMediaQuery = (query: number) => {
+export const useMediaQuery = (query: number) => {
   const [isDesktop, setDesktop] = useState(window.innerWidth <= query);
 
   const updateMedia = () => {
@@ -24,4 +27,5 @@ const useMediaQuery = (query: number) => {
   return isDesktop;
 };
 
-export { useRedirect, useMediaQuery };
+export const useAppDispatch: () => AppDispatch = useDispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

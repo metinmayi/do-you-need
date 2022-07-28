@@ -1,11 +1,11 @@
 import React from "react";
+import { VigilantGuardian } from "../../../../models/Bosses";
 import { HeaderData } from "../../../../models/HeaderData";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
-interface TableHeadProps {
-  headerItems: HeaderData[];
-}
-const TableHead: React.FC<TableHeadProps> = ({ headerItems }) => {
+
+const TableHead: React.FC = () => {
+  const headerItems: HeaderData[] = [...VigilantGuardian];
   return (
     <thead>
       <tr style={{ textAlign: "center" }}>

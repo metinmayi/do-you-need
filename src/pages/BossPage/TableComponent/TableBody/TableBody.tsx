@@ -1,19 +1,24 @@
 import React from "react";
-import { IPlayer } from "../../../../models/Player";
+import { useAppDispatch, useAppSelector } from "../../../../customHooks/customHooks";
+import { setList } from "../../../../store/features/roster/rosterSlice";
 import { PlayerRow } from "./PlayerRow";
 
-interface TableBodyProps {
-  players: IPlayer[];
-  setPlayers: Function;
-}
-const TableBody: React.FC<TableBodyProps> = ({ players, setPlayers }) => {
+
+const TableBody: React.FC = () => {
+  const roster = useAppSelector((state) => state.roster);
+  const dispatch = useAppDispatch();
+  const togglePlayer = (index: number) => {
+    const tempList = [...roster];
+    tempList[index].selected = !tempList[index].selected;
+    dispatch(setList(tempList));
+  }
   return (
     <tbody>
-      {players.map((_, index) => (
+      {roster.map((_, index) => (
         <PlayerRow
-          players={players}
+          players={roster}
           playerIndex={index}
-          setPlayers={setPlayers}
+          setPlayers={togglePlayer}
           key={index}
         />
       ))}
