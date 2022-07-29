@@ -1,30 +1,27 @@
 import React from "react";
+import { useAppDispatch } from "../../../../../customHooks/customHooks";
 import { ClassColor } from "../../../../../models/Classes";
 import { IPlayer } from "../../../../../models/Player";
-// import { getIterablePlayer } from "../../../../../utils/utils";
+import { setList } from "../../../../../store/features/roster/rosterSlice";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {
-  players: IPlayer[];
-  setPlayers: Function;
-  playerIndex: number;
+  playerIndex: number,
+  player: IPlayer
+  roster: IPlayer[]
 }
 const PlayerRow: React.FC<PlayerRowProps> = ({
-  players,
   playerIndex,
-  setPlayers,
+  player,
+  roster
 }) => {
-  // Breaks the player object into an array
-  const player: IPlayer = players[playerIndex];
-  // const iterablePlayer = getIterablePlayer(player);
-  // const array = Object.entries(iterablePlayer);
-
-  // Function for updating players state to reflect the "selected" values.
+  const dispatch = useAppDispatch();
   const toggleSelected = (playerIndex: number) => {
-    const newPlayers = [...players];
-    newPlayers[playerIndex].selected = !newPlayers[playerIndex].selected;
-    setPlayers(newPlayers);
-  };
+    const copiedRoster = structuredClone(roster);
+    copiedRoster[playerIndex].selected = !copiedRoster[playerIndex].selected;
+    dispatch(setList(copiedRoster));
+  }
+
   return (
     <tr style={{ textAlign: "center" }}>
       <td className="align-middle">

@@ -1,22 +1,21 @@
 import React, { useRef } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { addPlayerData } from "../../../api/players";
+import { useAppDispatch, useAppSelector } from "../../../customHooks/customHooks";
 import { IPlayer } from "../../../models/Player";
+import { setList } from "../../../store/features/roster/rosterSlice";
 
-interface IPlayerInput {
-  players: IPlayer[];
-  setPlayers: Function;
-}
-const PlayerInput: React.FC<IPlayerInput> = ({ players, setPlayers }) => {
+const PlayerInput: React.FC = () => {
   const inputValue = useRef<HTMLInputElement>(null);
-
+  const roster = useAppSelector((state) => state.roster);
+  const dispatch = useAppDispatch();
   const updatePlayerList = async () => {
     const receivedPlayer: IPlayer = await addPlayerData(
       inputValue?.current?.value
     );
-    const copyOfPlayers = [...players];
-    copyOfPlayers.push(receivedPlayer);
-    setPlayers(copyOfPlayers);
+    const rosterCopy = structuredClone(roster);
+    rosterCopy.push(receivedPlayer);
+    dispatch(setList(rosterCopy));
   };
 
   return (

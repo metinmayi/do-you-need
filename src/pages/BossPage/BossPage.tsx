@@ -1,10 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { MobileHeader } from "../../components/MobileHeader";
-import { useAppDispatch, useAppSelector, useMediaQuery } from "../../customHooks/customHooks";
-import { VigilantGuardian } from "../../models/Bosses";
-import { HeaderData } from "../../models/HeaderData";
+import { useAppDispatch, useMediaQuery } from "../../customHooks/customHooks";
 import { IPlayer } from "../../models/Player";
 import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
@@ -15,13 +13,8 @@ import { setList } from "../../store/features/roster/rosterSlice";
 
 
 const BossPage: React.FC = () => {
-  // Load Boss
-
-
   // Initiated the players state.
-  const roster = useAppSelector((state) => state.roster);
   const dispatch = useAppDispatch();
-  const [players, setPlayers] = useState<IPlayer[]>([]);
   useEffect(() => {
     const fetchPlayers = async () => {
       const fetchedPlayers: IPlayer[] = await getPlayers();
@@ -41,7 +34,7 @@ const BossPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12} md={8} lg={5} xxl={3}>
-          <PlayerInput players={roster} setPlayers={setPlayers}></PlayerInput>
+          <PlayerInput></PlayerInput>
         </Col>
       </Row>
       <Row>
