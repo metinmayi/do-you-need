@@ -49,7 +49,7 @@ const BossPage: React.FC = () => {
           <TableComponent/>
         </Col>
         <Col>
-          <RosterList players={players} />
+          <RosterList/>
         </Col>
       </Row>
     </Container>
