@@ -2,6 +2,8 @@ import React from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Title } from "../DesktopHeader/title";
 import Logo from "../../assets/images/Lootbag.png";
+import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
+import { BOSSNAMES } from "../../models/Bosses";
 
 const MobileHeader: React.FC = () => {
   return (
@@ -16,10 +18,8 @@ const MobileHeader: React.FC = () => {
         <Title> Vigilant Guardian </Title>
       </Col>
       <Col className="d-flex justify-content-end align-items-center gap-1">
-        <Button variant="success" size="lg">
-          Bosses
-        </Button>
-        <Button variant="secondary" size="lg">
+        <DropdownComponent title="Bosses" options={[...BOSSNAMES]} size="lg" />
+        <Button variant="warning" size="lg">
           Settings
         </Button>
         <Button variant="danger" size="lg">
