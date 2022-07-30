@@ -24,4 +24,18 @@ const VigilantGuardian = [
   "waist",
 ] as const;
 
+export const BOSSNAMES = [
+  "Vigilant Guardian",
+  "Skolex, the Insatiable Ravener",
+  "Artificer Xy'mox",
+  "Dausegne, the Fallen Oracle",
+  "Prototype Pantheon",
+  "Lihuvim, Principal Architect",
+  "Halondrus the Reclaimer",
+  "Anduin Wrynn",
+  "Lords of Dread",
+  "Rygelon",
+  "The Jailer",
+] as const;
+
 export { VigilantGuardian, idToBoss };
