@@ -6,12 +6,14 @@ type DropdownComponentProps = {
   variant?: string;
   options: string[];
   size?: "sm" | "lg";
+  onClick?: Function;
 };
 export const DropdownComponent: React.FC<DropdownComponentProps> = ({
   title,
   variant = "secondary",
   options,
   size,
+  onClick,
 }) => {
   return (
     <>
@@ -20,8 +22,12 @@ export const DropdownComponent: React.FC<DropdownComponentProps> = ({
           {title}
         </Dropdown.Toggle>
         <Dropdown.Menu>
-          {options.map((option) => (
-            <Dropdown.Item>{option}</Dropdown.Item>
+          {options.map((option, index) => (
+            <Dropdown.Item
+              onClick={onClick ? (e) => onClick(e) : undefined}
+              key={index}>
+              {option}
+            </Dropdown.Item>
           ))}
         </Dropdown.Menu>
       </Dropdown>
