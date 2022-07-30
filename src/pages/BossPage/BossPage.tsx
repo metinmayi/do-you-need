@@ -7,10 +7,9 @@ import { IPlayer } from "../../models/Player";
 import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
 import { PlayerInput } from "./PlayerInput";
-import { DropdownComponent } from "./DropdownComponent/DropdownComponent";
 import { RosterList } from "./RosterList";
 import { setList } from "../../store/features/roster/rosterSlice";
-
+import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
 
 const BossPage: React.FC = () => {
   // Initiated the players state.
@@ -30,7 +29,7 @@ const BossPage: React.FC = () => {
     <Container fluid>
       {isMobile ? <MobileHeader /> : <DesktopHeader />}
       <Row className="mt-5 mb-2">
-        <DropdownComponent />
+        <DropdownComponent title="Filter" options={["Test", "OneMore"]} />
       </Row>
       <Row>
         <Col xs={12} md={8} lg={5} xxl={3}>
@@ -39,10 +38,10 @@ const BossPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12} lg={10} className="text-center">
-          <TableComponent/>
+          <TableComponent />
         </Col>
         <Col>
-          <RosterList/>
+          <RosterList />
         </Col>
       </Row>
     </Container>
