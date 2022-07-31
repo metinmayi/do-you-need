@@ -1,21 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Title } from "./title";
 import Logo from "../../assets/images/Lootbag.png";
 import { Button, Col, Row } from "react-bootstrap";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
-import { BOSSNAMES } from "../../models/Bosses";
+import { BOSSES, BOSSNAMES } from "../../models/Bosses";
+import { isBossName } from "../../utils/utils";
 
 const DesktopHeader: React.FC = () => {
+  const [currentBoss, setCurrentBoss] = useState<BOSSNAMES>(BOSSES[0]);
+  const changeActiveBoss = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const bossName = e.currentTarget.innerText;
+    if (isBossName(bossName)) {
+      setCurrentBoss(bossName);
+    }
+  };
   return (
     <Row className="d-flex justify-content-center p-1">
       <Col xs={1}>
         <img src={Logo} alt="Not found" style={{ width: "100%" }} />
       </Col>
       <Col className="d-flex justify-content-end">
-        <Title> Vigilant Guardian </Title>
+        <Title> {currentBoss} </Title>
       </Col>
       <Col className="d-flex justify-content-end align-items-center gap-1">
-        <DropdownComponent title="Bosses" options={[...BOSSNAMES]} size="lg" />
+        <DropdownComponent
+          title="Bosses"
+          variant="success"
+          options={[...BOSSES]}
+          size="lg"
+          onClick={changeActiveBoss}
+        />
         <Button variant="warning" size="lg">
           Settings
         </Button>
