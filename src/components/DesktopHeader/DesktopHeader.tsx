@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Title } from "./title";
 import Logo from "../../assets/images/Lootbag.png";
 import { Button, Col, Row } from "react-bootstrap";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
@@ -15,12 +14,12 @@ const DesktopHeader: React.FC = () => {
     }
   };
   return (
-    <Row className="d-flex justify-content-center p-1">
+    <Row className="d-flex p-1">
       <Col xs={1}>
         <img src={Logo} alt="Not found" style={{ width: "100%" }} />
       </Col>
-      <Col className="d-flex justify-content-end">
-        <Title> {currentBoss} </Title>
+      <Col className="d-flex justify-content-center align-items-center flex-grow-1">
+        <h1> {currentBoss} </h1>
       </Col>
       <Col className="d-flex justify-content-end align-items-center gap-1">
         <DropdownComponent
