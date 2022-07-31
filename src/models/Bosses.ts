@@ -24,7 +24,7 @@ const VigilantGuardian = [
   "waist",
 ] as const;
 
-export const BOSSNAMES = [
+export const BOSSES = [
   "Vigilant Guardian",
   "Skolex, the Insatiable Ravener",
   "Artificer Xy'mox",
@@ -37,5 +37,7 @@ export const BOSSNAMES = [
   "Rygelon",
   "The Jailer",
 ] as const;
+
+export type BOSSNAMES = typeof BOSSES[number];
 
 export { VigilantGuardian, idToBoss };
