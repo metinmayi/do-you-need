@@ -21,7 +21,7 @@ const DesktopHeader: React.FC = () => {
       <Col className="d-flex justify-content-center align-items-center flex-grow-1">
         <h1> {currentBoss} </h1>
       </Col>
-      <Col className="d-flex justify-content-end align-items-center gap-1">
+      <Col className="d-flex justify-content-end align-items-center gap-1 flex-grow-0">
         <DropdownComponent
           title="Bosses"
           variant="success"
