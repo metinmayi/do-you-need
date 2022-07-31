@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import { Title } from "../DesktopHeader/title";
 import Logo from "../../assets/images/Lootbag.png";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
-import { BOSSNAMES } from "../../models/Bosses";
+import { BOSSES, BOSSNAMES } from "../../models/Bosses";
+import { isBossName } from "../../utils/utils";
 
 const MobileHeader: React.FC = () => {
+  const [currentBoss, setCurrentBoss] = useState<BOSSNAMES>(BOSSES[0]);
+  const changeActiveBoss = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    const bossName = e.currentTarget.innerText;
+    if (isBossName(bossName)) {
+      setCurrentBoss(bossName);
+    }
+  };
   return (
     <Row className="d-flex justify-content-center p-1">
       <Col
@@ -15,10 +23,16 @@ const MobileHeader: React.FC = () => {
         <img src={Logo} alt="Not found" style={{ width: "90%" }} />
       </Col>
       <Col className="d-flex justify-content-end">
-        <Title> Vigilant Guardian </Title>
+        <Title> {currentBoss}</Title>
       </Col>
       <Col className="d-flex justify-content-end align-items-center gap-1">
-        <DropdownComponent title="Bosses" options={[...BOSSNAMES]} size="lg" />
+        <DropdownComponent
+          title="Bosses"
+          options={[...BOSSES]}
+          size="lg"
+          onClick={changeActiveBoss}
+          variant="success"
+        />
         <Button variant="warning" size="lg">
           Settings
         </Button>
