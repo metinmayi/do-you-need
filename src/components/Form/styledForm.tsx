@@ -1,5 +1,5 @@
-import styled from "styled-components";
-import { Form } from "react-bootstrap";
+import styled from 'styled-components';
+import { Form } from 'react-bootstrap';
 
 const StyledForm = styled(Form)`
   border: 1px solid white;
