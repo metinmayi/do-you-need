@@ -1,30 +1,34 @@
-import { FormEvent, useEffect, useRef, useState } from 'react';
-import { Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-import { FormComponent } from '../../../components/Form/FormComponent';
-import { InvalidAlert } from './InvalidAlert/InvalidAlert';
-import { TooltipOverlay } from './TooltipModal/TooltipOverlay';
+import { userInfo } from "os";
+import { FormEvent, useEffect, useRef, useState } from "react";
+import { Button, Form } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { registerUser } from "../../../api/authentication.ts/register";
+import { FormComponent } from "../../../components/Form/FormComponent";
+import { InvalidAlert } from "./InvalidAlert/InvalidAlert";
+import { TooltipOverlay } from "./TooltipModal/TooltipOverlay";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9_]{3,23}$/;
 const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
-export const RegisterForm: React.FC = () => {
-  const handleSubmit = (e: FormEvent<HTMLElement>) => {
+export const RegisterForm = () => {
+  const handleSubmit = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
-    console.log('request');
+    registerUser(validMatch, validName, user, email, pwd);
   };
 
   const userRef = useRef<HTMLInputElement>(null);
 
-  const [user, setUser] = useState('');
+  const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
 
-  const [pwd, setPwd] = useState('');
+  const [pwd, setPwd] = useState("");
   const [validPwd, setValidPwd] = useState(false);
   const [pwdFocus, setPwdFocus] = useState(false);
 
-  const [matchPwd, setMatchPwd] = useState('');
+  const [matchPwd, setMatchPwd] = useState("");
   const [validMatch, setValidMatch] = useState(false);
+
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
     userRef?.current?.focus();
@@ -47,35 +51,35 @@ export const RegisterForm: React.FC = () => {
       <Form.Group>
         <Form.Label htmlFor="username">Username:</Form.Label>
         <Form.Control
-          style={{ border: validName || !user ? '' : '3px solid red' }}
-          aria-invalid={validName ? 'false' : true}
+          style={{ border: validName || !user ? "" : "3px solid red" }}
+          aria-invalid={validName ? "false" : true}
           aria-describedby="uidnote"
           autoComplete="off"
           required
           id="username"
           ref={userRef}
           value={user}
-          onChange={(e) => setUser(e.target.value)}
-        ></Form.Control>
+          onChange={(e) => setUser(e.target.value)}></Form.Control>
         {!validName && user ? <InvalidAlert type="name" id="uidnote" /> : null}
       </Form.Group>
       <Form.Group className="mt-2">
         <Form.Label>Email</Form.Label>
-        <Form.Control type="email"></Form.Control>
+        <Form.Control
+          type="email"
+          onChange={(e) => setEmail(e.target.value)}></Form.Control>
       </Form.Group>
       <Form.Group className="mt-2">
         <Form.Label htmlFor="password">Password</Form.Label>
         <Form.Control
-          style={{ border: validPwd || !pwd ? '' : '3px solid red' }}
+          style={{ border: validPwd || !pwd ? "" : "3px solid red" }}
           type="password"
           id="password"
           onChange={(e) => setPwd(e.target.value)}
           required
-          aria-invalid={!validPwd ? 'true' : 'false'}
+          aria-invalid={!validPwd ? "true" : "false"}
           aria-describedby="pwdnote"
           onFocus={() => setPwdFocus(true)}
-          onBlur={() => setPwdFocus(false)}
-        ></Form.Control>
+          onBlur={() => setPwdFocus(false)}></Form.Control>
         {!validPwd && pwd && pwdFocus ? (
           <InvalidAlert id="pwdnote" type="password" />
         ) : null}
@@ -83,14 +87,13 @@ export const RegisterForm: React.FC = () => {
       <Form.Group className="mt-2">
         <Form.Label htmlFor="repeatPassword">Repeat Password</Form.Label>
         <Form.Control
-          style={{ border: validMatch ? '' : '3px solid red' }}
+          style={{ border: validMatch ? "" : "3px solid red" }}
           id="repeatPassword"
           type="password"
           required
           onChange={(e) => setMatchPwd(e.target.value)}
-          aria-invalid={validMatch ? 'false' : 'true'}
-          aria-describedby="repeatPwdNote"
-        ></Form.Control>
+          aria-invalid={validMatch ? "false" : "true"}
+          aria-describedby="repeatPwdNote"></Form.Control>
         {!validMatch && pwd ? (
           <InvalidAlert id="pwdnote" type="repeat" />
         ) : null}
