@@ -23,8 +23,24 @@ export const registerUser = async (
       },
       body: JSON.stringify(newUser),
     });
-    console.log(await response.text());
-  } catch (error) {
+    const responseMessage = await response.text();
+    const suitableResponseMessage = getResponseMessage(responseMessage);
+    return {
+      error: false,
+      message: suitableResponseMessage,
+      status: response.status,
+    };
+  } catch (error: any) {
     console.log(error);
+    return {
+      error: true,
+      message: error.message || "Failed to contact server",
+      status: 500,
+    };
   }
+};
+
+const getResponseMessage = (responseMessage: string) => {
+  if (responseMessage.includes("@")) return "That email is already in use.";
+  return "That username is already in use.";
 };

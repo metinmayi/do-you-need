@@ -1,4 +1,3 @@
-import { userInfo } from "os";
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -13,7 +12,9 @@ const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 export const RegisterForm = () => {
   const handleSubmit = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
-    registerUser(validMatch, validName, user, email, pwd);
+    const result = await registerUser(validMatch, validName, user, email, pwd);
+
+    if (result?.status === 500) setError(result.message);
   };
 
   const userRef = useRef<HTMLInputElement>(null);
@@ -29,6 +30,8 @@ export const RegisterForm = () => {
   const [validMatch, setValidMatch] = useState(false);
 
   const [email, setEmail] = useState("");
+
+  const [error, setError] = useState("");
 
   useEffect(() => {
     userRef?.current?.focus();
@@ -107,9 +110,12 @@ export const RegisterForm = () => {
           </Button>
         )}
       </Form.Group>
-      <Form.Text>
-        Already a member? Click <Link to="/login">here</Link> to login.
+      <Form.Text style={{ color: "red" }}>
+        {<p>{error}</p> ? error : null}
       </Form.Text>
+      <p>
+        Already a member? Click <Link to="/login">here</Link> to login.
+      </p>
     </FormComponent>
   );
 };
