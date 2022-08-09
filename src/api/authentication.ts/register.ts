@@ -19,8 +19,9 @@ export const registerUser = async (
     const response = await fetch(`${BASE_URL}authentication/register`, {
       method: "POST",
       headers: {
-        "Content-Type": "application/JSON",
+        "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify(newUser),
     });
     const responseMessage = await response.text();
