@@ -1,4 +1,4 @@
-export const BASE_URL = "http://localhost:8000/" as const;
+import { BASE_URL } from "../../config/config";
 
 export const registerUser = async (
   validMatch: boolean,

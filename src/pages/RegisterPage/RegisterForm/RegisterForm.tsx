@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { registerUser } from "../../../api/authentication.ts/register";
 import { FormComponent } from "../../../components/Form/FormComponent";
+import { useRedirect } from "../../../customHooks/customHooks";
 import { InvalidAlert } from "./InvalidAlert/InvalidAlert";
 import { TooltipOverlay } from "./TooltipModal/TooltipOverlay";
 
@@ -10,11 +11,16 @@ const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9_]{3,23}$/;
 const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
 
 export const RegisterForm = () => {
+  const redirect = useRedirect();
   const handleSubmit = async (e: FormEvent<HTMLElement>) => {
     e.preventDefault();
     const result = await registerUser(validMatch, validName, user, email, pwd);
 
-    if (result?.status === 500) setError(result.message);
+    if (result?.status === 200) {
+      return redirect("/login");
+    }
+
+    setError(result?.message);
   };
 
   const userRef = useRef<HTMLInputElement>(null);
