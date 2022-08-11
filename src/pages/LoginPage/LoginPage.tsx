@@ -1,32 +1,59 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link } from "react-router-dom";
 import { useRedirect } from "../../customHooks/customHooks";
 import { LoggedOutHeader } from "../../components/LoggedOutHeader";
+import { ENVIRONMENT } from "../../config/config";
+import { loginUser } from "../../api/authentication.ts/login";
 
 type Props = {};
 const LoginPage: React.FC<Props> = () => {
+  const handleSubmit = async () => {
+    const result = await loginUser(username, password);
+    if (result.success) {
+      return redirect("/bossPage");
+    }
+    setError(result.message);
+  };
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [error, setError] = useState("");
+
   const redirect = useRedirect();
   return (
     <Container fluid>
       <LoggedOutHeader />
+
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>
           <FormComponent className="mt-5">
             <Form.Group className="mb-3">
-              <Form.Label>Username/Email</Form.Label>
-              <Form.Control type="username"></Form.Control>
+              <Form.Label>Username</Form.Label>
+              <Form.Control
+                type="username"
+                onChange={(e) => setUsername(e.target.value)}></Form.Control>
             </Form.Group>
+
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password"></Form.Control>
+              <Form.Control
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}></Form.Control>
             </Form.Group>
+
+            <Form.Text style={{ color: "red" }}>{error}</Form.Text>
+
             <Form.Group className="d-flex gap-1 mb-2">
               <Button
                 variant="success"
-                onClick={() => redirect("/bossPage")}
+                onClick={
+                  ENVIRONMENT === "demo"
+                    ? () => redirect("/bossPage")
+                    : () => handleSubmit()
+                }
                 className="border">
                 Login
               </Button>
