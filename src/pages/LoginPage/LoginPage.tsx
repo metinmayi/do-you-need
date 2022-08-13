@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
-import { Link } from "react-router-dom";
-import { useRedirect } from "../../customHooks/customHooks";
+import { Link, useNavigate } from "react-router-dom";
 import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication.ts/login";
@@ -22,7 +21,7 @@ const LoginPage: React.FC<Props> = () => {
 
   const [error, setError] = useState("");
 
-  const redirect = useRedirect();
+  const redirect = useNavigate();
   return (
     <Container fluid>
       <LoggedOutHeader />

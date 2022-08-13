@@ -7,10 +7,10 @@ import { ModalComponent } from "../../components/ModalComponent";
 import { LandingPageModal } from "./LandingPageModal";
 import { ImageTitle } from "./ImageTitle/ImageTitle";
 import { LoggedOutHeader } from "../../components/LoggedOutHeader";
-import { useRedirect } from "../../customHooks/customHooks";
+import { useNavigate } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
-  const redirect = useRedirect();
+  const redirect = useNavigate();
   const [hasVisited, setHasVisited] = useState(hasVisitedBefore());
   const toggleModal = () => {
     setHasVisited(!hasVisited);
