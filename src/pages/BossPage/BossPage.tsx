@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { MobileHeader } from "../../components/MobileHeader";
@@ -10,12 +10,20 @@ import { PlayerInput } from "./PlayerInput";
 import { RosterList } from "./RosterList";
 import { setList } from "../../store/features/roster/rosterSlice";
 import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
+import { isAuthenticated } from "../../authentication/isAuthenticated/isAuthenticated";
+import { useNavigate } from "react-router-dom";
 
 const BossPage: React.FC = () => {
+  const redirect = useNavigate();
   // Initiated the players state.
   const dispatch = useAppDispatch();
   useEffect(() => {
     const fetchPlayers = async () => {
+      const authenticated = await isAuthenticated();
+      if (!authenticated) {
+        redirect("/login");
+        return;
+      }
       const fetchedPlayers: IPlayer[] = await getPlayers();
       dispatch(setList(fetchedPlayers));
     };
