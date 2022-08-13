@@ -1,14 +1,17 @@
 import { BASE_URL } from "../../config/config";
 type loginResponseType = {
-  success: boolean;
+  loggedIn: boolean;
+  blizzSync: 0 | 1;
   message: string;
 };
 
 export const loginUser = async (username: string, password: string) => {
   const loginResponse: loginResponseType = {
-    success: false,
+    loggedIn: false,
+    blizzSync: 0,
     message: "",
   };
+
   try {
     const response = await fetch(`${BASE_URL}authentication/login`, {
       method: "POST",
@@ -19,8 +22,11 @@ export const loginUser = async (username: string, password: string) => {
       body: JSON.stringify({ username, password }),
     });
 
+    const user = await response.json();
+    console.log(user);
     if (response.status === 200) {
-      loginResponse.success = true;
+      loginResponse.loggedIn = true;
+      loginResponse.blizzSync = user.blizz_sync;
     } else {
       loginResponse.message = "Invalid username/password";
     }
