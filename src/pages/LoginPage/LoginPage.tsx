@@ -7,15 +7,21 @@ import { LoggedOutHeader } from "../../components/LoggedOutHeader";
 import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication.ts/login";
 
-type Props = {};
-const LoginPage: React.FC<Props> = () => {
+const LoginPage: React.FC = () => {
   const handleSubmit = async () => {
-    const result = await loginUser(username, password);
-    if (result.success) {
+    const user = await loginUser(username, password);
+
+    if (user.loggedIn && user.blizzSync) {
       return redirect("/bossPage");
     }
-    setError(result.message);
+
+    if (user.loggedIn) {
+      return redirect("/synchronize");
+    }
+
+    setError(user.message);
   };
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
@@ -56,7 +62,6 @@ const LoginPage: React.FC<Props> = () => {
               </Button>
               <Button
                 variant="secondary"
-                type="submit"
                 className="border"
                 onClick={() => redirect("/register")}>
                 Register
