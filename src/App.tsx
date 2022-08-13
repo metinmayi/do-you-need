@@ -5,6 +5,7 @@ import { LandingPage } from "./pages/LandingPage";
 import { LoginPage } from "./pages/LoginPage";
 import { MissingPage } from "./pages/MissingPage";
 import { RegisterPage } from "./pages/RegisterPage";
+import { SynchronizePage } from "./pages/SynchronizePage";
 
 const App: React.FC = () => {
   return (
@@ -14,6 +15,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/register" element={<RegisterPage />}></Route>
         <Route path="/bossPage" element={<BossPage />}></Route>
+        <Route path="/synchronize" element={<SynchronizePage />}></Route>
         <Route path="*" element={<MissingPage />}></Route>
       </Routes>
     </BrowserRouter>
