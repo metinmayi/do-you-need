@@ -3,7 +3,7 @@ import { Col, Container, Form, Row } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link, useNavigate } from "react-router-dom";
-import { LoggedOutHeader } from "../../components/LoggedOutHeader";
+import { LogoHeader } from "../../components/LogoHeader";
 import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication.ts/login";
 
@@ -30,7 +30,7 @@ const LoginPage: React.FC = () => {
   const redirect = useNavigate();
   return (
     <Container fluid>
-      <LoggedOutHeader />
+      <LogoHeader />
 
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>

@@ -6,7 +6,7 @@ import { hasVisitedBefore } from "../../utils/utils";
 import { ModalComponent } from "../../components/ModalComponent";
 import { LandingPageModal } from "./LandingPageModal";
 import { ImageTitle } from "./ImageTitle/ImageTitle";
-import { LoggedOutHeader } from "../../components/LoggedOutHeader";
+import { LogoHeader } from "../../components/LogoHeader";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
@@ -24,7 +24,7 @@ const LandingPage: React.FC = () => {
           title="Demo"
           handleClick={toggleModal}></ModalComponent>
       )}
-      <LoggedOutHeader />
+      <LogoHeader />
       <Row className="mt-2 justify-content-center">
         <Col xs={7} lg={3} className="d-flex gap-2">
           <Button
