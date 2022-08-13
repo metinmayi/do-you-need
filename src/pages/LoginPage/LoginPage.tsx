@@ -42,10 +42,8 @@ const LoginPage: React.FC<Props> = () => {
               <Form.Control
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}></Form.Control>
+              <Form.Text style={{ color: "red" }}>{error}</Form.Text>
             </Form.Group>
-
-            <Form.Text style={{ color: "red" }}>{error}</Form.Text>
-
             <Form.Group className="d-flex gap-1 mb-2">
               <Button
                 variant="success"
