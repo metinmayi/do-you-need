@@ -1,13 +1,16 @@
 import React, { useRef } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { addPlayerData } from "../../../api/players";
-import { useAppDispatch, useAppSelector } from "../../../customHooks/customHooks";
+import {
+  useAppDispatch,
+  useAppSelector,
+} from "../../../customHooks/customHooks";
 import { IPlayer } from "../../../models/Player";
 import { setList } from "../../../store/features/roster/rosterSlice";
 
 const PlayerInput: React.FC = () => {
   const inputValue = useRef<HTMLInputElement>(null);
-  const roster = useAppSelector((state) => state.roster);
+  const roster = useAppSelector((state) => state.rosterReducer.roster);
   const dispatch = useAppDispatch();
   const updatePlayerList = async () => {
     const receivedPlayer: IPlayer = await addPlayerData(

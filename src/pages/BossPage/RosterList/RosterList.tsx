@@ -4,9 +4,8 @@ import { useAppSelector } from "../../../customHooks/customHooks";
 import { IPlayer } from "../../../models/Player";
 import { ListItem } from "./ListItem";
 
-
 const RosterList: React.FC = () => {
-  const roster = useAppSelector((state) => state.roster);
+  const roster = useAppSelector((state) => state.rosterReducer.roster);
   const roles = ["tank", "healer", "dps"];
   const bigArray: [IPlayer[], IPlayer[], IPlayer[]] = [[], [], []];
 

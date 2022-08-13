@@ -5,18 +5,17 @@ import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
 import { useAppSelector } from "../../../customHooks/customHooks";
 
-
 const TableComponent: React.FC = () => {
-  const roster = useAppSelector((state) => state.roster);
+  const roster = useAppSelector((state) => state.rosterReducer.roster);
   return roster.length > 0 ? (
     <Table variant="dark" striped hover responsive>
-      <TableHead/>
-      <TableBody/>
+      <TableHead />
+      <TableBody />
     </Table>
   ) : (
     <>
       <Table variant="dark" striped hover responsive>
-        <TableHead/>
+        <TableHead />
       </Table>
       <img src={spinner} alt="loading..."></img> <h3>Loading Table</h3>
     </>
