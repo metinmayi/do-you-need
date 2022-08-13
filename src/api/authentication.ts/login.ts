@@ -5,6 +5,9 @@ type loginResponseType = {
   message: string;
 };
 
+/**
+ * Attempts to login the user. Also checks if user has blizzSync or not.
+ */
 export const loginUser = async (username: string, password: string) => {
   const loginResponse: loginResponseType = {
     loggedIn: false,
