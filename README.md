@@ -2,12 +2,8 @@
 A guild and raid managment system for World of Warcraft.
 
 ## Tech Stack (So far along)
-* React - With Typescript
-* React Bootstrap
+* React Typescript
+* React Redux
+* NodeJS Typescript server, hosted via AWS EC2.
+* MySQL, hosted via AWS RDS.
 * Cypress - Framework for testing.
-## Tech Stack (Planned)
-* Redux - For performant state managment
-* NodeTS - For the API
-* MySQL - As DB
-* AWS Hosting - RDS
-* BCrypt encryption
