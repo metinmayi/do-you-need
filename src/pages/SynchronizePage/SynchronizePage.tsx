@@ -2,7 +2,6 @@ import { useEffect } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../authentication/isAuthenticated/isAuthenticated";
-import { syncWithBlizzard } from "../../authentication/syncWithBlizzard/syncWithBlizzard";
 import { LogoHeader } from "../../components/LogoHeader";
 import { SyncCard } from "./SyncCard";
 
