@@ -1,33 +1,33 @@
-import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../../authentication/isAuthenticated/isAuthenticated";
-import { syncWithBlizzard } from "../../authentication/syncWithBlizzard/syncWithBlizzard";
-import { LogoHeader } from "../../components/LogoHeader";
-import { SyncCard } from "./SyncCard";
+import { useEffect } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { isAuthenticated } from '../../authentication/isAuthenticated/isAuthenticated';
+import { syncWithBlizzard } from '../../authentication/syncWithBlizzard/syncWithBlizzard';
+import { LogoHeader } from '../../components/LogoHeader';
+import { SyncCard } from './SyncCard';
 
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();
 
-  const code = new URLSearchParams(window.location.search).get("code");
+  const code = new URLSearchParams(window.location.search).get('code');
 
-  useEffect(() => {
-    async function checkAuthentication() {
-      const authenticated = await isAuthenticated();
-      if (!authenticated) {
-        return redirect("/login");
-      }
-    }
-    checkAuthentication();
-  }, []);
+  // useEffect(() => {
+  //   async function checkAuthentication() {
+  //     const authenticated = await isAuthenticated();
+  //     if (!authenticated) {
+  //       return redirect("/login");
+  //     }
+  //   }
+  //   checkAuthentication();
+  // }, []);
 
-  useEffect(() => {
-    async function sync() {
-      if (!code) return;
-      const account = syncWithBlizzard(code);
-    }
-    sync();
-  }, []);
+  // useEffect(() => {
+  //   async function sync() {
+  //     if (!code) return;
+  //     const account = syncWithBlizzard(code);
+  //   }
+  //   sync();
+  // }, []);
 
   return (
     <Container fluid>
