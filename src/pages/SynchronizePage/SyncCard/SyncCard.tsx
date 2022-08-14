@@ -15,7 +15,7 @@ export const SyncCard: React.FC = () => {
           </i>
         </p>
         <Card.Footer className="d-flex justify-content-between">
-          <a href="https://eu.battle.net/oauth/authorize?region=eu&response_type=code&client_id=182681dbb88f41a28f5abe8e2782ab16&redirect_uri=http://localhost:3000/synchronize&scope=wow.profile">
+          <a href="http://localhost:8000/blizzard/authenticate">
             <Button variant="success">Synchronize</Button>
           </a>
           <Button variant="danger">Boss Page</Button>
