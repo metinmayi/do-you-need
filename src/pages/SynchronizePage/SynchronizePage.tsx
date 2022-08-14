@@ -9,8 +9,6 @@ import { SyncCard } from "./SyncCard";
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();
 
-  const code = new URLSearchParams(window.location.search).get("code");
-
   useEffect(() => {
     async function checkAuthentication() {
       const authenticated = await isAuthenticated();
@@ -19,14 +17,6 @@ export const SynchronizePage: React.FC = () => {
       }
     }
     checkAuthentication();
-  }, []);
-
-  useEffect(() => {
-    async function sync() {
-      if (!code) return;
-      const account = syncWithBlizzard(code);
-    }
-    sync();
   }, []);
 
   return (
