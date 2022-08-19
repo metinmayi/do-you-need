@@ -1,14 +1,7 @@
-import { useEffect } from 'react';
 import { Button, Card } from 'react-bootstrap';
-import { syncWithBlizzard } from '../../../authentication/syncWithBlizzard/syncWithBlizzard';
+import { BLIZZARD_AUTH_URL } from '../../../config/config';
 
 export const SyncCard: React.FC = () => {
-  useEffect(() => {
-    const code = new URLSearchParams(window.location.search).get('code');
-    if (code) {
-      syncWithBlizzard(code);
-    }
-  }, []);
   return (
     <Card bg="secondary">
       <Card.Header as="h3">Synchronize</Card.Header>
@@ -23,7 +16,7 @@ export const SyncCard: React.FC = () => {
           </i>
         </p>
         <Card.Footer className="d-flex justify-content-between">
-          <a href="http://localhost:8000/blizzard/authenticate">
+          <a href={BLIZZARD_AUTH_URL}>
             <Button variant="success">Synchronize</Button>
           </a>
           <Button variant="danger">Boss Page</Button>

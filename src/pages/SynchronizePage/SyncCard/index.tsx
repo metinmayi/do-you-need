@@ -1,3 +1,3 @@
-import { SyncCard } from "./SyncCard";
+import { SyncCard } from './SyncCard';
 
 export { SyncCard };

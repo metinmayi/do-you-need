@@ -1,21 +1,29 @@
-import { useEffect } from "react";
-import { Col, Container, Row } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
-import { isAuthenticated } from "../../authentication/isAuthenticated/isAuthenticated";
-import { LogoHeader } from "../../components/LogoHeader";
-import { SyncCard } from "./SyncCard";
+import { useEffect, useState } from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import { useNavigate } from 'react-router-dom';
+import { LogoHeader } from '../../components/LogoHeader';
+import { VALID_TOKEN_URL } from '../../config/config';
+import { CharactersCard } from './CharactersCard';
+import { SyncCard } from './SyncCard';
 
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();
+  const [validToken, setValidToken] = useState(false);
 
   useEffect(() => {
-    async function checkAuthentication() {
-      const authenticated = await isAuthenticated();
-      if (!authenticated) {
-        return redirect("/login");
+    async function checkValidToken() {
+      const response = await fetch(VALID_TOKEN_URL, { credentials: 'include' });
+      if (response.status === 401) {
+        redirect('/');
+        return;
+      }
+      if (response.status === 200) {
+        setValidToken(true);
+      } else {
+        setValidToken(false);
       }
     }
-    checkAuthentication();
+    checkValidToken();
   }, []);
 
   return (
@@ -24,7 +32,7 @@ export const SynchronizePage: React.FC = () => {
 
       <Row className="justify-content-center mt-5">
         <Col xs={8} xl={4}>
-          <SyncCard />
+          {validToken ? <CharactersCard /> : <SyncCard />}
         </Col>
       </Row>
     </Container>
