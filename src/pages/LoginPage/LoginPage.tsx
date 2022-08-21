@@ -8,7 +8,11 @@ import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication.ts/login";
 
 const LoginPage: React.FC = () => {
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (ENVIRONMENT === "demo") {
+      redirect("/bossPage");
+    }
     const user = await loginUser(username, password);
 
     if (user.loggedIn && user.blizzSync) {
@@ -34,7 +38,7 @@ const LoginPage: React.FC = () => {
 
       <Row className="justify-content-center mt-4">
         <Col xs={12} md={6} lg={4}>
-          <FormComponent className="mt-5">
+          <FormComponent className="mt-5" onSubmit={(e) => handleSubmit(e)}>
             <Form.Group className="mb-3">
               <Form.Label>Username</Form.Label>
               <Form.Control
@@ -50,14 +54,7 @@ const LoginPage: React.FC = () => {
               <Form.Text style={{ color: "red" }}>{error}</Form.Text>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2">
-              <Button
-                variant="success"
-                onClick={
-                  ENVIRONMENT === "demo"
-                    ? () => redirect("/bossPage")
-                    : () => handleSubmit()
-                }
-                className="border">
+              <Button type="submit" variant="success" className="border">
                 Login
               </Button>
               <Button
