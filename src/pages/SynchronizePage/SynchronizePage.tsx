@@ -12,11 +12,19 @@ export const SynchronizePage: React.FC = () => {
 
   useEffect(() => {
     async function checkValidToken() {
-      const response = await fetch(VALID_TOKEN_URL, { credentials: "include" });
-      if (response.status === 200) {
-        setValidToken(true);
-      } else {
-        setValidToken(false);
+      try {
+        const response = await fetch(VALID_TOKEN_URL, {
+          credentials: "include",
+        });
+        if (response.status === 401) return redirect("/login");
+        if (response.status === 200) {
+          setValidToken(true);
+        } else {
+          setValidToken(false);
+        }
+      } catch (error) {
+        console.log(error);
+        redirect("/login");
       }
     }
     checkValidToken();
