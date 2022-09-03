@@ -7,7 +7,7 @@ import { InvalidAlert } from "./InvalidAlert/InvalidAlert";
 import { TooltipOverlay } from "./TooltipModal/TooltipOverlay";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9_]{3,23}$/;
-const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%]).{8,24}$/;
+const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@"#$%]).{8,24}$/;
 
 export const RegisterForm = () => {
   const redirect = useNavigate();
