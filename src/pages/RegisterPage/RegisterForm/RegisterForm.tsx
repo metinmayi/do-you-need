@@ -20,9 +20,11 @@ export const RegisterForm = () => {
     }
 
     setError(result?.message);
+    btnRef.current?.blur();
   };
 
   const userRef = useRef<HTMLInputElement>(null);
+  const btnRef = useRef<HTMLButtonElement>(null);
 
   const [user, setUser] = useState("");
   const [validName, setValidName] = useState(false);
@@ -110,7 +112,11 @@ export const RegisterForm = () => {
         {!validName || !validPwd || !validMatch ? (
           <TooltipOverlay />
         ) : (
-          <Button variant="success" className="border" type="submit">
+          <Button
+            variant="success"
+            className="border"
+            type="submit"
+            ref={btnRef}>
             Register
           </Button>
         )}
