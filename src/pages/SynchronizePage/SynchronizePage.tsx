@@ -3,7 +3,7 @@ import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { LogoHeader } from "../../components/LogoHeader";
 import { VALID_TOKEN_URL } from "../../config/config";
-import { CharactersCard } from "./CharactersCard";
+import { SelectionCard } from "./SelectionCard";
 import { SyncCard } from "./SyncCard";
 
 export const SynchronizePage: React.FC = () => {
@@ -33,10 +33,9 @@ export const SynchronizePage: React.FC = () => {
   return (
     <Container fluid>
       <LogoHeader />
-
       <Row className="justify-content-center mt-5">
         <Col xs={8} xl={4}>
-          {validToken ? <CharactersCard /> : <SyncCard />}
+          {validToken ? <SelectionCard /> : <SyncCard />}
         </Col>
       </Row>
     </Container>
