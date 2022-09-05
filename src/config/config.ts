@@ -16,9 +16,14 @@ export const VALID_TOKEN_URL = `${BASE_URL}blizzard/checkAccessToken`;
 /**
  * API for authenticating with blizzard. I.E get forwarded to their website
  */
-export const BLIZZARD_AUTH_URL = `${BASE_URL}blizzard/authenticate`
+export const BLIZZARD_AUTH_URL = `${BASE_URL}blizzard/authenticate`;
 
 /**
  * API for getting all max level chars belonging to this account
  */
 export const GET_CHARS_URL = `${BASE_URL}blizzard/getCharacters`;
+
+/**
+ * API for getting the guild status of said player
+ */
+export const GET_GUILD_URL = `${BASE_URL}blizzard/getGuildStatus`;
