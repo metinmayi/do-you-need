@@ -4,7 +4,9 @@ import { getCharacters } from "../../../../api/blizzard.ts/getCharacters";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
 
 interface props {
-  setCharacter: React.Dispatch<React.SetStateAction<string>>;
+  setCharacter: React.Dispatch<
+    React.SetStateAction<RetrievedCharacter | undefined>
+  >;
 }
 export const CharacterSelection: React.FC<props> = ({ setCharacter }) => {
   const [characters, setCharacters] = useState<RetrievedCharacter[]>([]);
@@ -26,7 +28,9 @@ export const CharacterSelection: React.FC<props> = ({ setCharacter }) => {
           {characters ? (
             <ul>
               {characters.map((character) => (
-                <li key={`${character.name}-${character.realm}`}>
+                <li
+                  key={`${character.name}-${character.realm}`}
+                  onClick={() => setCharacter(character)}>
                   {character.name} - {character.realm}
                 </li>
               ))}
