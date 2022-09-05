@@ -15,7 +15,7 @@ const LoginPage: React.FC = () => {
     }
     const user = await loginUser(username, password);
 
-    if (user.loggedIn && user.blizzSync) {
+    if (user.loggedIn && user.guilds.length > 0) {
       return redirect("/bossPage");
     }
 
