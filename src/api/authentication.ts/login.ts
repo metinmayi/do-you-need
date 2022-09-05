@@ -1,7 +1,7 @@
 import { BASE_URL } from "../../config/config";
 type loginResponseType = {
   loggedIn: boolean;
-  blizzSync: 0 | 1;
+  guilds: number[];
   message: string;
 };
 
@@ -11,25 +11,29 @@ type loginResponseType = {
 export const loginUser = async (username: string, password: string) => {
   const loginResponse: loginResponseType = {
     loggedIn: false,
-    blizzSync: 0,
+    guilds: [],
     message: "",
   };
 
   try {
+    const body = {
+      username: username.toLowerCase(),
+      password,
+    };
+
     const response = await fetch(`${BASE_URL}authentication/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
-      body: JSON.stringify({ username, password }),
+      body: JSON.stringify(body),
     });
 
     const user = await response.json();
-    console.log(user);
     if (response.status === 200) {
       loginResponse.loggedIn = true;
-      loginResponse.blizzSync = user.blizz_sync;
+      loginResponse.guilds = user.guilds;
     } else {
       loginResponse.message = "Invalid username/password";
     }
