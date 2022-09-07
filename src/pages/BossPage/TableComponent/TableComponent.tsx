@@ -1,9 +1,9 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-import spinner from "../../../assets/images/loadingSpinner.svg";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
 import { useAppSelector } from "../../../customHooks/customHooks";
+import { LoadingSpinner } from "../../../components/LoadingSpinner/LoadingSpinner";
 
 const TableComponent: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
@@ -17,7 +17,7 @@ const TableComponent: React.FC = () => {
       <Table variant="dark" striped hover responsive>
         <TableHead />
       </Table>
-      <img src={spinner} alt="loading..."></img> <h3>Loading Table</h3>
+      <LoadingSpinner text="Loading..." />
     </>
   );
 };
