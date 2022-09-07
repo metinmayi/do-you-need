@@ -7,7 +7,9 @@ export interface IGuild {
 
 export const isIGuild = (response: any): response is IGuild => {
   const { id, name, realm, status } = response;
-  if (!response) return false;
+  if (typeof response !== "object") {
+    return false;
+  }
   return (
     typeof id === "number" &&
     typeof name === "string" &&
