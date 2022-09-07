@@ -5,7 +5,7 @@ import { isIGuild } from "../../models/IGuild";
  * Retrieves the players guild from the API
  * @param character Character name
  * @param realm Realm name
- * @returns {Promise<IGuild>} Guild object
+ * @returns {Promise<IGuild | undefined>} Guild object
  */
 export const getGuild = async (character: string, realm: string) => {
   try {
@@ -13,13 +13,12 @@ export const getGuild = async (character: string, realm: string) => {
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
       { credentials: "include" }
     );
-    const data = await response.json();
-    if (isIGuild(data)) {
-      return data;
+    const guild = await response.json();
+
+    if (isIGuild(guild)) {
+      return guild;
     }
-    return [];
   } catch (error) {
     console.log(error);
-    return [];
   }
 };
