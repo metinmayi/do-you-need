@@ -1,5 +1,5 @@
 import { GET_GUILD_URL } from "../../config/config";
-import { isIGuild } from "../../models/IGuild";
+import { DYNResponse } from "../../models/DYNResponse";
 
 /**
  * Retrieves the players guild from the API
@@ -9,15 +9,12 @@ import { isIGuild } from "../../models/IGuild";
  */
 export const getGuild = async (character: string, realm: string) => {
   try {
-    const response = await fetch(
+    const result = await fetch(
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
       { credentials: "include" }
     );
-    const guild = await response.json();
-
-    if (isIGuild(guild)) {
-      return guild;
-    }
+    const response: DYNResponse = await result.json();
+    return response;
   } catch (error) {
     console.log(error);
   }
