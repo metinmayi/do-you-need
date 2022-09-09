@@ -8,7 +8,9 @@ export const SelectionCard: React.FC = () => {
   return (
     <>
       {character ? (
-        <GuildSelection character={character}></GuildSelection>
+        <GuildSelection
+          character={character}
+          setCharacter={setCharacter}></GuildSelection>
       ) : (
         <CharacterSelection setCharacter={setCharacter}></CharacterSelection>
       )}

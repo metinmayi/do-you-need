@@ -4,18 +4,22 @@ import { getGuild } from "../../../../api/blizzard.ts/getGuild";
 import { IGuild, isIGuild } from "../../../../models/IGuild";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner/LoadingSpinner";
-import {
-  isIUnregisteredGuild,
-  IUnregisteredGuild,
-} from "../../../../models/IUnregisteredGuild";
+import { INewGuild, IsNewGuild } from "../../../../models/INewGuild";
+import { GuildRegistration } from "./GuildRegistration/GuildRegistration";
 
 interface props {
   character: RetrievedCharacter;
+  setCharacter: React.Dispatch<
+    React.SetStateAction<RetrievedCharacter | undefined>
+  >;
 }
-export const GuildSelection: React.FC<props> = ({ character }) => {
+export const GuildSelection: React.FC<props> = ({
+  character,
+  setCharacter,
+}) => {
   const [loading, setLoading] = useState(true);
   const [guild, setGuild] = useState<IGuild>();
-  const [newGuild, setNewGuild] = useState<IUnregisteredGuild>();
+  const [newGuild, setNewGuild] = useState<INewGuild>();
   const [error, setError] = useState("");
 
   useEffect(() => {
@@ -32,12 +36,13 @@ export const GuildSelection: React.FC<props> = ({ character }) => {
         setGuild(result.data);
       }
 
-      if (isIUnregisteredGuild(result.data)) {
+      if (IsNewGuild(result.data)) {
         setNewGuild(result.data);
       }
     }
     updateGuild();
-  }, []);
+  }, [newGuild]);
+
   return (
     <>
       {loading && <LoadingSpinner text="Looking for your guild..." />}
@@ -48,9 +53,12 @@ export const GuildSelection: React.FC<props> = ({ character }) => {
         </Card>
       )}
       {newGuild && (
-        <>
-          <p>GuildRegistration</p>
-        </>
+        <GuildRegistration
+          character={character}
+          setCharacter={setCharacter}
+          newGuild={newGuild}
+          setNewGuild={setNewGuild}
+        />
       )}
       {error && (
         <>
