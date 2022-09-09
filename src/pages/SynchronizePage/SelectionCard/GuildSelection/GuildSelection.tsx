@@ -28,7 +28,7 @@ export const GuildSelection: React.FC<props> = ({
       setLoading(false);
 
       if (!result || result.error) {
-        setError(result?.errorMessage || "Your guild is not registered");
+        setError(result?.errorMessage || "An error has occured");
         return;
       }
 
@@ -59,14 +59,6 @@ export const GuildSelection: React.FC<props> = ({
           newGuild={newGuild}
           setNewGuild={setNewGuild}
         />
-      )}
-      {error && (
-        <>
-          <p style={{ textAlign: "center" }}>{error}</p>
-          <p style={{ textAlign: "center" }}>
-            If you are the GM of the guild, click here to register your guild
-          </p>
-        </>
       )}
     </>
   );
