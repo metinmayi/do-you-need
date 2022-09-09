@@ -19,7 +19,6 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
   setCharacter,
 }) => {
   function handleBack(e: React.MouseEvent) {
-    console.log("fired");
     e.preventDefault();
     setNewGuild(undefined);
     setCharacter(undefined);
