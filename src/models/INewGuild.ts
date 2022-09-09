@@ -1,12 +1,10 @@
-export interface IUnregisteredGuild {
+export interface INewGuild {
   id: number;
   name: string;
   realm: string;
 }
 
-export const isIUnregisteredGuild = (
-  response: any
-): response is IUnregisteredGuild => {
+export const IsNewGuild = (response: any): response is INewGuild => {
   if (typeof response !== "object") {
     return false;
   }
