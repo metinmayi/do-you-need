@@ -14,14 +14,6 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
 }) => {
   const [characters, setCharacters] = useState<RetrievedCharacter[]>([]);
 
-  const handleSetCharacter = (
-    e: React.MouseEvent,
-    selectedCharacter: RetrievedCharacter
-  ) => {
-    e.preventDefault();
-    setCharacter(selectedCharacter);
-  };
-
   useEffect(() => {
     async function getChars() {
       const result = await getCharacters();
@@ -44,7 +36,7 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
               {characters.map((character) => (
                 <li
                   key={`${character.name}-${character.realm}`}
-                  onClick={(e) => handleSetCharacter(e, character)}>
+                  onClick={() => setCharacter(character)}>
                   {character.name} - {character.realm}
                 </li>
               ))}
