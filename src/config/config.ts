@@ -27,3 +27,8 @@ export const GET_CHARS_URL = `${BASE_URL}blizzard/getCharacters`;
  * API for getting the guild status of said player
  */
 export const GET_GUILD_URL = `${BASE_URL}blizzard/getGuildStatus`;
+
+/**
+ * API for getting the rank of the player within said guild
+ */
+export const GET_RANK_URL = `${BASE_URL}blizzard/getPlayersRank`;
