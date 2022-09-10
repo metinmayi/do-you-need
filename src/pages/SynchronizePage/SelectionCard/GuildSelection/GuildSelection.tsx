@@ -41,7 +41,7 @@ export const GuildSelection: React.FC<props> = ({
       }
     }
     updateGuild();
-  }, [newGuild]);
+  }, []);
 
   return (
     <>
