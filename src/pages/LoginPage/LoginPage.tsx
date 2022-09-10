@@ -6,8 +6,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { LogoHeader } from "../../components/LogoHeader";
 import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication.ts/login";
+import { useAppDispatch } from "../../customHooks/customHooks";
+import { setGuild } from "../../store/features/guild/guildSlice";
 
 const LoginPage: React.FC = () => {
+  const dispatch = useAppDispatch();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (ENVIRONMENT === "demo") {
@@ -16,6 +19,7 @@ const LoginPage: React.FC = () => {
     const user = await loginUser(username, password);
 
     if (user.loggedIn && user.guilds.length > 0) {
+      dispatch(setGuild(user.guilds[0]));
       return redirect("/bossPage");
     }
 

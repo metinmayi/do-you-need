@@ -1,10 +1,14 @@
 import { BASE_URL } from "../../config/config";
 type loginResponseType = {
   loggedIn: boolean;
-  guilds: number[];
+  guilds: PlayerGuilds[];
   message: string;
 };
 
+interface PlayerGuilds {
+  guildID: string;
+  rank: string;
+}
 /**
  * Attempts to login the user. Also checks if user has blizzSync or not.
  */
