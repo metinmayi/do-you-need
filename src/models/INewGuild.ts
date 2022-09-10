@@ -11,6 +11,7 @@ export const IsNewGuild = (response: any): response is INewGuild => {
   return (
     typeof response.id === "number" &&
     typeof response.name === "string" &&
-    typeof response.realm === "string"
+    typeof response.realm === "string" &&
+    typeof response.license === undefined
   );
 };

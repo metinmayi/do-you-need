@@ -6,14 +6,15 @@ export interface IGuild {
 }
 
 export const isIGuild = (response: any): response is IGuild => {
-  const { id, name, realm, status } = response;
+  const { faction, id, license, name, realm } = response;
   if (typeof response !== "object") {
     return false;
   }
   return (
     typeof id === "number" &&
+    typeof faction === "string" &&
     typeof name === "string" &&
     typeof realm === "string" &&
-    typeof status === "boolean"
+    typeof license === "string"
   );
 };
