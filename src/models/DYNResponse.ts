@@ -3,7 +3,7 @@
  */
 export class DYNResponse {
   error: boolean = false;
-  message?: string;
-  errorMessage?: string;
+  message: string = "";
+  errorMessage: string = "";
   data?: any;
 }
