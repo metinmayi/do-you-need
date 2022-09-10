@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import { Card } from "react-bootstrap";
-import { getGuild } from "../../../../api/blizzard.ts/getGuild";
+import { getPlayersGuild } from "../../../../api/blizzard.ts/getPlayersGuild";
 import { IGuild, isIGuild } from "../../../../models/IGuild";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner/LoadingSpinner";
 import { INewGuild, IsNewGuild } from "../../../../models/INewGuild";
 import { GuildRegistration } from "./GuildRegistration/GuildRegistration";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../../../customHooks/customHooks";
+import { setGuild } from "../../../../store/features/guild/guildSlice";
+import { getPlayerRank } from "../../../../api/blizzard.ts/getPlayerRank";
 
 interface props {
   character: RetrievedCharacter;
@@ -18,26 +22,39 @@ export const GuildSelection: React.FC<props> = ({
   setCharacter,
 }) => {
   const [loading, setLoading] = useState(true);
-  const [guild, setGuild] = useState<IGuild>();
   const [newGuild, setNewGuild] = useState<INewGuild>();
   const [error, setError] = useState("");
 
+  const redirect = useNavigate();
+  const dispatch = useAppDispatch();
+
   useEffect(() => {
     async function updateGuild() {
-      const result = await getGuild(character.name, character.realm);
-      setLoading(false);
+      const result = await getPlayersGuild(character.name, character.realm);
 
       if (!result || result.error) {
         setError(result?.errorMessage || "An error has occured");
+        setLoading(false);
         return;
+      }
+      debugger;
+      if (IsNewGuild(result.data)) {
+        setNewGuild(result.data);
+        setLoading(false);
       }
 
       if (isIGuild(result.data)) {
-        setGuild(result.data);
-      }
+        const rank = await getPlayerRank(
+          result.data.name,
+          result.data.realm,
+          character.name
+        );
 
-      if (IsNewGuild(result.data)) {
-        setNewGuild(result.data);
+        dispatch(setGuild({ guildID: result.data.id.toString(), rank }));
+
+        setLoading(false);
+
+        redirect("/bossPage");
       }
     }
     updateGuild();
@@ -46,12 +63,6 @@ export const GuildSelection: React.FC<props> = ({
   return (
     <>
       {loading && <LoadingSpinner text="Looking for your guild..." />}
-      {guild && (
-        <Card bg="secondary">
-          <Card.Header as="h5">{`${guild.name} - ${guild.realm}`}</Card.Header>
-          <Card.Body>abc</Card.Body>
-        </Card>
-      )}
       {newGuild && (
         <GuildRegistration
           character={character}
@@ -60,6 +71,7 @@ export const GuildSelection: React.FC<props> = ({
           setNewGuild={setNewGuild}
         />
       )}
+      {error && <p>{error}</p>}
     </>
   );
 };
