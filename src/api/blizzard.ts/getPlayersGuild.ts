@@ -7,7 +7,7 @@ import { DYNResponse } from "../../models/DYNResponse";
  * @param realm Realm name
  * @returns {Promise<IGuild | undefined>} Guild object
  */
-export const getGuild = async (character: string, realm: string) => {
+export const getPlayersGuild = async (character: string, realm: string) => {
   try {
     const result = await fetch(
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
