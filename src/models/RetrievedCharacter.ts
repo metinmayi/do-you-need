@@ -1,11 +1,19 @@
 export interface RetrievedCharacter {
   name: string;
   realm: string;
-  classId: number;
+  faction: string;
+  class: string;
+  color: string;
 }
 
 export function isRetrievedCharacter(
   response: any
 ): response is RetrievedCharacter[] {
-  return true;
+  return (
+    typeof response[0].name === "string" &&
+    typeof response[0].realm === "string" &&
+    typeof response[0].faction === "string" &&
+    typeof response[0].class === "string" &&
+    typeof response[0].color === "string"
+  );
 }
