@@ -3,6 +3,7 @@ import { Card } from "react-bootstrap";
 import { getCharacters } from "../../../../api/blizzard.ts/getCharacters";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
+import { CharacterList } from "./CharacterListItem";
 
 interface CharacterSelectionProps {
   setCharacter: React.Dispatch<
@@ -32,15 +33,10 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
         </Card.Header>
         <Card.Body>
           {characters.length > 0 ? (
-            <ul>
-              {characters.map((character) => (
-                <li
-                  key={`${character.name}-${character.realm}`}
-                  onClick={() => setCharacter(character)}>
-                  {character.name} - {character.realm}
-                </li>
-              ))}
-            </ul>
+            <CharacterList
+              characters={characters}
+              setCharacter={setCharacter}
+            />
           ) : (
             <LoadingSpinner text="Loading..." />
           )}
