@@ -2,6 +2,7 @@ export interface INewGuild {
   id: number;
   name: string;
   realm: string;
+  isNew: true;
 }
 
 export const IsNewGuild = (response: any): response is INewGuild => {
@@ -12,6 +13,6 @@ export const IsNewGuild = (response: any): response is INewGuild => {
     typeof response.id === "number" &&
     typeof response.name === "string" &&
     typeof response.realm === "string" &&
-    typeof response.license === undefined
+    response.isNew === true
   );
 };
