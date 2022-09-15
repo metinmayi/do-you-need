@@ -37,7 +37,6 @@ export const GuildSelection: React.FC<props> = ({
         setLoading(false);
         return;
       }
-      debugger;
       if (IsNewGuild(result.data)) {
         setNewGuild(result.data);
         setLoading(false);
