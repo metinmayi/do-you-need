@@ -31,8 +31,8 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   return (
     <>
       <Card bg="secondary">
-        <Card.Header as="h5">
-          Please choose which character to connect with
+        <Card.Header as="h4" style={{ color: "var(--DYNColor)" }}>
+          Select Character
         </Card.Header>
         <Card.Body>
           {characters.length > 0 ? (
