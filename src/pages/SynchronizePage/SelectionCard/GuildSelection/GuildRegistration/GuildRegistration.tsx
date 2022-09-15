@@ -13,12 +13,14 @@ interface GuildRegistrationProps {
   setCharacter: React.Dispatch<
     React.SetStateAction<RetrievedCharacter | undefined>
   >;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
   setNewGuild,
   newGuild,
   character,
   setCharacter,
+  setStep,
 }) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
@@ -28,6 +30,7 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
     e.preventDefault();
     setNewGuild(undefined);
     setCharacter(undefined);
+    setStep(1);
   }
 
   async function handleActivate(e: React.MouseEvent) {
@@ -48,6 +51,7 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
     }
 
     setGoodRegistration(true);
+    setStep(3);
   }
   return (
     <>

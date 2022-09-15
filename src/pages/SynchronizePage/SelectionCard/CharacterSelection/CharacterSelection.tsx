@@ -9,9 +9,12 @@ interface CharacterSelectionProps {
   setCharacter: React.Dispatch<
     React.SetStateAction<RetrievedCharacter | undefined>
   >;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
+
 export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   setCharacter,
+  setStep,
 }) => {
   const [characters, setCharacters] = useState<RetrievedCharacter[]>([]);
 
@@ -36,6 +39,7 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
             <CharacterList
               characters={characters}
               setCharacter={setCharacter}
+              setStep={setStep}
             />
           ) : (
             <LoadingSpinner text="Loading..." />

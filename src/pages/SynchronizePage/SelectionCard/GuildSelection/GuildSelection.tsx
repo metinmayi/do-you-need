@@ -16,10 +16,12 @@ interface props {
   setCharacter: React.Dispatch<
     React.SetStateAction<RetrievedCharacter | undefined>
   >;
+  setStep: React.Dispatch<React.SetStateAction<number>>;
 }
 export const GuildSelection: React.FC<props> = ({
   character,
   setCharacter,
+  setStep,
 }) => {
   const [loading, setLoading] = useState(true);
   const [newGuild, setNewGuild] = useState<INewGuild>();
@@ -68,6 +70,7 @@ export const GuildSelection: React.FC<props> = ({
           setCharacter={setCharacter}
           newGuild={newGuild}
           setNewGuild={setNewGuild}
+          setStep={setStep}
         />
       )}
       {error && <p>{error}</p>}
