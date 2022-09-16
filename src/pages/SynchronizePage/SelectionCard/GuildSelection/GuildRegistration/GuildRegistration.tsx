@@ -59,9 +59,9 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
         <p>abc</p>
       ) : (
         <Card bg="secondary">
-          <Card.Header as="h5">{`${newGuild.name} - ${capitalizeFirstLetter(
-            newGuild.realm
-          )}`}</Card.Header>
+          <Card.Header as="h5" style={{ color: "var(--DYNColor)" }}>
+            {`${newGuild.name} - ${capitalizeFirstLetter(newGuild.realm)}`}
+          </Card.Header>
           <Card.Body>
             {loading ? (
               <LoadingSpinner text="Validating your GM status..." />
