@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import { getCharacters } from "../../../../api/blizzard.ts/getCharacters";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
@@ -44,6 +44,11 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
           ) : (
             <LoadingSpinner text="Loading..." />
           )}
+          <Card.Footer className="d-flex justify-content-end">
+            <Button variant="danger" size="sm">
+              Logout
+            </Button>
+          </Card.Footer>
         </Card.Body>
       </Card>
     </>
