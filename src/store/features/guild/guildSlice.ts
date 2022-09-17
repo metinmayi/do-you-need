@@ -1,22 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { IPlayerGuild } from "../../../models/IPlayerGuild";
 
-interface Guild {
-  guildID: string;
-  rank: string;
-}
-
-const initialState: Guild = {
-  guildID: "",
-  rank: "",
+const initialState: IPlayerGuild = {
+  name: "",
+  server: "",
+  id: "",
+  playerRank: "",
 };
 
 const guildSlice = createSlice({
   name: "guild",
   initialState,
   reducers: {
-    setGuild: (state, action: PayloadAction<Guild>) => {
-      state.guildID = action.payload.guildID;
-      state.rank = action.payload.rank;
+    setGuild: (state, action: PayloadAction<IPlayerGuild>) => {
+      state.name = action.payload.name;
+      state.server = action.payload.server;
+      state.id = action.payload.id;
+      state.playerRank = action.payload.playerRank;
     },
   },
 });
