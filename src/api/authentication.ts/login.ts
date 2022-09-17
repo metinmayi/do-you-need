@@ -1,14 +1,10 @@
 import { BASE_URL } from "../../config/config";
+import { IPlayerGuild } from "../../models/IPlayerGuild";
 type loginResponseType = {
   loggedIn: boolean;
-  guilds: PlayerGuilds[];
+  guilds: IPlayerGuild[];
   message: string;
 };
-
-interface PlayerGuilds {
-  guildID: string;
-  rank: string;
-}
 /**
  * Attempts to login the user. Also checks if user has blizzSync or not.
  */
