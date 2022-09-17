@@ -6,8 +6,8 @@ import { VALID_TOKEN_URL } from "../../config/config";
 import { ValidateToken } from "./ValidateToken";
 import { SynchronizeStepper } from "./SynchronizeStepper/";
 import { RetrievedCharacter } from "../../models/RetrievedCharacter";
-import { CharacterSelection } from "./SelectionCard/CharacterSelection";
-import { GuildInformation } from "./SelectionCard/GuildInformation/GuildInformation";
+import { CharacterSelection } from "./CharacterSelection";
+import { GuildInformation } from "./GuildInformation/GuildInformation";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
 import { getCharacters } from "../../api/blizzard.ts/getCharacters";
 
