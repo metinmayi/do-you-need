@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { RetrievedCharacter } from "../../../models/RetrievedCharacter";
 import { CharacterSelection } from "./CharacterSelection";
-import { GuildSelection } from "./GuildSelection/GuildSelection";
+import { GuildInformation } from "./GuildInformation/GuildInformation";
 
 interface SelectionCardProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;
@@ -11,7 +11,7 @@ export const SelectionCard: React.FC<SelectionCardProps> = ({ setStep }) => {
   return (
     <>
       {character ? (
-        <GuildSelection
+        <GuildInformation
           character={character}
           setCharacter={setCharacter}
           setStep={setStep}

@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { Card } from "react-bootstrap";
 import { getPlayersGuild } from "../../../../api/blizzard.ts/getPlayersGuild";
-import { IGuild, isIGuild } from "../../../../models/IGuild";
+import { isIGuild } from "../../../../models/IGuild";
 import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
 import { LoadingSpinner } from "../../../../components/LoadingSpinner/LoadingSpinner";
 import { INewGuild, IsNewGuild } from "../../../../models/INewGuild";
@@ -10,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../../../customHooks/customHooks";
 import { setGuild } from "../../../../store/features/guild/guildSlice";
 import { getPlayerRank } from "../../../../api/blizzard.ts/getPlayerRank";
+import { GuildExists } from "./GuildExists/GuildExists";
 
 interface props {
   character: RetrievedCharacter;
@@ -18,7 +18,7 @@ interface props {
   >;
   setStep: React.Dispatch<React.SetStateAction<number>>;
 }
-export const GuildSelection: React.FC<props> = ({
+export const GuildInformation: React.FC<props> = ({
   character,
   setCharacter,
   setStep,
@@ -26,6 +26,7 @@ export const GuildSelection: React.FC<props> = ({
   const [loading, setLoading] = useState(true);
   const [newGuild, setNewGuild] = useState<INewGuild>();
   const [error, setError] = useState("");
+  const [guildExists, setGuildExists] = useState(false);
 
   const redirect = useNavigate();
   const dispatch = useAppDispatch();
@@ -73,6 +74,7 @@ export const GuildSelection: React.FC<props> = ({
           setStep={setStep}
         />
       )}
+      {guildExists && <GuildExists />}
       {error && <p>{error}</p>}
     </>
   );
