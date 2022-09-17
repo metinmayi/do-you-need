@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { registerGuild } from "../../../../../../api/blizzard.ts/registerGuild";
-import { INewGuild } from "../../../../../../models/INewGuild";
-import { RetrievedCharacter } from "../../../../../../models/RetrievedCharacter";
-import { capitalizeFirstLetter } from "../../../../../../utils/utils";
+import { registerGuild } from "../../../../../api/blizzard.ts/registerGuild";
+import { INewGuild } from "../../../../../models/INewGuild";
+import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
+import { capitalizeFirstLetter } from "../../../../../utils/utils";
 
 interface RegisterGuildProps {
   setNewGuild: React.Dispatch<React.SetStateAction<INewGuild | undefined>>;
@@ -14,7 +14,6 @@ interface RegisterGuildProps {
   >;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
-  setGoodRegistration: React.Dispatch<React.SetStateAction<boolean>>;
 }
 export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   newGuild,
@@ -22,7 +21,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   setCharacter,
   setStep,
   character,
-  setGoodRegistration,
+
   setLoading,
 }) => {
   const [error, setError] = useState("");
@@ -51,8 +50,8 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
       return;
     }
 
-    setGoodRegistration(true);
-    setStep(3);
+    setNewGuild(undefined);
+    setStep(4);
   }
 
   return (

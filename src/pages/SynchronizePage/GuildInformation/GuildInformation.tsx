@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react";
-import { getPlayersGuild } from "../../../../api/blizzard.ts/getPlayersGuild";
-import { isIGuild } from "../../../../models/IGuild";
-import { RetrievedCharacter } from "../../../../models/RetrievedCharacter";
-import { LoadingSpinner } from "../../../../components/LoadingSpinner/LoadingSpinner";
-import { INewGuild, IsNewGuild } from "../../../../models/INewGuild";
+import React, { useEffect, useState } from "react";
+import { getPlayersGuild } from "../../../api/blizzard.ts/getPlayersGuild";
+import { isIGuild } from "../../../models/IGuild";
+import { RetrievedCharacter } from "../../../models/RetrievedCharacter";
+import { INewGuild, IsNewGuild } from "../../../models/INewGuild";
 import { GuildRegistration } from "./GuildRegistration/GuildRegistration";
-import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../../../customHooks/customHooks";
-import { setGuild } from "../../../../store/features/guild/guildSlice";
-import { getPlayerRank } from "../../../../api/blizzard.ts/getPlayerRank";
-import { GuildExists } from "./GuildExists/GuildExists";
+import { useAppDispatch } from "../../../customHooks/customHooks";
+import { setGuild } from "../../../store/features/guild/guildSlice";
+import { getPlayerRank } from "../../../api/blizzard.ts/getPlayerRank";
+import { GuildRegistered } from "./GuildRegistered";
+import { LoadingSpinner } from "../../../components/LoadingSpinner";
 
 interface props {
   character: RetrievedCharacter;
@@ -23,12 +22,11 @@ export const GuildInformation: React.FC<props> = ({
   setCharacter,
   setStep,
 }) => {
-  const [loading, setLoading] = useState(true);
+  setStep(2);
   const [newGuild, setNewGuild] = useState<INewGuild>();
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
-  const [guildExists, setGuildExists] = useState(false);
 
-  const redirect = useNavigate();
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -37,12 +35,13 @@ export const GuildInformation: React.FC<props> = ({
 
       if (!result || result.error) {
         setError(result?.errorMessage || "An error has occured");
-        setLoading(false);
+        setIsLoading(false);
         return;
       }
+
       if (IsNewGuild(result.data)) {
         setNewGuild(result.data);
-        setLoading(false);
+        setIsLoading(false);
       }
 
       if (isIGuild(result.data)) {
@@ -52,11 +51,16 @@ export const GuildInformation: React.FC<props> = ({
           character.name
         );
 
-        dispatch(setGuild({ guildID: result.data.id.toString(), rank }));
+        dispatch(
+          setGuild({
+            id: result.data.id.toString(),
+            playerRank: rank,
+            server: result.data.realm,
+            name: result.data.name,
+          })
+        );
 
-        setLoading(false);
-
-        redirect("/bossPage");
+        setIsLoading(false);
       }
     }
     updateGuild();
@@ -64,8 +68,9 @@ export const GuildInformation: React.FC<props> = ({
 
   return (
     <>
-      {loading && <LoadingSpinner text="Looking for your guild..." />}
-      {newGuild && (
+      {isLoading ? (
+        <LoadingSpinner text="loading..." />
+      ) : newGuild ? (
         <GuildRegistration
           character={character}
           setCharacter={setCharacter}
@@ -73,9 +78,9 @@ export const GuildInformation: React.FC<props> = ({
           setNewGuild={setNewGuild}
           setStep={setStep}
         />
+      ) : (
+        <GuildRegistered setStep={setStep} />
       )}
-      {guildExists && <GuildExists />}
-      {error && <p>{error}</p>}
     </>
   );
 };
