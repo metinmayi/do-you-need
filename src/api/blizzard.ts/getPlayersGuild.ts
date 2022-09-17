@@ -2,7 +2,7 @@ import { GET_GUILD_URL } from "../../config/config";
 import { DYNResponse } from "../../models/DYNResponse";
 
 /**
- * Retrieves the players guild from the API
+ * Retrieves the player's guild from the API
  * @param character Character name
  * @param realm Realm name
  * @returns {Promise<IGuild | undefined>} Guild object
