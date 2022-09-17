@@ -1,7 +1,7 @@
 import { Button, Card } from "react-bootstrap";
 import { BLIZZARD_AUTH_URL } from "../../../config/config";
 
-export const SyncCard: React.FC = () => {
+export const ValidateToken: React.FC = () => {
   return (
     <Card bg="secondary">
       <Card.Header as="h4" style={{ color: "var(--DYNColor)" }}>
