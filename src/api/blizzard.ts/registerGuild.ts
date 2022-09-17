@@ -1,19 +1,27 @@
 import { BASE_URL } from "../../config/config";
 import { DYNResponse } from "../../models/DYNResponse";
 
-export async function activateGuild(
-  name: string,
+/**
+ * Attemps to register the guild to DoYouNeeds database.
+ * The server will check to make sure that the user is the guild's GM.
+ * @param characterName Character name
+ * @param realm Realm of guild
+ * @param guildName Name of guild
+ * @returns {Promise<DYNResponse>} DYNResponse
+ */
+export async function registerGuild(
+  characterName: string,
   realm: string,
-  guild: string
+  guildName: string
 ) {
   const user = {
-    character: name,
+    character: characterName,
     realm,
-    guild,
+    guild: guildName,
   };
   try {
     const response: DYNResponse = await fetch(
-      `${BASE_URL}blizzard/activateGuild`,
+      `${BASE_URL}blizzard/registerGuild`,
       {
         method: "POST",
         headers: { "Content-Type": "application/json" },
