@@ -1,15 +1,24 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { Stepper } from "react-form-stepper";
 import { useNavigate } from "react-router-dom";
 import { LogoHeader } from "../../components/LogoHeader";
 import { VALID_TOKEN_URL } from "../../config/config";
-import { SelectionCard } from "./SelectionCard";
-import { SyncCard } from "./SyncCard";
+import { ValidateToken } from "./ValidateToken";
+import { SynchronizeStepper } from "./SynchronizeStepper/";
+import { RetrievedCharacter } from "../../models/RetrievedCharacter";
+import { CharacterSelection } from "./SelectionCard/CharacterSelection";
+import { GuildInformation } from "./SelectionCard/GuildInformation/GuildInformation";
+import { LoadingSpinner } from "../../components/LoadingSpinner";
+import { getCharacters } from "../../api/blizzard.ts/getCharacters";
 
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();
-  const [validToken, setValidToken] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [isValidToken, setIsValidToken] = useState(false);
+  const [characters, setCharacters] = useState<RetrievedCharacter[]>([]);
+  const [selectedCharacter, setSelectedCharacter] =
+    useState<RetrievedCharacter>();
   const [step, setStep] = useState(0);
 
   useEffect(() => {
@@ -21,10 +30,10 @@ export const SynchronizePage: React.FC = () => {
         if (response.status === 401) return redirect("/login");
         if (response.status === 200) {
           setStep(1);
-          setValidToken(true);
+          setIsValidToken(true);
         } else {
           setStep(0);
-          setValidToken(false);
+          setIsValidToken(false);
         }
       } catch (error) {
         console.log(error);
@@ -34,46 +43,53 @@ export const SynchronizePage: React.FC = () => {
     checkValidToken();
   }, []);
 
+  useEffect(() => {
+    if (!isValidToken) {
+      setStep(0);
+      return;
+    }
+
+    async function getChars() {
+      setIsLoading(true);
+      const result = await getCharacters();
+      setCharacters(result);
+      setIsLoading(false);
+    }
+
+    getChars();
+  }, [isValidToken]);
+
   return (
     <Container fluid>
       <LogoHeader />
       <Row className="justify-content-center mt-5">
         <Col xs={8} xl={4}>
-          <Stepper
-            style={{ paddingBottom: "0" }}
-            steps={[
-              { label: "Synchronize" },
-              { label: "Select Character" },
-              { label: "Guild Status" },
-              { label: "Finish Process" },
-            ]}
-            activeStep={step}
-            connectorStateColors={true}
-            styleConfig={{
-              activeBgColor: "#e49f24",
-              completedBgColor: "#e49f24",
-              inactiveBgColor: "gray",
-              activeTextColor: "white",
-              completedTextColor: "white",
-              inactiveTextColor: "white",
-              size: "2em",
-              labelFontSize: "0.875rem",
-              circleFontSize: "1rem",
-              borderRadius: "50%",
-              fontWeight: "500",
-            }}
-            connectorStyleConfig={{
-              activeColor: "#e49f24",
-              disabledColor: "gray",
-              completedColor: "#e49f24",
-              style: "solid",
-            }}
-          />
+          <SynchronizeStepper step={step} />
         </Col>
       </Row>
       <Row className="justify-content-center mt-5">
         <Col xs={8} xl={4}>
-          {validToken ? <SelectionCard setStep={setStep} /> : <SyncCard />}
+          {isLoading && <LoadingSpinner text="Loading..." />}
+
+          {!isLoading && !isValidToken && <ValidateToken />}
+
+          {!isLoading &&
+            isValidToken &&
+            !selectedCharacter &&
+            characters.length > 0 && (
+              <CharacterSelection
+                characters={characters}
+                setSelectedCharacter={setSelectedCharacter}
+              />
+            )}
+
+          {!isLoading && isValidToken && selectedCharacter && (
+            <GuildInformation
+              character={selectedCharacter}
+              setCharacter={setSelectedCharacter}
+              setStep={setStep}
+            />
+          )}
         </Col>
       </Row>
     </Container>
