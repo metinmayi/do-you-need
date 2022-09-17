@@ -11,6 +11,7 @@ export const StyledUl = styled.ul`
     display: flex;
     justify-content: space-between;
     gap: 5px;
+    width: 40%;
   }
   li:hover {
     text-decoration: underline;
