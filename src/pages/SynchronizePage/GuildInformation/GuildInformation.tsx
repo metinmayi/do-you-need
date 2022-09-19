@@ -22,7 +22,6 @@ export const GuildInformation: React.FC<props> = ({
   setCharacter,
   setStep,
 }) => {
-  setStep(2);
   const [newGuild, setNewGuild] = useState<INewGuild>();
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState("");
@@ -30,6 +29,7 @@ export const GuildInformation: React.FC<props> = ({
   const dispatch = useAppDispatch();
 
   useEffect(() => {
+    setStep(2);
     async function updateGuild() {
       const result = await getPlayersGuild(character.name, character.realm);
 
