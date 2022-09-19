@@ -24,16 +24,18 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
 
   return (
     <>
-      {loading && <LoadingSpinner text="Searching for your guild..." />}
-
-      <RegisterGuild
-        newGuild={newGuild}
-        setNewGuild={setNewGuild}
-        character={character}
-        setCharacter={setCharacter}
-        setStep={setStep}
-        setLoading={setLoading}
-      />
+      {loading ? (
+        <LoadingSpinner text="Searching for your guild..." />
+      ) : (
+        <RegisterGuild
+          newGuild={newGuild}
+          setNewGuild={setNewGuild}
+          character={character}
+          setCharacter={setCharacter}
+          setStep={setStep}
+          setLoading={setLoading}
+        />
+      )}
     </>
   );
 };
