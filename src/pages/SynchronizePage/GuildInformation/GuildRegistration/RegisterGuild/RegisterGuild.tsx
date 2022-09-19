@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { registerGuild } from "../../../../../api/blizzard.ts/registerGuild";
+import { useAppDispatch } from "../../../../../customHooks/customHooks";
 import { INewGuild } from "../../../../../models/INewGuild";
 import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
+import { setGuild } from "../../../../../store/features/guild/guildSlice";
 import { capitalizeFirstLetter } from "../../../../../utils/utils";
 
 interface RegisterGuildProps {
@@ -25,6 +27,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   setLoading,
 }) => {
   const [error, setError] = useState("");
+  const dispatch = useAppDispatch();
 
   function handleBack(e: React.MouseEvent) {
     e.preventDefault();
@@ -50,6 +53,14 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
       return;
     }
 
+    dispatch(
+      setGuild({
+        id: newGuild.id.toString(),
+        playerRank: "0",
+        server: character.realm,
+        name: character.name,
+      })
+    );
     setNewGuild(undefined);
     setStep(4);
   }
