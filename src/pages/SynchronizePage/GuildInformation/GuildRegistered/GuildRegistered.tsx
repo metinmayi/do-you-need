@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../../customHooks/customHooks";
@@ -10,13 +10,16 @@ interface GuildRegisteredProps {
 export const GuildRegistered: React.FC<GuildRegisteredProps> = ({
   setStep,
 }) => {
-  setStep(4);
   const guild = useAppSelector((state) => state.guildReducer);
   const guildAndServer = `${capitalizeFirstLetter(
     guild.name
   )} - ${capitalizeFirstLetter(guild.server)}`;
 
   const redirect = useNavigate();
+
+  useEffect(() => {
+    setStep(4);
+  }, []);
 
   return (
     <>
