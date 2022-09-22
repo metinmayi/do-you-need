@@ -57,8 +57,8 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
       setGuild({
         id: newGuild.id.toString(),
         playerRank: "0",
-        server: character.realm,
-        name: character.name,
+        server: newGuild.realm,
+        name: newGuild.name,
       })
     );
     setNewGuild(undefined);
