@@ -1,4 +1,5 @@
-import React, { useRef } from "react";
+import { current } from "@reduxjs/toolkit";
+import React, { useEffect, useRef, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
 import { addPlayerData } from "../../../api/players";
 import {
@@ -7,25 +8,40 @@ import {
 } from "../../../customHooks/customHooks";
 import { IPlayer } from "../../../models/Player";
 import { setList } from "../../../store/features/roster/rosterSlice";
+const INPUT_REGEX = /https:\/\/www.raidbots.com\/simbot\/report\/\w+/;
 
 const PlayerInput: React.FC = () => {
-  const inputValue = useRef<HTMLInputElement>(null);
+  const [input, setInput] = useState("");
+  const [validInput, setValidInput] = useState(false);
+
   const roster = useAppSelector((state) => state.rosterReducer.roster);
   const dispatch = useAppDispatch();
-  const updatePlayerList = async () => {
-    const receivedPlayer: IPlayer = await addPlayerData(
-      inputValue?.current?.value
-    );
-    const rosterCopy = structuredClone(roster);
-    rosterCopy.push(receivedPlayer);
-    dispatch(setList(rosterCopy));
-  };
+
+  async function updateRosterList(e: React.FormEvent) {
+    e.preventDefault();
+    // const receivedPlayer: IPlayer = await addPlayerData(input);
+    // const rosterCopy = structuredClone(roster);
+    // rosterCopy.push(receivedPlayer);
+    // dispatch(setList(rosterCopy));
+  }
+
+  useEffect(() => {
+    if (INPUT_REGEX.test(input)) {
+      setValidInput(true);
+    } else {
+      setValidInput(false);
+    }
+  }, [input]);
 
   return (
-    <Form className="mb-2 mt-2">
+    <Form className="mb-2 mt-2" onSubmit={(e) => updateRosterList(e)}>
       <InputGroup>
-        <FormControl placeholder="Insert Raidbots link" ref={inputValue} />
-        <Button variant="secondary" onClick={() => updatePlayerList()}>
+        <FormControl
+          placeholder="Insert Raidbots link"
+          value={input}
+          onChange={(e) => setInput(e.currentTarget.value)}
+        />
+        <Button variant="secondary" type="submit" disabled={!validInput}>
           Add player
         </Button>
       </InputGroup>
