@@ -1,9 +1,9 @@
 /**
  * Expected response object from the server
  */
-export class DYNResponse {
-  error: boolean = false;
-  message: string = "";
-  errorMessage: string = "";
+export interface DYNResponse {
+  error: boolean;
+  message: string;
+  errorMessage: string;
   data?: any;
 }
