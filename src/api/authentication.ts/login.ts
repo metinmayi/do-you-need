@@ -1,27 +1,21 @@
-import { BASE_URL } from "../../config/config";
-import { IPlayerGuild } from "../../models/IPlayerGuild";
-type loginResponseType = {
-  loggedIn: boolean;
-  guilds: IPlayerGuild[];
-  message: string;
-};
+import { LOGIN_URL } from "../../config/config";
+import { DYNResponse } from "../../models/DYNResponse";
+import { isIUserGuild } from "../../models/IUserGuild";
+
 /**
- * Attempts to login the user. Also checks if user has blizzSync or not.
+ * Attemps to log the user in.
+ * @param username User's name.
+ * @param password User's password.
+ * @returns {Promise<string | IUserGuild}
  */
-export const loginUser = async (username: string, password: string) => {
-  const loginResponse: loginResponseType = {
-    loggedIn: false,
-    guilds: [],
-    message: "",
+export async function loginUser(username: string, password: string) {
+  const body = {
+    username: username.toLowerCase(),
+    password,
   };
 
   try {
-    const body = {
-      username: username.toLowerCase(),
-      password,
-    };
-
-    const response = await fetch(`${BASE_URL}authentication/login`, {
+    const response = await fetch(LOGIN_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,19 +24,13 @@ export const loginUser = async (username: string, password: string) => {
       body: JSON.stringify(body),
     });
 
-    const user = await response.json();
-    if (response.status === 200) {
-      loginResponse.loggedIn = true;
-      loginResponse.guilds = user.guilds;
-    } else {
-      loginResponse.message = "Invalid username/password";
-    }
+    const data: DYNResponse = await response.json();
 
-    return loginResponse;
+    if (isIUserGuild(data.data)) {
+      return data.data;
+    }
+    return data.errorMessage;
   } catch (error: any) {
-    console.log(error);
-    loginResponse.message =
-      "There was an issue connecting to the servers. Try again later";
-    return loginResponse;
+    return "There was an issue connecting to the servers. Try again later";
   }
-};
+}
