@@ -1,8 +1,9 @@
 export interface IGuild {
-  id: number;
+  id: string;
   name: string;
   realm: string;
-  status: boolean;
+  license: string;
+  faction: string;
 }
 
 export const isIGuild = (response: any): response is IGuild => {
@@ -11,7 +12,7 @@ export const isIGuild = (response: any): response is IGuild => {
     return false;
   }
   return (
-    typeof id === "number" &&
+    typeof id === "string" &&
     typeof faction === "string" &&
     typeof name === "string" &&
     typeof realm === "string" &&
