@@ -1,20 +1,22 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPlayerGuild } from "../../../models/IPlayerGuild";
+import { IUserGuild } from "../../../models/IUserGuild";
 
-const initialState: IPlayerGuild = {
+const initialState: IUserGuild = {
   name: "",
-  server: "",
+  realm: "",
   id: "",
   playerRank: "",
+  license: "",
+  faction: "",
 };
 
 const guildSlice = createSlice({
   name: "guild",
   initialState,
   reducers: {
-    setGuild: (state, action: PayloadAction<IPlayerGuild>) => {
+    setGuild: (state, action: PayloadAction<IUserGuild>) => {
       state.name = action.payload.name;
-      state.server = action.payload.server;
+      state.realm = action.payload.realm;
       state.id = action.payload.id;
       state.playerRank = action.payload.playerRank;
     },

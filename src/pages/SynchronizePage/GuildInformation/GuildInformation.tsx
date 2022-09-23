@@ -55,8 +55,10 @@ export const GuildInformation: React.FC<props> = ({
           setGuild({
             id: result.data.id.toString(),
             playerRank: rank,
-            server: result.data.realm,
+            realm: result.data.realm,
             name: result.data.name,
+            license: result.data.license,
+            faction: result.data.faction,
           })
         );
 

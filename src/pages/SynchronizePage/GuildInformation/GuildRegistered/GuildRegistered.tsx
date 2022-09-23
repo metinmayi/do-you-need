@@ -13,7 +13,7 @@ export const GuildRegistered: React.FC<GuildRegisteredProps> = ({
   const guild = useAppSelector((state) => state.guildReducer);
   const guildAndServer = `${capitalizeFirstLetter(
     guild.name
-  )} - ${capitalizeFirstLetter(guild.server)}`;
+  )} - ${capitalizeFirstLetter(guild.realm)}`;
 
   const redirect = useNavigate();
 
