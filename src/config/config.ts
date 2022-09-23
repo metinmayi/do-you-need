@@ -9,6 +9,10 @@ export const ENVIRONMENT: "production" | "demo" = "production" as const;
 export const BASE_URL = "http://localhost:8000/" as const;
 
 /**
+ * URL for logging in
+ */
+export const LOGIN_URL = `${BASE_URL}authentication/login`;
+/**
  * API Endpoint for checking if user has a valid token registered to them
  */
 export const VALID_TOKEN_URL = `${BASE_URL}blizzard/checkAccessToken`;
