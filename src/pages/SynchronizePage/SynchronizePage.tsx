@@ -9,7 +9,7 @@ import { RetrievedCharacter } from "../../models/RetrievedCharacter";
 import { CharacterSelection } from "./CharacterSelection";
 import { GuildInformation } from "./GuildInformation/GuildInformation";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
-import { getCharacters } from "../../api/blizzard.ts/getCharacters";
+import { getCharacters } from "../../api/blizzard/getCharacters";
 
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();

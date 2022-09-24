@@ -1,7 +1,7 @@
 import { FormEvent, useEffect, useRef, useState } from "react";
 import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
-import { registerUser } from "../../../api/authentication.ts/register";
+import { registerUser } from "../../../api/authentication/register";
 import { FormComponent } from "../../../components/Form/FormComponent";
 import { InvalidAlert } from "./InvalidAlert/InvalidAlert";
 import { TooltipOverlay } from "./TooltipModal/TooltipOverlay";
@@ -69,14 +69,16 @@ export const RegisterForm = () => {
           id="username"
           ref={userRef}
           value={user}
-          onChange={(e) => setUser(e.target.value)}></Form.Control>
+          onChange={(e) => setUser(e.target.value)}
+        ></Form.Control>
         {!validName && user ? <InvalidAlert type="name" id="uidnote" /> : null}
       </Form.Group>
       <Form.Group className="mt-2">
         <Form.Label>Email</Form.Label>
         <Form.Control
           type="email"
-          onChange={(e) => setEmail(e.target.value)}></Form.Control>
+          onChange={(e) => setEmail(e.target.value)}
+        ></Form.Control>
       </Form.Group>
       <Form.Group className="mt-2">
         <Form.Label htmlFor="password">Password</Form.Label>
@@ -89,7 +91,8 @@ export const RegisterForm = () => {
           aria-invalid={!validPwd ? "true" : "false"}
           aria-describedby="pwdnote"
           onFocus={() => setPwdFocus(true)}
-          onBlur={() => setPwdFocus(false)}></Form.Control>
+          onBlur={() => setPwdFocus(false)}
+        ></Form.Control>
         {!validPwd && pwd && pwdFocus ? (
           <InvalidAlert id="pwdnote" type="password" />
         ) : null}
@@ -103,7 +106,8 @@ export const RegisterForm = () => {
           required
           onChange={(e) => setMatchPwd(e.target.value)}
           aria-invalid={validMatch ? "false" : "true"}
-          aria-describedby="repeatPwdNote"></Form.Control>
+          aria-describedby="repeatPwdNote"
+        ></Form.Control>
         {!validMatch && pwd ? (
           <InvalidAlert id="pwdnote" type="repeat" />
         ) : null}
@@ -116,7 +120,8 @@ export const RegisterForm = () => {
             variant="success"
             className="border"
             type="submit"
-            ref={btnRef}>
+            ref={btnRef}
+          >
             Register
           </Button>
         )}

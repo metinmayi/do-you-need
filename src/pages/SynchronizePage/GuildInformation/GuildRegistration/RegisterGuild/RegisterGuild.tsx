@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
-import { registerGuild } from "../../../../../api/blizzard.ts/registerGuild";
+import { registerGuild } from "../../../../../api/blizzard/registerGuild";
 import { useAppDispatch } from "../../../../../customHooks/customHooks";
 import { INewGuild } from "../../../../../models/INewGuild";
 import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
@@ -43,7 +43,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
     const result = await registerGuild(
       character.name,
       character.realm,
-      newGuild.name
+      newGuild
     );
 
     setLoading(false);
@@ -55,7 +55,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
 
     dispatch(
       setGuild({
-        id: newGuild.id.toString(),
+        id: newGuild.id,
         playerRank: "0",
         realm: newGuild.realm,
         name: newGuild.name,
