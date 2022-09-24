@@ -1,5 +1,6 @@
 import { BASE_URL } from "../../config/config";
 import { DYNResponse } from "../../models/DYNResponse";
+import { INewGuild } from "../../models/INewGuild";
 
 /**
  * Attemps to register the guild to DoYouNeeds database.
@@ -12,12 +13,12 @@ import { DYNResponse } from "../../models/DYNResponse";
 export async function registerGuild(
   characterName: string,
   realm: string,
-  guildName: string
+  newGuild: INewGuild
 ) {
   const user = {
     character: characterName,
     realm,
-    guild: guildName,
+    guild: newGuild,
   };
   try {
     const response: DYNResponse = await fetch(

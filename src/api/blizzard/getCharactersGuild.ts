@@ -2,12 +2,12 @@ import { GET_GUILD_URL } from "../../config/config";
 import { DYNResponse } from "../../models/DYNResponse";
 
 /**
- * Retrieves the player's guild from the API
+ * Retrieves the character's guild from the API
  * @param character Character name
  * @param realm Realm name
  * @returns {Promise<IGuild | undefined>} Guild object
  */
-export const getPlayersGuild = async (character: string, realm: string) => {
+export const getCharactersGuild = async (character: string, realm: string) => {
   try {
     const result = await fetch(
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
