@@ -5,7 +5,7 @@ import { FormComponent } from "../../components/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { LogoHeader } from "../../components/LogoHeader";
 import { ENVIRONMENT } from "../../config/config";
-import { loginUser } from "../../api/authentication.ts/login";
+import { loginUser } from "../../api/authentication/login";
 import { useAppDispatch } from "../../customHooks/customHooks";
 import { setGuild } from "../../store/features/guild/guildSlice";
 
@@ -16,18 +16,20 @@ const LoginPage: React.FC = () => {
     if (ENVIRONMENT === "demo") {
       redirect("/bossPage");
     }
-    const user = await loginUser(username, password);
+    const guilds = await loginUser(username, password);
 
-    if (user.loggedIn && user.guilds.length > 0) {
-      dispatch(setGuild(user.guilds[0]));
-      return redirect("/bossPage");
+    if (typeof guilds === "string") {
+      setError(guilds);
+      return;
     }
 
-    if (user.loggedIn) {
-      return redirect("/synchronize");
+    if (guilds.length > 0) {
+      dispatch(setGuild(guilds[0]));
+      redirect("/bossPage");
+      return;
     }
 
-    setError(user.message);
+    return redirect("/synchronize");
   };
 
   const [username, setUsername] = useState("");
@@ -47,14 +49,16 @@ const LoginPage: React.FC = () => {
               <Form.Label>Username</Form.Label>
               <Form.Control
                 type="username"
-                onChange={(e) => setUsername(e.target.value)}></Form.Control>
+                onChange={(e) => setUsername(e.target.value)}
+              ></Form.Control>
             </Form.Group>
 
             <Form.Group className="mb-3">
               <Form.Label>Password</Form.Label>
               <Form.Control
                 type="password"
-                onChange={(e) => setPassword(e.target.value)}></Form.Control>
+                onChange={(e) => setPassword(e.target.value)}
+              ></Form.Control>
               <Form.Text style={{ color: "red" }}>{error}</Form.Text>
             </Form.Group>
             <Form.Group className="d-flex gap-1 mb-2">
@@ -64,7 +68,8 @@ const LoginPage: React.FC = () => {
               <Button
                 variant="secondary"
                 className="border"
-                onClick={() => redirect("/register")}>
+                onClick={() => redirect("/register")}
+              >
                 Register
               </Button>
             </Form.Group>

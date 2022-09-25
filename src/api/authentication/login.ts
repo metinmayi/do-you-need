@@ -9,7 +9,6 @@ import { isIUserGuildArray } from "../../models/IUserGuild";
  * @returns {Promise<string | IUserGuild[]}
  */
 export async function loginUser(username: string, password: string) {
-  debugger;
   const body = {
     username: username.toLowerCase(),
     password,
@@ -27,10 +26,10 @@ export async function loginUser(username: string, password: string) {
 
     const data: DYNResponse = await response.json();
 
-    // if (isIUserGuildArray(data.data)) {
-    //   return data.data;
-    // }
-    return data.data;
+    if (isIUserGuildArray(data.data)) {
+      return data.data;
+    }
+
     return data.errorMessage;
   } catch (error: any) {
     return "There was an issue connecting to the servers. Try again later";
