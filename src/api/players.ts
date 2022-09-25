@@ -32,30 +32,4 @@ const getPlayers = async () => {
   return mockFetch;
 };
 
-/**
- * Takes the url to the report and forwards it to the server.
- * The server breaks it down into a player object.
- */
-const addPlayerData = async (url: string | undefined) => {
-  if (!url) return;
-
-  const body = {
-    url: url,
-  };
-  try {
-    const response = await fetch("http://localhost:8000/player/addBossData", {
-      method: "POST",
-      body: JSON.stringify(body),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-    const data = await response.json();
-    console.log(data);
-    return data;
-  } catch (error) {
-    console.log(error);
-  }
-};
-
-export { getPlayers, addPlayerData };
+export { getPlayers };
