@@ -19,6 +19,8 @@ const guildSlice = createSlice({
       state.realm = action.payload.realm;
       state.id = action.payload.id;
       state.playerRank = action.payload.playerRank;
+      state.faction = action.payload.faction;
+      state.license = action.payload.license;
     },
   },
 });
