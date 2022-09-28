@@ -6,6 +6,8 @@ import { INewGuild } from "../../../../../models/INewGuild";
 import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
 import { setGuild } from "../../../../../store/features/guild/guildSlice";
 import { capitalizeFirstLetter } from "../../../../../utils/utils";
+import HordeLogo from "../../../../../assets/images/HordeLogo.webp";
+import AllianceLogo from "../../../../../assets/images/AllianceLogo.webp";
 
 interface RegisterGuildProps {
   setNewGuild: React.Dispatch<React.SetStateAction<INewGuild | undefined>>;
@@ -28,6 +30,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
 }) => {
   const [error, setError] = useState("");
   const dispatch = useAppDispatch();
+  const factionLogo = newGuild.faction === "HORDE" ? HordeLogo : AllianceLogo;
 
   function handleBack(e: React.MouseEvent) {
     e.preventDefault();
@@ -70,8 +73,13 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   return (
     <>
       <Card bg="secondary">
-        <Card.Header as="h5" style={{ color: "var(--DYNColor)" }}>
-          Guild Information
+        <Card.Header
+          as="h5"
+          className="d-flex justify-content-between"
+          style={{ color: "var(--DYNColor)" }}
+        >
+          <span>Guild Information</span>
+          <img src={factionLogo} style={{ width: "5%" }} />
         </Card.Header>
         <Card.Body>
           {error ? (
