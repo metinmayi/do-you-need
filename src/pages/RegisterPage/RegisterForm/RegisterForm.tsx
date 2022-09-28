@@ -3,11 +3,15 @@ import { Button, Form } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import { registerUser } from "../../../api/authentication/register";
 import { FormComponent } from "../../../components/Form/FormComponent";
+import { ENVIRONMENT } from "../../../config/config";
 import { InvalidAlert } from "./InvalidAlert/InvalidAlert";
 import { TooltipOverlay } from "./TooltipModal/TooltipOverlay";
 
 const USER_REGEX = /^[a-zA-Z][a-zA-Z0-9_]{3,23}$/;
-const PWD_REGEX = /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@"#$%]).{8,24}$/;
+const PWD_REGEX =
+  ENVIRONMENT === "production"
+    ? /.(?=.*[a-zA-Z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@"#$%]).{8,24}$/
+    : /./;
 
 export const RegisterForm = () => {
   const redirect = useNavigate();
@@ -51,6 +55,9 @@ export const RegisterForm = () => {
 
   useEffect(() => {
     const result = PWD_REGEX.test(pwd);
+    console.log(result);
+    console.log(PWD_REGEX);
+    console.log(pwd);
     const match = pwd === matchPwd;
     setValidPwd(result);
     setValidMatch(match);
