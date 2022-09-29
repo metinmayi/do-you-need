@@ -26,7 +26,7 @@ export async function getPlayerRank(
       headers: { "Content-Type": "application/json" },
     });
     const result: DYNResponse = await response.json();
-    return typeof result.data === "string" ? result.data : "3";
+    return typeof result.data === "number" ? result.data : "3";
   } catch (error) {
     console.log(error);
     return "3";

@@ -9,6 +9,8 @@ import { setGuild } from "../../../store/features/guild/guildSlice";
 import { getPlayerRank } from "../../../api/blizzard/getPlayerRank";
 import { GuildRegistered } from "./GuildRegistered";
 import { LoadingSpinner } from "../../../components/LoadingSpinner";
+import { addGuildToUser } from "../../../api/doYouNeed/addGuildToUser";
+import { IUserGuild } from "../../../models/IUserGuild";
 
 interface props {
   character: RetrievedCharacter;
@@ -43,6 +45,7 @@ export const GuildInformation: React.FC<props> = ({
         result.data.id = result.data.id.toString();
         setNewGuild(result.data);
         setIsLoading(false);
+        return;
       }
 
       if (isIGuild(result.data)) {
@@ -52,16 +55,21 @@ export const GuildInformation: React.FC<props> = ({
           character.name
         );
 
-        dispatch(
-          setGuild({
-            id: result.data.id.toString(),
-            playerRank: rank,
-            realm: result.data.realm,
-            name: result.data.name,
-            license: result.data.license,
-            faction: result.data.faction,
-          })
-        );
+        const guild: IUserGuild = {
+          id: result.data.id.toString(),
+          playerRank: rank.toString(),
+          realm: result.data.realm,
+          name: result.data.name,
+          license: result.data.license,
+          faction: result.data.faction,
+        };
+
+        const addMessage = await addGuildToUser(guild);
+        dispatch(setGuild(guild));
+
+        if (addMessage) {
+          setError(addMessage);
+        }
 
         setIsLoading(false);
       }
@@ -73,6 +81,8 @@ export const GuildInformation: React.FC<props> = ({
     <>
       {isLoading ? (
         <LoadingSpinner text="loading..." />
+      ) : error ? (
+        <p>{error}</p>
       ) : newGuild ? (
         <GuildRegistration
           character={character}
