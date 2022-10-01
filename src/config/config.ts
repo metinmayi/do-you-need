@@ -41,3 +41,8 @@ export const GET_RANK_URL = `${BASE_URL}blizzard/getPlayersRank`;
  * API for adding a new character's upgrade from a raidbots link.
  */
 export const ADD_CHARACTER_UPGRADES = `${BASE_URL}doYouNeed/addCharacterUpgrades`;
+
+/**
+ * API for adding a new guild to the user's guilds.
+ */
+export const ADD_GUILD_TO_USER = `${BASE_URL}doYouNeed/addGuildToUser`;
