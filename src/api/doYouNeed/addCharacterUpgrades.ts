@@ -1,6 +1,5 @@
 import { ADD_CHARACTER_UPGRADES } from "../../config/config";
 import { IUserGuild } from "../../models/IUserGuild";
-import { IPlayer } from "../../models/Player";
 
 /**
  * Takes a raidbots URL and breaks it down to upgrades.
@@ -24,7 +23,6 @@ export async function addCharacterUpgrades(url: string, guild: IUserGuild) {
       credentials: "include",
     });
     const data = await response.json();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);

@@ -8,6 +8,7 @@ const initialState: IUserGuild = {
   playerRank: "",
   license: "",
   faction: "",
+  characters: [],
 };
 
 const guildSlice = createSlice({
@@ -21,6 +22,7 @@ const guildSlice = createSlice({
       state.playerRank = action.payload.playerRank;
       state.faction = action.payload.faction;
       state.license = action.payload.license;
+      state.characters = action.payload.characters;
     },
   },
 });

@@ -62,6 +62,7 @@ export const GuildInformation: React.FC<props> = ({
           name: result.data.name,
           license: result.data.license,
           faction: result.data.faction,
+          characters: result.data.characters,
         };
 
         const addMessage = await addGuildToUser(guild);
