@@ -9,8 +9,8 @@ const TableBody: React.FC = () => {
     <tbody>
       {roster.map((_, index) => (
         <PlayerRow
-          playerIndex={index}
-          player={roster[index]}
+          characterIndex={index}
+          character={roster[index]}
           roster={roster}
           key={index}
         />
