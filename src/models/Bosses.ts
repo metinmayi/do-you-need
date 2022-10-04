@@ -1,15 +1,15 @@
 const idToBoss = {
-  2458: "Vigilant Guardian",
-  2465: "Skolex The Insatiable Ravener",
-  2470: "Artificer Xymox",
-  2459: "Dausegne The Fallen Oracle",
-  2460: "Prototype Pantheon",
-  2461: "Lihuvim Principal Architect",
-  2463: "Halondrus The Reclaimer",
-  2469: "Anduin Wrynn",
-  2457: "Lords Of Dread",
-  2467: "Rygelon",
-  2464: "The Jailer",
+  2458: "vigilant_guardian",
+  2465: "skolex_the_insatiable_ravener",
+  2470: "artificer_xymox",
+  2459: "dausegne_the_fallen_oracle",
+  2460: "prototype_pantheon",
+  2461: "lihuvim_principal_architect",
+  2463: "halondrus_the_reclaimer",
+  2469: "anduin_wrynn",
+  2457: "lords_of_dread",
+  2467: "rygelon",
+  2464: "the_jailer",
 } as const;
 
 const VigilantGuardian = [
@@ -25,17 +25,17 @@ const VigilantGuardian = [
 ] as const;
 
 export const BOSSES = [
-  "Vigilant Guardian",
-  "Skolex The Insatiable Ravener",
-  "Artificer Xymox",
-  "Dausegne The Fallen Oracle",
-  "Prototype Pantheon",
-  "Lihuvim Principal Architect",
-  "Halondrus The Reclaimer",
-  "Anduin Wrynn",
-  "Lords Of Dread",
-  "Rygelon",
-  "The Jailer",
+  "vigilant_guardian",
+  "skolex_the_insatiable_ravener",
+  "artificer_xymox",
+  "dausegne_the_fallen_oracle",
+  "prototype_pantheon",
+  "lihuvim_principal_architect",
+  "halondrus_the_reclaimer",
+  "anduin_wrynn",
+  "lords_of_dread",
+  "rygelon",
+  "the_jailer",
 ] as const;
 
 export type BOSSNAMES = typeof BOSSES[number];
