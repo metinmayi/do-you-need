@@ -1,25 +1,35 @@
-import React, { useState } from "react";
+import React from "react";
 import Logo from "../../assets/images/Lootbag.png";
 import { Button, Col, Row } from "react-bootstrap";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
-import { BOSSES, BOSSNAMES } from "../../models/Bosses";
-import { isBossName } from "../../utils/utils";
+import {
+  convertToDYNName,
+  convertToServerName,
+  isBossName,
+} from "../../utils/utils";
+import { useAppDispatch, useAppSelector } from "../../customHooks/customHooks";
+import { setSelectedBoss } from "../../store/features/selectedBoss/selectedBossSlice";
+import { BOSSES } from "../../models/bosses/bosses";
 
 const DesktopHeader: React.FC = () => {
-  const [currentBoss, setCurrentBoss] = useState<BOSSNAMES>(BOSSES[0]);
-  const changeActiveBoss = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const bossName = e.currentTarget.innerText;
-    if (isBossName(bossName)) {
-      setCurrentBoss(bossName);
+  const dispatch = useAppDispatch();
+  const currentBoss = useAppSelector(
+    (state) => state.selectedBossReducer.bossName
+  );
+
+  function changeActiveBoss(e: React.MouseEvent<HTMLAnchorElement>) {
+    const newName = convertToServerName(e.currentTarget.innerText);
+    if (isBossName(newName)) {
+      dispatch(setSelectedBoss(newName));
     }
-  };
+  }
   return (
     <Row className="d-flex p-1">
       <Col xs={1}>
         <img src={Logo} alt="Not found" style={{ width: "100%" }} />
       </Col>
       <Col className="d-flex justify-content-center align-items-center flex-grow-1">
-        <h1> {currentBoss} </h1>
+        <h1> {convertToDYNName(currentBoss)} </h1>
       </Col>
       <Col className="d-flex justify-content-end align-items-center gap-1 flex-grow-0">
         <DropdownComponent
