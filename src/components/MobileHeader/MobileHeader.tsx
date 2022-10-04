@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Button, Col, Row } from "react-bootstrap";
 import Logo from "../../assets/images/Lootbag.png";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
-import { BOSSES, BOSSNAMES } from "../../models/Bosses";
 import { isBossName } from "../../utils/utils";
+import { BOSSES, BOSSNAMES } from "../../models/bosses/bosses";
 
 const MobileHeader: React.FC = () => {
   const [currentBoss, setCurrentBoss] = useState<BOSSNAMES>(BOSSES[0]);
@@ -18,7 +18,8 @@ const MobileHeader: React.FC = () => {
       <Col
         xs={4}
         sm={3}
-        className="d-flex align-items-center justify-content-end">
+        className="d-flex align-items-center justify-content-end"
+      >
         <img src={Logo} alt="Not found" style={{ width: "90%" }} />
       </Col>
       <Col className="d-flex justify-content-end align-items-center">
