@@ -1,5 +1,6 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
+import { convertToDYNName } from "../../utils/utils";
 
 type DropdownComponentProps = {
   title: string;
@@ -25,8 +26,9 @@ export const DropdownComponent: React.FC<DropdownComponentProps> = ({
           {options.map((option, index) => (
             <Dropdown.Item
               onClick={onClick ? (e) => onClick(e) : undefined}
-              key={index}>
-              {option}
+              key={index}
+            >
+              {convertToDYNName(option)}
             </Dropdown.Item>
           ))}
         </Dropdown.Menu>
