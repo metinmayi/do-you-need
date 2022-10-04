@@ -1,41 +1,19 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
-import { MobileHeader } from "../../components/MobileHeader";
-import { useAppDispatch, useMediaQuery } from "../../customHooks/customHooks";
-import { IPlayer } from "../../models/Player";
-import { getPlayers } from "../../api/players";
 import { TableComponent } from "./TableComponent";
 import { PlayerInput } from "./PlayerInput";
 import { RosterList } from "./RosterList";
-import { setList } from "../../store/features/roster/rosterSlice";
 import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
-import { isAuthenticated } from "../../authentication/isAuthenticated/isAuthenticated";
-import { useNavigate } from "react-router-dom";
+import { useFetchCharacters } from "../../customHooks/customHooks";
 
 const BossPage: React.FC = () => {
-  const redirect = useNavigate();
-  // Initiated the players state.
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    const fetchPlayers = async () => {
-      const authenticated = await isAuthenticated();
-      if (!authenticated) {
-        redirect("/login");
-        return;
-      }
-      const fetchedPlayers: IPlayer[] = await getPlayers();
-      dispatch(setList(fetchedPlayers));
-    };
-    fetchPlayers();
-  }, []);
-
-  // Checks if mobile
-  const isMobile = useMediaQuery(900);
+  // Fetches characters from the API and updates the roster state
+  useFetchCharacters();
 
   return (
     <Container fluid>
-      {isMobile ? <MobileHeader /> : <DesktopHeader />}
+      <DesktopHeader />
       <Row className="mt-5 mb-2">
         <DropdownComponent title="Filter" options={["Test", "OneMore"]} />
       </Row>
