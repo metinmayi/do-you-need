@@ -13,9 +13,6 @@ const LoginPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (ENVIRONMENT === "demo") {
-      redirect("/bossPage");
-    }
     const guilds = await loginUser(username, password);
 
     if (typeof guilds === "string") {
