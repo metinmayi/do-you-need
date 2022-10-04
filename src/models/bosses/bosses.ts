@@ -1,4 +1,4 @@
-const idToBoss = {
+export const idToBoss = {
   2458: "vigilant_guardian",
   2465: "skolex_the_insatiable_ravener",
   2470: "artificer_xymox",
@@ -11,18 +11,6 @@ const idToBoss = {
   2467: "rygelon",
   2464: "the_jailer",
 } as const;
-
-const VigilantGuardian = [
-  "back",
-  "neck",
-  "ring",
-  "chest",
-  "feet",
-  "gloves",
-  "legs",
-  "shoulders",
-  "waist",
-] as const;
 
 export const BOSSES = [
   "vigilant_guardian",
@@ -39,5 +27,3 @@ export const BOSSES = [
 ] as const;
 
 export type BOSSNAMES = typeof BOSSES[number];
-
-export { VigilantGuardian, idToBoss };
