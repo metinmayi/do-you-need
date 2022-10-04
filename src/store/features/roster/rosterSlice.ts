@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { IPlayer } from "../../../models/Player";
+import { ICharacter } from "../../../models/ICharacter";
 
 interface Roster {
-  roster: IPlayer[];
+  roster: ICharacter[];
 }
 
 const initialState: Roster = {
@@ -13,10 +13,10 @@ const rosterSlice = createSlice({
   name: "roster",
   initialState,
   reducers: {
-    setList: (state, action: PayloadAction<IPlayer[]>) => {
+    setList: (state, action: PayloadAction<ICharacter[]>) => {
       state.roster = action.payload;
     },
-    addToList: (state, action: PayloadAction<IPlayer>) => {
+    addToList: (state, action: PayloadAction<ICharacter>) => {
       state.roster.push(action.payload);
     },
   },

@@ -1,13 +1,13 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useAppSelector } from "../../../customHooks/customHooks";
-import { IPlayer } from "../../../models/Player";
+import { ICharacter } from "../../../models/ICharacter";
 import { ListItem } from "./ListItem";
 
 const RosterList: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
   const roles = ["tank", "healer", "dps"];
-  const bigArray: [IPlayer[], IPlayer[], IPlayer[]] = [[], [], []];
+  const bigArray: [ICharacter[], ICharacter[], ICharacter[]] = [[], [], []];
 
   const [tanks, healers, dps] = roster.reduce((memo, player) => {
     if (player.selected) memo[roles.indexOf(player.role)].push(player);
