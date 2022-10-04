@@ -1,11 +1,13 @@
 import React from "react";
-import { VigilantGuardian } from "../../../../models/Bosses";
-import { HeaderData } from "../../../../models/HeaderData";
+import { useAppSelector } from "../../../../customHooks/customHooks";
+import { bossLoot } from "../../../../models/bosses/bossLoot";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
-
 const TableHead: React.FC = () => {
-  const headerItems: HeaderData[] = [...VigilantGuardian];
+  const currentBoss = useAppSelector(
+    (state) => state.selectedBossReducer.bossName
+  );
+  const headerItems = [...bossLoot[currentBoss]];
   return (
     <thead>
       <tr style={{ textAlign: "center" }}>
