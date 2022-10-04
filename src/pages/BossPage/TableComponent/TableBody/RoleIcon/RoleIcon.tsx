@@ -5,7 +5,7 @@ import dpsIcon from "../../../../../assets/images/dpsIcon.webp";
 import { StyledImage } from "./styledImage";
 
 interface RoleIconProps {
-  role: "dps" | "healing" | "tank";
+  role: string;
 }
 const RoleIcon: React.FC<RoleIconProps> = ({ role }) => {
   const icon =
