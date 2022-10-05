@@ -1,20 +1,19 @@
-import { ICharacter } from "../../models/ICharacter";
+import { ICharacterUpgrade } from "../../models/ICharacterUpgrades";
 import { IGuild } from "../../models/IGuild";
+import vigilant from "../../mock/vigilant_guardian.json";
+import lords from "../../mock/lords_of_dread.json";
 
-export async function getGuildCharacters(guild: IGuild) {
-  const request = {
-    guildID: guild.id,
-  };
-  const response = await fetch(
-    "http://localhost:8000/doyouneed/getGuildCharacters",
-    {
-      method: "POST",
-      credentials: "include",
-      body: JSON.stringify(request),
-      headers: { "Content-Type": "application/json" },
-    }
-  );
-  const data: ICharacter[] = await response.json();
-  console.log({ data });
-  return data;
+/**
+ *
+ * @param guild
+ * @param bossName
+ * @returns
+ */
+export function getGuildCharacters(guild: IGuild, bossName: string) {
+  if (bossName === "vigilant_guardian") {
+    const characters: ICharacterUpgrade[] = vigilant;
+    return characters;
+  }
+  const chars: ICharacterUpgrade[] = lords;
+  return chars;
 }
