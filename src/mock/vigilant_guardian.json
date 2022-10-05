@@ -1,0 +1,58 @@
+[{
+    "selected": false,
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "selected": false,
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "selected": false,
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+}
+]

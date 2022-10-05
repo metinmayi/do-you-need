@@ -1,0 +1,17 @@
+[{
+    "selected": false,
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "back":  "12% (627)",
+        "wrist": "-",
+        "hands": "2% (100)",
+        "trinket1": "3% (150)",
+        "trinket2": "-",
+        "main_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/7"
+    }
+}
+]
