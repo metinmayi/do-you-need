@@ -1,8 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ICharacter } from "../../../models/ICharacter";
+import { ICharacterUpgrade } from "../../../models/ICharacterUpgrades";
 
 interface Roster {
-  roster: ICharacter[];
+  roster: ICharacterUpgrade[];
 }
 
 const initialState: Roster = {
@@ -13,15 +13,15 @@ const rosterSlice = createSlice({
   name: "roster",
   initialState,
   reducers: {
-    setList: (state, action: PayloadAction<ICharacter[]>) => {
+    setRoster: (state, action: PayloadAction<ICharacterUpgrade[]>) => {
       state.roster = action.payload;
     },
-    addToList: (state, action: PayloadAction<ICharacter>) => {
+    addToRoster: (state, action: PayloadAction<ICharacterUpgrade>) => {
       state.roster.push(action.payload);
     },
   },
 });
 
-export const { setList, addToList } = rosterSlice.actions;
+export const { setRoster, addToRoster } = rosterSlice.actions;
 
 export default rosterSlice.reducer;
