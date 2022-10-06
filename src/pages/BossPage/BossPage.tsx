@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { TableComponent } from "./TableComponent";
@@ -8,6 +8,7 @@ import { DropdownComponent } from "../../components/DropdownComponent/DropdownCo
 import { useFetchCharacters } from "../../customHooks/useFetchCharacters";
 
 const BossPage: React.FC = () => {
+  const [toggleRender, setToggleRender] = useState(false);
   // Fetches characters from the API and updates the roster state
   useFetchCharacters();
 
@@ -19,7 +20,7 @@ const BossPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12} md={8} lg={5} xxl={3}>
-          <PlayerInput></PlayerInput>
+          <PlayerInput setToggleRender={setToggleRender}></PlayerInput>
         </Col>
       </Row>
       <Row>

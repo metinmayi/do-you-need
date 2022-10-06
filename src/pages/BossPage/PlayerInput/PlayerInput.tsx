@@ -1,10 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Button, Form, FormControl, InputGroup } from "react-bootstrap";
+import { addCharacterUpgrades } from "../../../api/doYouNeed/addCharacterUpgrades";
+import { useAppSelector } from "../../../customHooks/useAppSelector";
+
 const INPUT_REGEX = /https:\/\/www.raidbots.com\/simbot\/report\/\w+/;
 
-const PlayerInput: React.FC = () => {
+interface PlayerInputProps {
+  setToggleRender: React.Dispatch<React.SetStateAction<boolean>>;
+}
+const PlayerInput: React.FC<PlayerInputProps> = ({ setToggleRender }) => {
   const [input, setInput] = useState("");
   const [validInput, setValidInput] = useState(false);
+  const guild = useAppSelector((state) => state.guildReducer);
 
   useEffect(() => {
     if (INPUT_REGEX.test(input)) {
@@ -14,8 +21,14 @@ const PlayerInput: React.FC = () => {
     }
   }, [input]);
 
+  // Update the roster and update the chara
+  async function submitCharacter(e: React.FormEvent) {
+    e.preventDefault();
+    await addCharacterUpgrades(input, guild);
+    setToggleRender((current) => !current);
+  }
   return (
-    <Form className="mb-2 mt-2">
+    <Form className="mb-2 mt-2" onSubmit={submitCharacter}>
       <InputGroup>
         <FormControl
           placeholder="Insert Raidbots link"
