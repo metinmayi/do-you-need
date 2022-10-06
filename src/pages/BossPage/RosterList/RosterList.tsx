@@ -10,7 +10,7 @@ const RosterList: React.FC = () => {
   const bigArray: [ICharacter[], ICharacter[], ICharacter[]] = [[], [], []];
 
   const [tanks, healers, dps] = roster.reduce((memo, player) => {
-    if (player.selected) memo[roles.indexOf(player.role)].push(player);
+    if (player.selected) memo[roles.indexOf(player.role)].push();
     return memo;
   }, bigArray);
 
