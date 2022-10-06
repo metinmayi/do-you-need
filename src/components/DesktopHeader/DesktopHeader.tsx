@@ -2,17 +2,14 @@ import React from "react";
 import Logo from "../../assets/images/Lootbag.png";
 import { Button, Col, Row } from "react-bootstrap";
 import { DropdownComponent } from "../DropdownComponent/DropdownComponent";
-import {
-  convertToDYNName,
-  convertToServerName,
-  isBossName,
-} from "../../utils/utils";
 import { useAppDispatch } from "../../customHooks/useAppDispatch";
 import { setSelectedBoss } from "../../store/features/selectedBoss/selectedBossSlice";
-import { BOSSES } from "../../models/bosses/bosses";
+import { BOSSES, isBossName } from "../../models/bosses/bosses";
 import { getGuildCharacters } from "../../api/doYouNeed/getGuildCharacters";
 import { setRoster } from "../../store/features/roster/rosterSlice";
 import { useAppSelector } from "../../customHooks/useAppSelector";
+import { convertToServerName } from "../../utils/convertToServerName";
+import { convertToDYNName } from "../../utils/convertToDYNName";
 
 const DesktopHeader: React.FC = () => {
   const dispatch = useAppDispatch();

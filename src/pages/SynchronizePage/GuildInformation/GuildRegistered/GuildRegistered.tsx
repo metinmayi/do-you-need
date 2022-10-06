@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { useAppSelector } from "../../../../customHooks/useAppSelector";
-import { capitalizeFirstLetter } from "../../../../utils/utils";
+import { capitalizeFirstLetter } from "../../../../utils/capitalizeFirstLetter";
 
 interface GuildRegisteredProps {
   setStep: React.Dispatch<React.SetStateAction<number>>;

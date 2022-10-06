@@ -5,9 +5,9 @@ import { useAppDispatch } from "../../../../../customHooks/useAppDispatch";
 import { INewGuild } from "../../../../../models/INewGuild";
 import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
 import { setGuild } from "../../../../../store/features/guild/guildSlice";
-import { capitalizeFirstLetter } from "../../../../../utils/utils";
 import HordeLogo from "../../../../../assets/images/HordeLogo.webp";
 import AllianceLogo from "../../../../../assets/images/AllianceLogo.webp";
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
 
 interface RegisterGuildProps {
   setNewGuild: React.Dispatch<React.SetStateAction<INewGuild | undefined>>;

@@ -1,10 +1,7 @@
 import React from "react";
 import { useAppSelector } from "../../../../customHooks/useAppSelector";
 import { bossLoot } from "../../../../models/bosses/bossLoot";
-import {
-  capitalizeFirstLetter,
-  convertToDYNName,
-} from "../../../../utils/utils";
+import { convertToDYNName } from "../../../../utils/convertToDYNName";
 
 const TableHead: React.FC = () => {
   const currentBoss = useAppSelector(

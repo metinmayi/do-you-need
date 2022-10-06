@@ -27,3 +27,10 @@ export const BOSSES = [
 ] as const;
 
 export type BOSSNAMES = typeof BOSSES[number];
+
+/**
+ * Checks if the word is of the type BOSSNAME
+ */
+export const isBossName = (word: string): word is BOSSNAMES => {
+  return BOSSES.includes(word as BOSSNAMES);
+};

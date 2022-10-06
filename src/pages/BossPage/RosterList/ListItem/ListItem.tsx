@@ -2,7 +2,7 @@ import React from "react";
 import { Card } from "react-bootstrap";
 import { ClassColors } from "../../../../models/ClassColors";
 import { ICharacter } from "../../../../models/ICharacter";
-import { capitalizeFirstLetter } from "../../../../utils/utils";
+import { capitalizeFirstLetter } from "../../../../utils/capitalizeFirstLetter";
 
 interface ListItemProps {
   players: ICharacter[];

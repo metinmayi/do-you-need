@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ClassColors } from "../../../../../models/ClassColors";
 import { ICharacterUpgrade } from "../../../../../models/ICharacterUpgrades";
-import { capitalizeFirstLetter } from "../../../../../utils/utils";
+import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {

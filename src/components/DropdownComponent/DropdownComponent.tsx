@@ -1,6 +1,6 @@
 import React from "react";
 import { Dropdown } from "react-bootstrap";
-import { convertToDYNName } from "../../utils/utils";
+import { convertToDYNName } from "../../utils/convertToDYNName";
 
 interface DropdownComponentProps {
   title: string;
