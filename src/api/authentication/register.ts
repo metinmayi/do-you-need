@@ -1,5 +1,14 @@
 import { BASE_URL } from "../../config/config";
 
+/**
+ * Registers the user to DYN.
+ * @param validMatch If the passwords match eachother
+ * @param validName If the name is valid
+ * @param username Username for DYN
+ * @param email Email for DYN
+ * @param password Password for DYN
+ * @returns void
+ */
 export const registerUser = async (
   validMatch: boolean,
   validName: boolean,
