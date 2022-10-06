@@ -10,19 +10,26 @@ import {
 import { useAppDispatch, useAppSelector } from "../../customHooks/customHooks";
 import { setSelectedBoss } from "../../store/features/selectedBoss/selectedBossSlice";
 import { BOSSES } from "../../models/bosses/bosses";
+import { getGuildCharacters } from "../../api/doYouNeed/getGuildCharacters";
+import { setRoster } from "../../store/features/roster/rosterSlice";
 
 const DesktopHeader: React.FC = () => {
   const dispatch = useAppDispatch();
   const currentBoss = useAppSelector(
     (state) => state.selectedBossReducer.bossName
   );
+  const guild = useAppSelector((state) => state.guildReducer);
 
+  // Changes the active boss. Updating the header name and the roster
   function changeActiveBoss(e: React.MouseEvent<HTMLAnchorElement>) {
     const newName = convertToServerName(e.currentTarget.innerText);
+    const characters = getGuildCharacters(guild, newName);
     if (isBossName(newName)) {
       dispatch(setSelectedBoss(newName));
+      dispatch(setRoster(characters));
     }
   }
+
   return (
     <Row className="d-flex p-1">
       <Col xs={1}>
