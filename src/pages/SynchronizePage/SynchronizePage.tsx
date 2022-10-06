@@ -9,7 +9,7 @@ import { RetrievedCharacter } from "../../models/RetrievedCharacter";
 import { CharacterSelection } from "./CharacterSelection";
 import { GuildInformation } from "./GuildInformation/GuildInformation";
 import { LoadingSpinner } from "../../components/LoadingSpinner";
-import { getCharacters } from "../../api/blizzard/getCharacters";
+import { getAccountsCharacters } from "../../api/blizzard/getAccountsCharacters";
 
 export const SynchronizePage: React.FC = () => {
   const redirect = useNavigate();
@@ -51,7 +51,7 @@ export const SynchronizePage: React.FC = () => {
 
     async function getChars() {
       setIsLoading(true);
-      const result = await getCharacters();
+      const result = await getAccountsCharacters();
       setCharacters(result);
       setIsLoading(false);
     }
