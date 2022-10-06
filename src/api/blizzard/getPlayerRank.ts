@@ -1,5 +1,4 @@
 import { GET_RANK_URL } from "../../config/config";
-import { DYNResponse } from "../../models/DYNResponse";
 
 /**
  * Gets the rank for the player within the given guild
@@ -25,7 +24,7 @@ export async function getPlayerRank(
       body: JSON.stringify(request),
       headers: { "Content-Type": "application/json" },
     });
-    const result: DYNResponse = await response.json();
+    const result = await response.json();
     return typeof result.data === "number" ? result.data : "3";
   } catch (error) {
     console.log(error);
