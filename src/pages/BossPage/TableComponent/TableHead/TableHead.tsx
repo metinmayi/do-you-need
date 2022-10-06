@@ -1,7 +1,10 @@
 import React from "react";
 import { useAppSelector } from "../../../../customHooks/customHooks";
 import { bossLoot } from "../../../../models/bosses/bossLoot";
-import { capitalizeFirstLetter } from "../../../../utils/utils";
+import {
+  capitalizeFirstLetter,
+  convertToDYNName,
+} from "../../../../utils/utils";
 
 const TableHead: React.FC = () => {
   const currentBoss = useAppSelector(
@@ -15,7 +18,7 @@ const TableHead: React.FC = () => {
         <td>Name</td>
         <td>Role</td>
         {headerItems.map((item, index) => (
-          <td key={index}>{capitalizeFirstLetter(item)}</td>
+          <td key={index}>{convertToDYNName(item)}</td>
         ))}
         <td>Upgrade Count</td>
       </tr>
