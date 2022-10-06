@@ -1,15 +1,27 @@
-import { ICharacterBossUpgrade } from "./ICharacterBossUpgrade";
-
-export class ICharacterUpgrades {
-  vigilant_guardian: ICharacterBossUpgrade[] = [];
-  skolex_the_insatiable_ravener: ICharacterBossUpgrade[] = [];
-  artificer_xymox: ICharacterBossUpgrade[] = [];
-  dausegne_the_fallen_oracle: ICharacterBossUpgrade[] = [];
-  prototype_pantheon: ICharacterBossUpgrade[] = [];
-  lihuvim_principal_architect: ICharacterBossUpgrade[] = [];
-  halondrus_the_reclaimer: ICharacterBossUpgrade[] = [];
-  anduin_wrynn: ICharacterBossUpgrade[] = [];
-  lords_of_dread: ICharacterBossUpgrade[] = [];
-  rygelon: ICharacterBossUpgrade[] = [];
-  the_jailer: ICharacterBossUpgrade[] = [];
+export interface ICharacterUpgrade {
+  selected: boolean;
+  name: string;
+  role: string;
+  class: string;
+  upgrades: {
+    head?: string;
+    shoulder?: string;
+    chest?: string;
+    wrist?: string;
+    hands?: string;
+    waist?: string;
+    legs?: string;
+    feet?: string;
+    neck?: string;
+    back?: string;
+    finger?: string;
+    finger1?: string;
+    finger2?: string;
+    trinket?: string;
+    trinket1?: string;
+    trinket2?: string;
+    main_hand?: string;
+    one_hand?: string;
+    off_hand?: string;
+  };
 }

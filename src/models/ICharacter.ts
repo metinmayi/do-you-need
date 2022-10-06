@@ -1,10 +1,10 @@
-import { ICharacterUpgrades } from "./ICharacterUpgrades";
+import { ICharacterUpgrade } from "./ICharacterUpgrades";
 
 export interface ICharacter {
   playerName: string;
   selected: boolean;
   role: string;
   className: string;
-  characterUpgrades: ICharacterUpgrades;
+  characterUpgrades: ICharacterUpgrade;
   upgradeCount?: number;
 }

@@ -1,6 +1,6 @@
 export class Boss {
   selected: boolean = false;
-  name: string = "";
-  role: string = "";
-  class: string = "";
+  name: string = "-";
+  role: string = "-";
+  class: string = "-";
 }
