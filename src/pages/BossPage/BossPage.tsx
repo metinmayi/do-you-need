@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { TableComponent } from "./TableComponent";
-import { PlayerInput } from "./PlayerInput";
+import { CharacterInput } from "./CharacterInput";
 import { RosterList } from "./RosterList";
 import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
 import { useFetchCharacters } from "../../customHooks/useFetchCharacters";
@@ -20,7 +20,7 @@ const BossPage: React.FC = () => {
       </Row>
       <Row>
         <Col xs={12} md={8} lg={5} xxl={3}>
-          <PlayerInput setToggleRender={setToggleRender}></PlayerInput>
+          <CharacterInput setToggleRender={setToggleRender}></CharacterInput>
         </Col>
       </Row>
       <Row>

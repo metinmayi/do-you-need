@@ -5,10 +5,10 @@ import { useAppSelector } from "../../../customHooks/useAppSelector";
 
 const INPUT_REGEX = /https:\/\/www.raidbots.com\/simbot\/report\/\w+/;
 
-interface PlayerInputProps {
+interface CharacterInputProps {
   setToggleRender: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const PlayerInput: React.FC<PlayerInputProps> = ({ setToggleRender }) => {
+const CharacterInput: React.FC<CharacterInputProps> = ({ setToggleRender }) => {
   const [input, setInput] = useState("");
   const [validInput, setValidInput] = useState(false);
   const guild = useAppSelector((state) => state.guildReducer);
@@ -47,4 +47,4 @@ const PlayerInput: React.FC<PlayerInputProps> = ({ setToggleRender }) => {
   );
 };
 
-export { PlayerInput };
+export { CharacterInput };
