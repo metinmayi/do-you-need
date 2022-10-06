@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { updateCharacterSelected } from "../../../../../api/doYouNeed/updateCharacterSelected";
+import { useAppDispatch } from "../../../../../customHooks/useAppDispatch";
+import { useAppSelector } from "../../../../../customHooks/useAppSelector";
 import { ClassColors } from "../../../../../models/ClassColors";
 import { ICharacterUpgrade } from "../../../../../models/ICharacterUpgrades";
+import { setRoster } from "../../../../../store/features/roster/rosterSlice";
 import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
@@ -15,16 +19,28 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
   character,
   roster,
 }) => {
-  // The upgrades are an object, we want to iterate it so we turn it into an array
-  const [upgrades, setUpgrades] = useState(Object.entries(character.upgrades));
-  useEffect(() => {
-    setUpgrades(Object.entries(character.upgrades));
-  }, [roster]);
+  const guild = useAppSelector((state) => state.guildReducer);
+  const bossName = useAppSelector(
+    (state) => state.selectedBossReducer.bossName
+  );
+  const dispatch = useAppDispatch();
+  const upgrades = Object.entries(character.upgrades);
+
+  async function updateSelected() {
+    const newRoster = structuredClone(roster);
+    newRoster[characterIndex].selected = !character.selected;
+    await updateCharacterSelected(character, guild, bossName);
+    dispatch(setRoster(newRoster));
+  }
 
   return (
     <tr style={{ textAlign: "center" }}>
       <td className="align-middle">
-        <input type="checkbox" checked={character.selected} />
+        <input
+          type="checkbox"
+          checked={character.selected}
+          onChange={updateSelected}
+        />
       </td>
       <td
         className="align-middle"
