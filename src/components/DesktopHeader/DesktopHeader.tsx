@@ -46,9 +46,9 @@ const DesktopHeader: React.FC = () => {
           size="lg"
           onClick={changeActiveBoss}
         />
-        <Button variant="warning" size="lg">
+        {/* <Button variant="warning" size="lg">
           Settings
-        </Button>
+        </Button> */}
         <Button variant="danger" size="lg">
           Logout
         </Button>
