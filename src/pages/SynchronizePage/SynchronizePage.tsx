@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { LogoHeader } from "../../components/LogoHeader";
+import { DYNLogo } from "../../components/DYNLogo";
 import { VALID_TOKEN_URL } from "../../config/config";
 import { ValidateToken } from "./ValidateToken";
 import { SynchronizeStepper } from "./SynchronizeStepper/";
@@ -61,7 +61,7 @@ export const SynchronizePage: React.FC = () => {
 
   return (
     <Container fluid>
-      <LogoHeader />
+      <DYNLogo />
       <Row className="justify-content-center mt-5">
         <Col xs={8} xl={4}>
           <SynchronizeStepper step={step} />

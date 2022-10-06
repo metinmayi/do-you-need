@@ -6,7 +6,7 @@ import { hasVisitedBefore } from "../../utils/utils";
 import { ModalComponent } from "../../components/ModalComponent";
 import { LandingPageModal } from "./LandingPageModal";
 import { ImageTitle } from "./ImageTitle/ImageTitle";
-import { LogoHeader } from "../../components/LogoHeader";
+import { DYNLogo } from "../../components/DYNLogo";
 import { useNavigate } from "react-router-dom";
 
 const LandingPage: React.FC = () => {
@@ -22,21 +22,24 @@ const LandingPage: React.FC = () => {
         <ModalComponent
           Component={LandingPageModal}
           title="Demo"
-          handleClick={toggleModal}></ModalComponent>
+          handleClick={toggleModal}
+        ></ModalComponent>
       )}
-      <LogoHeader />
+      <DYNLogo />
       <Row className="mt-2 justify-content-center">
         <Col xs={7} lg={3} className="d-flex gap-2">
           <Button
             className="flex-grow-1 border"
             variant="success"
-            onClick={() => redirect("/login")}>
+            onClick={() => redirect("/login")}
+          >
             Login
           </Button>
           <Button
             className="flex-grow-1 border"
             variant="secondary"
-            onClick={() => redirect("/register")}>
+            onClick={() => redirect("/register")}
+          >
             Register
           </Button>
         </Col>
