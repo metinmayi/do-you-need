@@ -1,5 +1,4 @@
 import { GET_GUILD_URL } from "../../config/config";
-import { DYNResponse } from "../../models/DYNResponse";
 
 /**
  * Retrieves the character's guild from the API
@@ -13,7 +12,7 @@ export const getCharactersGuild = async (character: string, realm: string) => {
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
       { credentials: "include" }
     );
-    const response: DYNResponse = await result.json();
+    const response = await result.json();
     return response;
   } catch (error) {
     console.log(error);
