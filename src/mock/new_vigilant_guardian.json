@@ -1,0 +1,19 @@
+{
+    "selected": false,
+    "name" : "daniel",
+    "role": "healing",
+    "class": "paladin",
+    "upgrades" : {
+        "ring": "5% (250)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "2.5% (125)",
+        "head": "10% (500)",
+        "waist": "-",
+        "hands": "-",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+}
