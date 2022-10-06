@@ -1,50 +1,47 @@
-import React from "react";
-import { useAppDispatch } from "../../../../../customHooks/customHooks";
-import { ClassColor } from "../../../../../models/Classes";
-import { IPlayer } from "../../../../../models/Player";
-import { setList } from "../../../../../store/features/roster/rosterSlice";
+import React, { useEffect, useState } from "react";
+import { ClassColors } from "../../../../../models/ClassColors";
+import { ICharacterUpgrade } from "../../../../../models/ICharacterUpgrades";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {
-  playerIndex: number,
-  player: IPlayer
-  roster: IPlayer[]
+  characterIndex: number;
+  character: ICharacterUpgrade;
+  roster: ICharacterUpgrade[];
 }
+
 const PlayerRow: React.FC<PlayerRowProps> = ({
-  playerIndex,
-  player,
-  roster
+  characterIndex,
+  character,
+  roster,
 }) => {
-  const dispatch = useAppDispatch();
-  const toggleSelected = (playerIndex: number) => {
-    const copiedRoster = structuredClone(roster);
-    copiedRoster[playerIndex].selected = !copiedRoster[playerIndex].selected;
-    dispatch(setList(copiedRoster));
-  }
+  // The upgrades are an object, we want to iterate it so we turn it into an array
+  const [upgrades, setUpgrades] = useState(Object.entries(character.upgrades));
+  useEffect(() => {
+    setUpgrades(Object.entries(character.upgrades));
+  }, [roster]);
 
   return (
     <tr style={{ textAlign: "center" }}>
       <td className="align-middle">
-        <input
-          type="checkbox"
-          checked={player.selected}
-          onChange={() => toggleSelected(playerIndex)}
-        />
+        <input type="checkbox" checked={character.selected} />
       </td>
       <td
         className="align-middle"
-        style={{ color: ClassColor[player.className] }}>
-        {player.name}
+        style={{ color: ClassColors[character.class] }}
+      >
+        {character.name}
       </td>
       <td className="align-middle">
-        <RoleIcon role={player.role} />
+        <RoleIcon role={character.role} />
       </td>
-      {player.playerUpgrades.map((upgrade) => (
-        <td className="align-middle" key={`key:${upgrade.itemType}`}>
-          {`${upgrade.percentageDps}% (${upgrade.rawDps})`}
+      {upgrades.map((upgrade, index) => (
+        <td
+          className="align-middle"
+          key={`key:${character.name} -${character.name} ${index}`}
+        >
+          {upgrade[1]}
         </td>
       ))}
-      <td className="align-middle">{player.upgradeCount}</td>
     </tr>
   );
 };
