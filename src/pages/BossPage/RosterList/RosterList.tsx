@@ -1,16 +1,23 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { useAppSelector } from "../../../customHooks/useAppSelector";
-import { ICharacter } from "../../../models/ICharacter";
+import { ICharacterUpgrade } from "../../../models/ICharacterUpgrades";
 import { ListItem } from "./ListItem";
 
 const RosterList: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
-  const roles = ["tank", "healer", "dps"];
-  const bigArray: [ICharacter[], ICharacter[], ICharacter[]] = [[], [], []];
+  const roles = ["tank", "healing", "dps"];
+  const bigArray: [
+    ICharacterUpgrade[],
+    ICharacterUpgrade[],
+    ICharacterUpgrade[]
+  ] = [[], [], []];
 
   const [tanks, healers, dps] = roster.reduce((memo, player) => {
-    if (player.selected) memo[roles.indexOf(player.role)].push();
+    if (player.selected) {
+      console.log("Player is selected");
+      memo[roles.indexOf(player.role)].push(player);
+    }
     return memo;
   }, bigArray);
 
@@ -22,9 +29,9 @@ const RosterList: React.FC = () => {
         <Card.Title className="text-center">
           {selectedPlayers === 0 ? "No Roster" : `${selectedPlayers}/20`}
         </Card.Title>
-        {tanks.length > 0 && <ListItem players={tanks} />}
-        {healers.length > 0 && <ListItem players={healers} />}
-        {dps.length > 0 && <ListItem players={dps} />}
+        {tanks.length > 0 && <ListItem characters={tanks} />}
+        {healers.length > 0 && <ListItem characters={healers} />}
+        {dps.length > 0 && <ListItem characters={dps} />}
       </Card.Body>
     </Card>
   );

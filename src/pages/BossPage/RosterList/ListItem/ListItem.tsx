@@ -1,25 +1,25 @@
 import React from "react";
 import { Card } from "react-bootstrap";
 import { ClassColors } from "../../../../models/ClassColors";
-import { ICharacter } from "../../../../models/ICharacter";
+import { ICharacterUpgrade } from "../../../../models/ICharacterUpgrades";
 import { capitalizeFirstLetter } from "../../../../utils/capitalizeFirstLetter";
 
 interface ListItemProps {
-  players: ICharacter[];
+  characters: ICharacterUpgrade[];
 }
-const ListItem: React.FC<ListItemProps> = ({ players }) => {
+const ListItem: React.FC<ListItemProps> = ({ characters }) => {
   return (
     <>
       <Card.Text className="m-0 mt-2">
-        {capitalizeFirstLetter(players[0].role)}
+        {capitalizeFirstLetter(characters[0].role)}
       </Card.Text>
-      {players.map((player) => (
+      {characters.map((character) => (
         <p
           className="m-0"
-          key={player.playerName}
-          style={{ color: ClassColors[player.className] }}
+          key={character.name + character.role + character.class}
+          style={{ color: ClassColors[character.class] }}
         >
-          {player.playerName}
+          {capitalizeFirstLetter(character.name)}
         </p>
       ))}
     </>
