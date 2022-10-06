@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ClassColors } from "../../../../../models/ClassColors";
 import { ICharacterUpgrade } from "../../../../../models/ICharacterUpgrades";
+import { capitalizeFirstLetter } from "../../../../../utils/utils";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 
 interface PlayerRowProps {
@@ -29,7 +30,7 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
         className="align-middle"
         style={{ color: ClassColors[character.class] }}
       >
-        {character.name}
+        {capitalizeFirstLetter(character.name)}
       </td>
       <td className="align-middle">
         <RoleIcon role={character.role} />
