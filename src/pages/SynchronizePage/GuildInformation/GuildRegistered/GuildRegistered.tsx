@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { Button, Card } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { useAppSelector } from "../../../../customHooks/customHooks";
+import { useAppSelector } from "../../../../customHooks/useAppSelector";
 import { capitalizeFirstLetter } from "../../../../utils/utils";
 
 interface GuildRegisteredProps {

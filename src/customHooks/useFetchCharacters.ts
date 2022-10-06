@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { useSelector } from "react-redux";
-import { TypedUseSelectorHook, useDispatch } from "react-redux";
 import { getGuildCharacters } from "../api/doYouNeed/getGuildCharacters";
 import { ICharacterUpgrade } from "../models/ICharacterUpgrades";
 import { setRoster } from "../store/features/roster/rosterSlice";
-import { AppDispatch, RootState } from "../store/store";
+import { useAppDispatch } from "./useAppDispatch";
+import { useAppSelector } from "./useAppSelector";
 
 /**
  * Custom hook that retrieves characters from the API and sets them as the updated roster.
@@ -26,6 +25,3 @@ export function useFetchCharacters() {
     fetchCharacters();
   }, []);
 }
-
-export const useAppDispatch: () => AppDispatch = useDispatch;
-export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;

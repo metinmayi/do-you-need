@@ -7,11 +7,12 @@ import {
   convertToServerName,
   isBossName,
 } from "../../utils/utils";
-import { useAppDispatch, useAppSelector } from "../../customHooks/customHooks";
+import { useAppDispatch } from "../../customHooks/useAppDispatch";
 import { setSelectedBoss } from "../../store/features/selectedBoss/selectedBossSlice";
 import { BOSSES } from "../../models/bosses/bosses";
 import { getGuildCharacters } from "../../api/doYouNeed/getGuildCharacters";
 import { setRoster } from "../../store/features/roster/rosterSlice";
+import { useAppSelector } from "../../customHooks/useAppSelector";
 
 const DesktopHeader: React.FC = () => {
   const dispatch = useAppDispatch();

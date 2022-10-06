@@ -4,9 +4,8 @@ import { Button } from "react-bootstrap";
 import { FormComponent } from "../../components/Form";
 import { Link, useNavigate } from "react-router-dom";
 import { DYNLogo } from "../../components/DYNLogo";
-import { ENVIRONMENT } from "../../config/config";
 import { loginUser } from "../../api/authentication/login";
-import { useAppDispatch } from "../../customHooks/customHooks";
+import { useAppDispatch } from "../../customHooks/useAppDispatch";
 import { setGuild } from "../../store/features/guild/guildSlice";
 
 const LoginPage: React.FC = () => {

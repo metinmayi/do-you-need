@@ -2,7 +2,7 @@ import React from "react";
 import { Table } from "react-bootstrap";
 import { TableHead } from "./TableHead";
 import { TableBody } from "./TableBody";
-import { useAppSelector } from "../../../customHooks/customHooks";
+import { useAppSelector } from "../../../customHooks/useAppSelector";
 import { LoadingSpinner } from "../../../components/LoadingSpinner/LoadingSpinner";
 
 const TableComponent: React.FC = () => {

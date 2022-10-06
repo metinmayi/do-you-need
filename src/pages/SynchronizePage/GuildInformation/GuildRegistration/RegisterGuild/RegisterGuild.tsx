@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Card } from "react-bootstrap";
 import { registerGuild } from "../../../../../api/blizzard/registerGuild";
-import { useAppDispatch } from "../../../../../customHooks/customHooks";
+import { useAppDispatch } from "../../../../../customHooks/useAppDispatch";
 import { INewGuild } from "../../../../../models/INewGuild";
 import { RetrievedCharacter } from "../../../../../models/RetrievedCharacter";
 import { setGuild } from "../../../../../store/features/guild/guildSlice";

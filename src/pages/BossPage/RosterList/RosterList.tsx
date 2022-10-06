@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "react-bootstrap";
-import { useAppSelector } from "../../../customHooks/customHooks";
+import { useAppSelector } from "../../../customHooks/useAppSelector";
 import { ICharacter } from "../../../models/ICharacter";
 import { ListItem } from "./ListItem";
 

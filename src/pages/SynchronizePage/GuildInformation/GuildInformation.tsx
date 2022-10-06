@@ -4,7 +4,7 @@ import { isIGuild } from "../../../models/IGuild";
 import { RetrievedCharacter } from "../../../models/RetrievedCharacter";
 import { INewGuild, IsNewGuild } from "../../../models/INewGuild";
 import { GuildRegistration } from "./GuildRegistration/GuildRegistration";
-import { useAppDispatch } from "../../../customHooks/customHooks";
+import { useAppDispatch } from "../../../customHooks/useAppDispatch";
 import { setGuild } from "../../../store/features/guild/guildSlice";
 import { getPlayerRank } from "../../../api/blizzard/getPlayerRank";
 import { GuildRegistered } from "./GuildRegistered";

@@ -1,5 +1,5 @@
 import React from "react";
-import { useAppSelector } from "../../../../customHooks/customHooks";
+import { useAppSelector } from "../../../../customHooks/useAppSelector";
 import { PlayerRow } from "./PlayerRow";
 
 const TableBody: React.FC = () => {

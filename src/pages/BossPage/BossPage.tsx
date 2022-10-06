@@ -5,7 +5,7 @@ import { TableComponent } from "./TableComponent";
 import { PlayerInput } from "./PlayerInput";
 import { RosterList } from "./RosterList";
 import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
-import { useFetchCharacters } from "../../customHooks/customHooks";
+import { useFetchCharacters } from "../../customHooks/useFetchCharacters";
 
 const BossPage: React.FC = () => {
   // Fetches characters from the API and updates the roster state
