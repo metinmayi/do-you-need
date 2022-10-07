@@ -1,6 +1,6 @@
 import { LOGIN_URL } from "../../config/config";
 import { DYNResponse } from "../../models/DYNResponse";
-import { isIUserGuildArray } from "../../models/IUserGuild";
+import { isIUserGuildArray, IUserGuild } from "../../models/IUserGuild";
 
 /**
  * Attemps to log the user in.

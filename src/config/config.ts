@@ -6,8 +6,7 @@ export const ENVIRONMENT: "production" | "demo" = "demo" as const;
 /**
  * Sets the domain for the project
  */
-export const BASE_URL = "http://localhost:8000/" as const;
-
+export const BASE_URL = "https://dynexperiment.herokuapp.com/" as const;
 /**
  * URL for logging in
  */
