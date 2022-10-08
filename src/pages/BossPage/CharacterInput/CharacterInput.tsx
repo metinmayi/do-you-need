@@ -41,10 +41,6 @@ export const CharacterInput: React.FC<CharacterInputProps> = ({
           Add player
         </Button>
       </InputGroup>
-      <Form.Text>
-        Sample link:
-        <p>https://www.raidbots.com/simbot/report/qU8sUeqm5LUn2f37bmSgAW</p>
-      </Form.Text>
     </Form>
   );
 };
