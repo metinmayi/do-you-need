@@ -9,6 +9,7 @@ import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLette
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { StyledFontAwesomeIcon } from "../../TableHead/StyledFontAwesomeIcon/StyledFontAwesomeIcon";
+import { removeCharacterUpgrade } from "../../../../../api/doYouNeed/removeCharacterUpgrade";
 interface CharacterRowProps {
   characterIndex: number;
   character: ICharacterUpgrade;
@@ -31,6 +32,13 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
     const newRoster = structuredClone(roster);
     newRoster[characterIndex].selected = !character.selected;
     await updateCharacterSelected(character, guild, bossName);
+    dispatch(setRoster(newRoster));
+  }
+
+  async function removeCharacter(id: string, index: number) {
+    const newRoster = structuredClone(roster);
+    newRoster.splice(index, 1);
+    await removeCharacterUpgrade(id);
     dispatch(setRoster(newRoster));
   }
 
@@ -65,6 +73,7 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
           icon={faTrashCan}
           size="lg"
           title="Remove character"
+          onClick={() => removeCharacter(character.id, characterIndex)}
         />
       </td>
     </tr>
