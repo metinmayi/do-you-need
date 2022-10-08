@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { TableComponent } from "./TableComponent";
-import { CharacterInput } from "./CharacterInput";
 import { RosterList } from "./RosterList";
 import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
 import { useFetchCharacters } from "../../customHooks/useFetchCharacters";
+import { CharacterInput } from "./CharacterInput/CharacterInput";
 
 const BossPage: React.FC = () => {
   const [toggleRender, setToggleRender] = useState(false);

@@ -8,7 +8,9 @@ const INPUT_REGEX = /https:\/\/www.raidbots.com\/simbot\/report\/\w+/;
 interface CharacterInputProps {
   setToggleRender: React.Dispatch<React.SetStateAction<boolean>>;
 }
-const CharacterInput: React.FC<CharacterInputProps> = ({ setToggleRender }) => {
+export const CharacterInput: React.FC<CharacterInputProps> = ({
+  setToggleRender,
+}) => {
   const [input, setInput] = useState("");
   const [validInput, setValidInput] = useState(false);
   const guild = useAppSelector((state) => state.guildReducer);
@@ -46,5 +48,3 @@ const CharacterInput: React.FC<CharacterInputProps> = ({ setToggleRender }) => {
     </Form>
   );
 };
-
-export { CharacterInput };
