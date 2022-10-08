@@ -60,5 +60,383 @@
         "off_hand": "10% (500)",
         "upgrade_count": "4/9"
     }
+},
+{
+    "id": "qwe",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "qw",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "q",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsas",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "xc",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "x",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsadd12cascacas3asd",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "dsadd12qq3ad",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsaddww123a",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsadd1ee23asd",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "dsadd12rr3ad",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "daaaaasadd123a",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dscccdd123asd",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "dsadd1ccc23ad",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dcccadd123a",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsadcd1cccc23asd",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "metin",
+    "role": "tank",
+    "class": "warrior",
+    "upgrades" : {
+        "ring": "-",
+        "feet": "1% (50)",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "2% (100)",
+        "hands": "5% (250)",
+        "trinket": "-",
+        "one_hand": "-",
+        "off_hand": "-",
+        "upgrade_count": "3/9"
+    }
+},
+{
+    "id": "dsadd12gg3ad",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "dennis",
+    "role": "healing",
+    "class": "shaman",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
+},
+{
+    "id": "dsadd12hhh3a",
+    "selected": false,
+    "bossName": "vigilant_guardian",
+    "name" : "poja",
+    "role": "dps",
+    "class": "mage",
+    "upgrades" : {
+        "ring": "1% (50)",
+        "feet": "-",
+        "legs": "-",
+        "chest": "-",
+        "head": "-",
+        "waist": "-",
+        "hands": "6% (300)",
+        "trinket": "-",
+        "one_hand": "1% (50)",
+        "off_hand": "10% (500)",
+        "upgrade_count": "4/9"
+    }
 }
 ]
