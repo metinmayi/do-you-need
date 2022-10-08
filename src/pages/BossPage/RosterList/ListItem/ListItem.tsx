@@ -8,7 +8,8 @@ interface ListItemProps {
   characters: ICharacterUpgrade[];
 }
 const ListItem: React.FC<ListItemProps> = ({ characters }) => {
-  const formattedRole = characters[0].role === "healing" ? "healer" : "healing";
+  const formattedRole =
+    characters[0].role === "healing" ? "healer" : characters[0].role;
   return (
     <div className="roleList">
       <h6>{capitalizeFirstLetter(formattedRole)}</h6>
