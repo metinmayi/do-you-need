@@ -7,6 +7,8 @@ import { ICharacterUpgrade } from "../../../../../models/ICharacterUpgrades";
 import { setRoster } from "../../../../../store/features/roster/rosterSlice";
 import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLetter";
 import { RoleIcon } from "../RoleIcon/RoleIcon";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { StyledFontAwesomeIcon } from "../../TableHead/StyledFontAwesomeIcon/StyledFontAwesomeIcon";
 
 interface PlayerRowProps {
   characterIndex: number;
@@ -59,6 +61,13 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
           {upgrade[1]}
         </td>
       ))}
+      <td>
+        <StyledFontAwesomeIcon
+          icon={faTrashCan}
+          size="lg"
+          title="Remove character"
+        />
+      </td>
     </tr>
   );
 };

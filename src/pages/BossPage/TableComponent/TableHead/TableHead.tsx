@@ -18,6 +18,7 @@ const TableHead: React.FC = () => {
           <td key={index}>{convertToDYNName(item)}</td>
         ))}
         <td>Upgrade Count</td>
+        <td>Remove</td>
       </tr>
     </thead>
   );
