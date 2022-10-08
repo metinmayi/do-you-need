@@ -1,0 +1,11 @@
+thead tr th{
+    font-weight: 500;
+    position: sticky;
+    top: -2px;
+    transition: 0.75s;
+    }
+    
+    thead tr th.stuck{
+      background-color: var(--DYNColor);
+      color: black;
+    }

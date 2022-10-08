@@ -1,24 +1,27 @@
 import React from "react";
 import { useAppSelector } from "../../../../customHooks/useAppSelector";
+import { useHeaderColorListener } from "../../../../customHooks/useHeaderColorListener";
 import { bossLoot } from "../../../../models/bosses/bossLoot";
 import { convertToDYNName } from "../../../../utils/convertToDYNName";
+import "./TableHead.css";
 
 const TableHead: React.FC = () => {
   const currentBoss = useAppSelector(
     (state) => state.selectedBossReducer.bossName
   );
   const headerItems = [...bossLoot[currentBoss]];
+  useHeaderColorListener();
   return (
     <thead>
       <tr style={{ textAlign: "center" }}>
-        <td>Selected</td>
-        <td>Name</td>
-        <td>Role</td>
+        <th>Selected</th>
+        <th>Name</th>
+        <th>Role</th>
         {headerItems.map((item, index) => (
-          <td key={index}>{convertToDYNName(item)}</td>
+          <th key={index}>{convertToDYNName(item)}</th>
         ))}
-        <td>Upgrade Count</td>
-        <td>Remove</td>
+        <th>Upgrade Count</th>
+        <th>Remove</th>
       </tr>
     </thead>
   );
