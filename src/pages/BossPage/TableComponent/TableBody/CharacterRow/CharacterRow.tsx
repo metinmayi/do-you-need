@@ -9,14 +9,13 @@ import { capitalizeFirstLetter } from "../../../../../utils/capitalizeFirstLette
 import { RoleIcon } from "../RoleIcon/RoleIcon";
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import { StyledFontAwesomeIcon } from "../../TableHead/StyledFontAwesomeIcon/StyledFontAwesomeIcon";
-
-interface PlayerRowProps {
+interface CharacterRowProps {
   characterIndex: number;
   character: ICharacterUpgrade;
   roster: ICharacterUpgrade[];
 }
 
-const PlayerRow: React.FC<PlayerRowProps> = ({
+export const CharacterRow: React.FC<CharacterRowProps> = ({
   characterIndex,
   character,
   roster,
@@ -71,5 +70,3 @@ const PlayerRow: React.FC<PlayerRowProps> = ({
     </tr>
   );
 };
-
-export default PlayerRow;

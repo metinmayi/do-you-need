@@ -1,6 +1,6 @@
 import React from "react";
 import { useAppSelector } from "../../../../customHooks/useAppSelector";
-import { PlayerRow } from "./PlayerRow";
+import { CharacterRow } from "./CharacterRow";
 
 const TableBody: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
@@ -8,7 +8,7 @@ const TableBody: React.FC = () => {
   return (
     <tbody>
       {roster.map((_, index) => (
-        <PlayerRow
+        <CharacterRow
           characterIndex={index}
           character={roster[index]}
           roster={roster}
