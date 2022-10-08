@@ -7,14 +7,15 @@ import { LoadingSpinner } from "../../../components/LoadingSpinner/LoadingSpinne
 
 const TableComponent: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
+
   return roster.length > 0 ? (
-    <Table variant="dark" striped hover responsive>
+    <Table variant="dark" striped hover>
       <TableHead />
       <TableBody />
     </Table>
   ) : (
     <>
-      <Table variant="dark" striped hover responsive>
+      <Table variant="dark" striped hover>
         <TableHead />
       </Table>
       <LoadingSpinner text="Loading..." />
