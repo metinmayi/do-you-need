@@ -12,19 +12,18 @@ const LoginPage: React.FC = () => {
   const dispatch = useAppDispatch();
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const guilds = await loginUser(username, password);
-
-    if (typeof guilds === "string") {
-      setError(guilds);
+    const response = await loginUser(username, password);
+    if (typeof response === "string") {
+      setError(response);
       return;
     }
 
-    if (guilds.length > 0) {
-      dispatch(setGuild(guilds[0]));
+    if (response.length > 0) {
+      dispatch(setGuild(response[0]));
       redirect("/bossPage");
       return;
     }
-
+    console.log("abc");
     return redirect("/synchronize");
   };
 

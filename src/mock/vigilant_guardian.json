@@ -1,6 +1,7 @@
 [{
     "id": "dsadd123asd",
     "selected": false,
+    "bossName": "vigilant_guardian",
     "name" : "metin",
     "role": "tank",
     "class": "warrior",
@@ -21,6 +22,7 @@
 {
     "id": "dsadd123ad",
     "selected": false,
+    "bossName": "vigilant_guardian",
     "name" : "dennis",
     "role": "healing",
     "class": "shaman",
@@ -41,6 +43,7 @@
 {
     "id": "dsadd123a",
     "selected": false,
+    "bossName": "vigilant_guardian",
     "name" : "poja",
     "role": "dps",
     "class": "mage",
