@@ -9,7 +9,7 @@ export async function updateCharacterSelected(
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve(true);
-    }, 1000);
+    }, 1);
   });
 
   // Send data to the server to update this character's selected status in the DB.

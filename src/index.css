@@ -19,6 +19,10 @@ body {
   color: white;
 }
 
+.container{
+  max-width: 90%;
+}
+
 .card.bg-secondary {
   background-color: var(--backgroundColor) !important;
   border: 2px solid var(--DYNColor);
