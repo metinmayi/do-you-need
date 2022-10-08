@@ -1,4 +1,5 @@
 export interface ICharacterUpgrade {
+  id: string;
   selected: boolean;
   name: string;
   role: string;

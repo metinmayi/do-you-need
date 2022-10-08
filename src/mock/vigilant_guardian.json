@@ -1,4 +1,5 @@
 [{
+    "id": "dsadd123asd",
     "selected": false,
     "name" : "metin",
     "role": "tank",
@@ -18,6 +19,7 @@
     }
 },
 {
+    "id": "dsadd123ad",
     "selected": false,
     "name" : "dennis",
     "role": "healing",
@@ -37,6 +39,7 @@
     }
 },
 {
+    "id": "dsadd123a",
     "selected": false,
     "name" : "poja",
     "role": "dps",
