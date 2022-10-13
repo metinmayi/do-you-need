@@ -13,17 +13,23 @@ const LoginPage: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const response = await loginUser(username, password);
-    if (typeof response === "string") {
-      setError(response);
-      return;
+
+    if (response.status === 401) {
+      return setError("Invalid username/password");
     }
 
-    if (response.length > 0) {
-      dispatch(setGuild(response[0]));
+    if (response.status !== 200) {
+      return setError(
+        "There was an unexpected issue when logging in. Try again or contact support"
+      );
+    }
+
+    console.log(response.data.length);
+    if (response.data.length > 0) {
+      dispatch(setGuild(response.data[0]));
       redirect("/bossPage");
       return;
     }
-    console.log("abc");
     return redirect("/synchronize");
   };
 
