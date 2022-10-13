@@ -12,8 +12,8 @@ export const getCharactersGuild = async (character: string, realm: string) => {
       `${GET_GUILD_URL}?character=${character}&realm=${realm}`,
       { credentials: "include" }
     );
-    const response = await result.json();
-    return response;
+    const data = await result.json();
+    return { status: result.status, data };
   } catch (error) {
     console.log(error);
   }

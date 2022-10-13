@@ -1,6 +1,4 @@
 import { LOGIN_URL } from "../../config/config";
-import { DYNResponse } from "../../models/DYNResponse";
-import { isIUserGuildArray, IUserGuild } from "../../models/IUserGuild";
 
 /**
  * Attemps to log the user in.
@@ -24,14 +22,10 @@ export async function loginUser(username: string, password: string) {
       body: JSON.stringify(body),
     });
 
-    const data: DYNResponse = await response.json();
+    const data = await response.json();
 
-    if (isIUserGuildArray(data.data)) {
-      return data.data;
-    }
-
-    return data.errorMessage;
+    return { status: response.status, data };
   } catch (error: any) {
-    return "There was an issue connecting to the servers. Try again later";
+    return { status: 500, data: "" };
   }
 }

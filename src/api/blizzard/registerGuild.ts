@@ -1,5 +1,4 @@
 import { BASE_URL } from "../../config/config";
-import { DYNResponse } from "../../models/DYNResponse";
 import { INewGuild } from "../../models/INewGuild";
 
 /**
@@ -8,7 +7,6 @@ import { INewGuild } from "../../models/INewGuild";
  * @param characterName Character name
  * @param realm Realm of guild
  * @param guildName Name of guild
- * @returns {Promise<DYNResponse>} DYNResponse
  */
 export async function registerGuild(
   characterName: string,
@@ -21,19 +19,16 @@ export async function registerGuild(
     guild: newGuild,
   };
   try {
-    const response: DYNResponse = await fetch(
-      `${BASE_URL}blizzard/registerGuild`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(user),
-      }
-    ).then((res) => res.json());
+    const response = await fetch(`${BASE_URL}blizzard/registerGuild`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+      body: JSON.stringify(user),
+    });
+    const data = await response.json();
 
-    return response;
+    return { status: response.status, data };
   } catch (error) {
-    console.log(error);
-    return { error: true, errorMessage: "An unexpected error occured" };
+    return { status: 500, data: error };
   }
 }
