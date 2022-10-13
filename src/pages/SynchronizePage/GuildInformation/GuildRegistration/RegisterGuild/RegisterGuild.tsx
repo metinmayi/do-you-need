@@ -18,6 +18,8 @@ interface RegisterGuildProps {
   >;
   setStep: React.Dispatch<React.SetStateAction<number>>;
   setLoading: React.Dispatch<React.SetStateAction<boolean>>;
+  error: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   newGuild,
@@ -25,10 +27,10 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
   setCharacter,
   setStep,
   character,
-
   setLoading,
+  error,
+  setError,
 }) => {
-  const [error, setError] = useState("");
   const dispatch = useAppDispatch();
   const factionLogo = newGuild.faction === "HORDE" ? HordeLogo : AllianceLogo;
 
@@ -48,23 +50,25 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
       character.realm,
       newGuild
     );
-
     setLoading(false);
 
-    if (result.error) {
-      setError(result.errorMessage);
+    if (result.status !== 200) {
+      setError(
+        result.status === 401
+          ? "The selected character is not the GM"
+          : "An unexpected error occured"
+      );
       return;
     }
 
     dispatch(
       setGuild({
-        id: newGuild.id,
+        blizzard_id: newGuild.blizzard_id,
         playerRank: "0",
         realm: newGuild.realm,
         name: newGuild.name,
         faction: newGuild.faction,
         license: newGuild.license,
-        characters: newGuild.characters,
       })
     );
     setNewGuild(undefined);
@@ -103,9 +107,11 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
           <Button variant="warning" onClick={(e) => handleBack(e)}>
             Back
           </Button>
-          <Button variant="success" onClick={(e) => handleActivate(e)}>
-            Register
-          </Button>
+          {!error && (
+            <Button variant="success" onClick={(e) => handleActivate(e)}>
+              Register
+            </Button>
+          )}
         </Card.Footer>
       </Card>
     </>

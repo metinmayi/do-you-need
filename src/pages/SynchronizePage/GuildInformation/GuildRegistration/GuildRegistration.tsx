@@ -21,6 +21,7 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
   setStep,
 }) => {
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
   return (
     <>
@@ -34,6 +35,8 @@ export const GuildRegistration: React.FC<GuildRegistrationProps> = ({
           setCharacter={setCharacter}
           setStep={setStep}
           setLoading={setLoading}
+          error={error}
+          setError={setError}
         />
       )}
     </>
