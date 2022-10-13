@@ -35,14 +35,13 @@ export const GuildInformation: React.FC<props> = ({
     async function updateGuild() {
       const result = await getCharactersGuild(character.name, character.realm);
 
-      if (!result || result.error) {
-        setError(result?.errorMessage || "An error has occured");
+      if (!result) {
+        setError("There was an issue finding your guild. Try again later.");
         setIsLoading(false);
         return;
       }
 
       if (IsNewGuild(result.data)) {
-        result.data.id = result.data.id.toString();
         setNewGuild(result.data);
         setIsLoading(false);
         return;
@@ -56,13 +55,12 @@ export const GuildInformation: React.FC<props> = ({
         );
 
         const guild: IUserGuild = {
-          id: result.data.id.toString(),
+          blizzard_id: result.data.blizzard_id,
           playerRank: rank.toString(),
           realm: result.data.realm,
           name: result.data.name,
           license: result.data.license,
           faction: result.data.faction,
-          characters: result.data.characters,
         };
 
         const addMessage = await addGuildToUser(guild);
