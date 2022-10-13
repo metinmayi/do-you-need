@@ -6,12 +6,9 @@ import { BASE_URL } from "../../config/config";
  */
 export const checkIsAuthenticated = async () => {
   try {
-    const response = await fetch(
-      `${BASE_URL}authentication/checkIsAuthenticated`,
-      {
-        credentials: "include",
-      }
-    );
+    const response = await fetch(`${BASE_URL}authentication/isAuthenticated`, {
+      credentials: "include",
+    });
     if (response.status === 200) {
       return true;
     }
