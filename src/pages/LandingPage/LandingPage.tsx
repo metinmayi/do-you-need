@@ -72,8 +72,7 @@ const LandingPage: React.FC = () => {
             reiciendis dicta illo distinctio, odio nesciunt sit nihil itaque
             nisi ullam. Quam rem distinctio, non dolores dolor cum recusandae
             sit ratione! Vero blanditiis, voluptatibus dolorem eveniet molestias
-            nam alias reprehenderit, nemo sapiente consequuntur voluptas
-            doloremque
+            nam alias reprehenderit, zibby zabby zoo
           </p>
         </Col>
       </Row>
