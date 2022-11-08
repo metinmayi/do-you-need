@@ -17,11 +17,7 @@ export interface ICharacterUpgrade {
     neck?: string;
     back?: string;
     finger?: string;
-    finger1?: string;
-    finger2?: string;
     trinket?: string;
-    trinket1?: string;
-    trinket2?: string;
     main_hand?: string;
     one_hand?: string;
     off_hand?: string;
