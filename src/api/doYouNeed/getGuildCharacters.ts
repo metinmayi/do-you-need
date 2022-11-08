@@ -1,7 +1,5 @@
+import { GET_CHARACTER_UPGRADES } from "../../config/config";
 import { ICharacterUpgrade } from "../../models/ICharacterUpgrades";
-import { IGuild } from "../../models/IGuild";
-import vigilant from "../../mock/vigilant_guardian.json";
-import lords from "../../mock/lords_of_dread.json";
 
 /**
  * Gets all the characters upgrades for a guild from a particular boss.
@@ -9,11 +7,18 @@ import lords from "../../mock/lords_of_dread.json";
  * @param bossName The boss to pull upgrades from
  * @returns {ICharacterUpgrade[]} Array of characterupgrades
  */
-export function getGuildCharacters(guild: IGuild, bossName: string) {
-  if (bossName === "vigilant_guardian") {
-    const characters: ICharacterUpgrade[] = vigilant;
-    return characters;
-  }
-  const chars: ICharacterUpgrade[] = lords;
-  return chars;
+export async function getGuildCharacters(guildId: string, bossName: string) {
+  const body = {
+    guildId,
+    bossName,
+  };
+  const response = await fetch(GET_CHARACTER_UPGRADES, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    credentials: "include",
+    body: JSON.stringify(body),
+  });
+
+  const data: ICharacterUpgrade[] = await response.json();
+  return data;
 }
