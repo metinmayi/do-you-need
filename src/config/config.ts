@@ -8,10 +8,17 @@ export const ENVIRONMENT: "production" | "demo" = "demo" as const;
  */
 export const BASE_URL = "http://localhost:8000/" as const;
 // export const BASE_URL = "https://dynexperiment.herokuapp.com/" as const;
+
 /**
  * URL for logging in
  */
 export const LOGIN_URL = `${BASE_URL}authentication/login`;
+
+/**
+ * URL for checking authentication
+ */
+export const AUTHENTICATED_URL = `${BASE_URL}authentication/isAuthenticated`;
+
 /**
  * API Endpoint for checking if user has a valid token registered to them
  */
