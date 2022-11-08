@@ -19,9 +19,12 @@ const DesktopHeader: React.FC = () => {
   const guild = useAppSelector((state) => state.guildReducer);
 
   // Changes the active boss. Updating the header name and the roster
-  function changeActiveBoss(e: React.MouseEvent<HTMLAnchorElement>) {
+  async function changeActiveBoss(e: React.MouseEvent<HTMLAnchorElement>) {
     const newName = convertToServerName(e.currentTarget.innerText);
-    const characters = getGuildCharacters(guild, newName);
+    const characters = await getGuildCharacters(
+      guild.blizzard_guild_id,
+      newName
+    );
     if (isBossName(newName)) {
       dispatch(setSelectedBoss(newName));
       dispatch(setRoster(characters));
