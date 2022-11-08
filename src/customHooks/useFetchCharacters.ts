@@ -17,7 +17,7 @@ export function useFetchCharacters() {
   useEffect(() => {
     const fetchCharacters = async () => {
       const fetchedCharacters: ICharacterUpgrade[] = await getGuildCharacters(
-        guild,
+        guild.blizzard_guild_id,
         bossName
       );
       dispatch(setRoster(fetchedCharacters));

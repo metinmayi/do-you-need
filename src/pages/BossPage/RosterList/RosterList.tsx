@@ -5,7 +5,7 @@ import { ListItem } from "./ListItem";
 
 const RosterList: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
-  const roles = ["tank", "healing", "dps"];
+  const roles = ["tank", "healing", "DPS"];
   const bigArray: [
     ICharacterUpgrade[],
     ICharacterUpgrade[],

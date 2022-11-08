@@ -43,6 +43,11 @@ export const GET_RANK_URL = `${BASE_URL}blizzard/getPlayersRank`;
 export const ADD_CHARACTER_UPGRADES = `${BASE_URL}doYouNeed/addCharacterUpgrades`;
 
 /**
+ * API for getting character upgrades from a guild.
+ */
+export const GET_CHARACTER_UPGRADES = `${BASE_URL}doYouNeed/getCharacterUpgrades`;
+
+/**
  * API for adding a new guild to the user's guilds.
  */
 export const ADD_GUILD_TO_USER = `${BASE_URL}doYouNeed/addGuildToUser`;

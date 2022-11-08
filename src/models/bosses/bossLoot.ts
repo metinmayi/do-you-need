@@ -5,12 +5,12 @@ export const bossLoot: Record<string, Array<string>> = {
   vigilant_guardian: [
     "chest",
     "feet",
+    "finger",
     "hands",
     "head",
     "legs",
     "off_hand",
     "one_hand",
-    "finger",
     "trinket",
     "waist",
   ],
