@@ -4,7 +4,7 @@ import { IUserGuild } from "../../../models/IUserGuild";
 const initialState: IUserGuild = {
   name: "",
   realm: "",
-  blizzard_id: "",
+  blizzard_guild_id: "",
   playerRank: "",
   license: "",
   faction: "",
@@ -17,7 +17,7 @@ const guildSlice = createSlice({
     setGuild: (state, action: PayloadAction<IUserGuild>) => {
       state.name = action.payload.name;
       state.realm = action.payload.realm;
-      state.blizzard_id = action.payload.blizzard_id;
+      state.blizzard_guild_id = action.payload.blizzard_guild_id;
       state.playerRank = action.payload.playerRank;
       state.faction = action.payload.faction;
       state.license = action.payload.license;

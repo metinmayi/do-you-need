@@ -55,7 +55,7 @@ export const GuildInformation: React.FC<props> = ({
         );
 
         const guild: IUserGuild = {
-          blizzard_id: result.data.blizzard_id,
+          blizzard_guild_id: result.data.blizzard_guild_id,
           playerRank: rank.toString(),
           realm: result.data.realm,
           name: result.data.name,

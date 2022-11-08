@@ -63,7 +63,7 @@ export const RegisterGuild: React.FC<RegisterGuildProps> = ({
 
     dispatch(
       setGuild({
-        blizzard_id: newGuild.blizzard_id,
+        blizzard_guild_id: newGuild.blizzard_guild_id,
         playerRank: "0",
         realm: newGuild.realm,
         name: newGuild.name,

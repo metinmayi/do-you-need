@@ -1,5 +1,5 @@
 export interface IGuild {
-  blizzard_id: string;
+  blizzard_guild_id: string;
   name: string;
   realm: string;
   license: string;
@@ -7,12 +7,12 @@ export interface IGuild {
 }
 
 export const isIGuild = (response: any): response is IGuild => {
-  const { faction, blizzard_id, license, name, realm } = response;
+  const { faction, blizzard_guild_id, license, name, realm } = response;
   if (typeof response !== "object") {
     return false;
   }
   return (
-    typeof blizzard_id === "string" &&
+    typeof blizzard_guild_id === "string" &&
     typeof faction === "string" &&
     typeof name === "string" &&
     typeof realm === "string" &&
