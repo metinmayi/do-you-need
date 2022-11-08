@@ -24,7 +24,6 @@ const LoginPage: React.FC = () => {
       );
     }
 
-    console.log(response.data.length);
     if (response.data.length > 0) {
       dispatch(setGuild(response.data[0]));
       redirect("/bossPage");
