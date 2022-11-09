@@ -1,4 +1,6 @@
 import spinner from "../../assets/images/loadingSpinner.svg";
+import { StyledComponentWrapper } from "./StyledComponentWrapper";
+import { StyledImageWrapper } from "./StyledImageWrapper";
 interface LoadingSpinnerInterface {
   children: any;
 }
@@ -7,17 +9,11 @@ export const ButtonLoadingSpinner: React.FC<LoadingSpinnerInterface> = ({
   children,
 }) => {
   return (
-    <div style={{ position: "relative" }}>
-      <div
-        style={{
-          position: "absolute",
-          height: "100%",
-          transform: "translate(100%)",
-          zIndex: "20",
-        }}>
+    <StyledComponentWrapper>
+      <StyledImageWrapper>
         <img src={spinner} alt="loading..." style={{ height: "100%" }}></img>
-      </div>
+      </StyledImageWrapper>
       {children}
-    </div>
+    </StyledComponentWrapper>
   );
 };
