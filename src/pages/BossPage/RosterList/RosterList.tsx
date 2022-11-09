@@ -2,6 +2,7 @@ import React from "react";
 import { useAppSelector } from "../../../customHooks/useAppSelector";
 import { ICharacterUpgrade } from "../../../models/ICharacterUpgrades";
 import { ListItem } from "./ListItem";
+import { RaidBuffs } from "./RaidBuffs/RaidBuffs";
 
 const RosterList: React.FC = () => {
   const roster = useAppSelector((state) => state.rosterReducer.roster);
@@ -22,18 +23,21 @@ const RosterList: React.FC = () => {
   const selectedPlayers = tanks.length + healers.length + dps.length;
 
   return (
-    <section className="text-center">
-      <h5>
-        {selectedPlayers === 0
-          ? "No characters selected"
-          : `Selected characters: ${selectedPlayers}/20`}
-      </h5>
-      <div className="d-flex justify-content-evenly mt-3">
-        {tanks.length > 0 && <ListItem characters={tanks} />}
-        {healers.length > 0 && <ListItem characters={healers} />}
-        {dps.length > 0 && <ListItem characters={dps} />}
-      </div>
-    </section>
+    <>
+      <section className="text-center">
+        <h5>
+          {selectedPlayers === 0
+            ? "No characters selected"
+            : `Selected characters: ${selectedPlayers}/20`}
+        </h5>
+        <div className="d-flex justify-content-evenly mt-3">
+          {tanks.length > 0 && <ListItem characters={tanks} />}
+          {healers.length > 0 && <ListItem characters={healers} />}
+          {dps.length > 0 && <ListItem characters={dps} />}
+        </div>
+      </section>
+      <RaidBuffs />
+    </>
   );
 };
 
