@@ -7,9 +7,16 @@ import { LoadingSpinner } from "../../../components/LoadingSpinner/LoadingSpinne
 import { RosterList } from "../RosterList";
 
 const TableComponent: React.FC = () => {
-  const roster = useAppSelector((state) => state.rosterReducer.roster);
+  const isLoading = useAppSelector((state) => state.rosterReducer.isLoading);
 
-  return roster.length > 0 ? (
+  return isLoading ? (
+    <>
+      <Table variant="dark" striped hover>
+        <TableHead />
+      </Table>
+      <LoadingSpinner text="Loading..." />
+    </>
+  ) : (
     <>
       <Col xs={10}>
         <Table variant="dark" striped hover>
@@ -20,13 +27,6 @@ const TableComponent: React.FC = () => {
       <Col style={{ maxHeight: "20vh", position: "sticky", top: "0" }}>
         <RosterList />
       </Col>
-    </>
-  ) : (
-    <>
-      <Table variant="dark" striped hover>
-        <TableHead />
-      </Table>
-      <LoadingSpinner text="Loading..." />
     </>
   );
 };

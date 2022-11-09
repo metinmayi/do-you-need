@@ -3,10 +3,12 @@ import { ICharacterUpgrade } from "../../../models/ICharacterUpgrades";
 
 interface Roster {
   roster: ICharacterUpgrade[];
+  isLoading: boolean;
 }
 
 const initialState: Roster = {
   roster: [],
+  isLoading: true,
 };
 
 const rosterSlice = createSlice({
@@ -19,9 +21,12 @@ const rosterSlice = createSlice({
     addToRoster: (state, action: PayloadAction<ICharacterUpgrade>) => {
       state.roster.push(action.payload);
     },
+    setIsLoading: (state, action: PayloadAction<boolean>) => {
+      state.isLoading = action.payload;
+    },
   },
 });
 
-export const { setRoster, addToRoster } = rosterSlice.actions;
+export const { setRoster, addToRoster, setIsLoading } = rosterSlice.actions;
 
 export default rosterSlice.reducer;
