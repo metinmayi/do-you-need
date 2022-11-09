@@ -27,7 +27,6 @@ export const SynchronizePage: React.FC = () => {
         const response = await fetch(VALID_TOKEN_URL, {
           credentials: "include",
         });
-        if (response.status === 401) return redirect("/login");
         if (response.status === 200) {
           setStep(1);
           setIsValidToken(true);

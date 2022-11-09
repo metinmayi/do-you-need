@@ -26,7 +26,9 @@ export const AuthenticationComponent: React.FC<
 
       const data = await response.json();
 
-      dispatch(setGuild(data[0]));
+      if (data[0]) {
+        dispatch(setGuild(data[0]));
+      }
       setIsAuthenticated(true);
     }
     authenticate();
