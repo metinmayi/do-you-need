@@ -8,7 +8,7 @@ import { useAppSelector } from "./useAppSelector";
 /**
  * Custom hook that retrieves characters from the API and sets them as the updated roster.
  */
-export function useFetchCharacters() {
+export function useFetchCharacters(toggleRender: boolean) {
   const dispatch = useAppDispatch();
   const guild = useAppSelector((state) => state.guildReducer);
   const bossName = useAppSelector(
@@ -23,5 +23,5 @@ export function useFetchCharacters() {
       dispatch(setRoster(fetchedCharacters));
     };
     fetchCharacters();
-  }, []);
+  }, [toggleRender]);
 }

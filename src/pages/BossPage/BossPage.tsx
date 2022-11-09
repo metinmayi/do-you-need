@@ -9,7 +9,7 @@ import { CharacterInput } from "./CharacterInput/CharacterInput";
 const BossPage: React.FC = () => {
   const [toggleRender, setToggleRender] = useState(false);
   // Fetches characters from the API and updates the roster state
-  useFetchCharacters();
+  useFetchCharacters(toggleRender);
 
   return (
     <Container>
