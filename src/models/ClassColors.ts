@@ -9,6 +9,6 @@ export const ClassColors: Record<string, string> = {
   warlock: "#9482C9",
   monk: "#00FF96",
   druid: "#FF7D0A",
-  demonHunter: "#A330C9",
+  "demon hunter": "#A330C9",
   deathKnight: "#C41F3B",
 } as const;
