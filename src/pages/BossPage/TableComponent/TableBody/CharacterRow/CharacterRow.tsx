@@ -31,7 +31,7 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
   async function updateSelected() {
     const newRoster = structuredClone(roster);
     newRoster[characterIndex].selected = !character.selected;
-    await updateCharacterSelected(character, guild, bossName);
+    await updateCharacterSelected(character.id, bossName);
     dispatch(setRoster(newRoster));
   }
 
@@ -53,8 +53,7 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
       </td>
       <td
         className="align-middle"
-        style={{ color: ClassColors[character.class] }}
-      >
+        style={{ color: ClassColors[character.class] }}>
         {capitalizeFirstLetter(character.name)}
       </td>
       <td className="align-middle">
@@ -63,8 +62,7 @@ export const CharacterRow: React.FC<CharacterRowProps> = ({
       {upgrades.map((upgrade, index) => (
         <td
           className="align-middle"
-          key={`key:${character.name} -${character.name} ${index}`}
-        >
+          key={`key:${character.name} -${character.name} ${index}`}>
           {upgrade[1]}
         </td>
       ))}
