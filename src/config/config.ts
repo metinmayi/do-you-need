@@ -55,6 +55,11 @@ export const ADD_CHARACTER_UPGRADES = `${BASE_URL}doYouNeed/addCharacterUpgrades
 export const GET_CHARACTER_UPGRADES = `${BASE_URL}doYouNeed/getCharacterUpgrades`;
 
 /**
+ * API for getting character upgrades from a guild.
+ */
+export const DELETE_CHARACTER_UPGRADE = `${BASE_URL}doYouNeed/deleteCharacterUpgrade`;
+
+/**
  * API for adding a new guild to the user's guilds.
  */
 export const ADD_GUILD_TO_USER = `${BASE_URL}doYouNeed/addGuildToUser`;
