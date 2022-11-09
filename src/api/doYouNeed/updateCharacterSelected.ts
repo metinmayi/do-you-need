@@ -1,16 +1,15 @@
-import { ICharacterUpgrade } from "../../models/ICharacterUpgrades";
-import { IGuild } from "../../models/IGuild";
+import { TOGGLE_CHARACTER_SELECTED } from "../../config/config";
 
 export async function updateCharacterSelected(
-  character: ICharacterUpgrade,
-  guild: IGuild,
+  characterId: string,
   bossName: string
 ) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, 1);
+  await fetch(TOGGLE_CHARACTER_SELECTED, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    credentials: "include",
+    body: JSON.stringify({ characterId, bossName }),
   });
-
-  // Send data to the server to update this character's selected status in the DB.
 }
