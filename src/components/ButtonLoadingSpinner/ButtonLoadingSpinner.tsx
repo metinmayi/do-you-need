@@ -1,4 +1,4 @@
-import spinner from "../assets/images/loadingSpinner.svg";
+import spinner from "../../assets/images/loadingSpinner.svg";
 interface LoadingSpinnerInterface {
   children: any;
 }
