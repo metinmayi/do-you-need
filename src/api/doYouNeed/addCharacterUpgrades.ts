@@ -6,7 +6,7 @@ import { IUserGuild } from "../../models/IUserGuild";
  * Adds those upgrades to the roster.
  * @param {string} url URL to the raidbots sim.
  * @param {IUserGuild} guild The user's guild
- * @returns {IPlayer}
+ * @returns {void}
  */
 export async function addCharacterUpgrades(url: string, guild: IUserGuild) {
   const body = {
@@ -22,8 +22,6 @@ export async function addCharacterUpgrades(url: string, guild: IUserGuild) {
       },
       credentials: "include",
     });
-    const data = await response.json();
-    return data;
   } catch (error) {
     console.log(error);
   }
