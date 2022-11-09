@@ -2,9 +2,9 @@ import React, { useState } from "react";
 import { Col, Container, Row } from "react-bootstrap";
 import { DesktopHeader } from "../../components/DesktopHeader";
 import { TableComponent } from "./TableComponent";
-import { DropdownComponent } from "../../components/DropdownComponent/DropdownComponent";
 import { useFetchCharacters } from "../../customHooks/useFetchCharacters";
 import { CharacterInput } from "./CharacterInput/CharacterInput";
+import { AccordionComponent } from "../../components/AccordionComponent/AccordionComponent";
 
 const BossPage: React.FC = () => {
   const [toggleRender, setToggleRender] = useState(false);
@@ -15,7 +15,9 @@ const BossPage: React.FC = () => {
     <Container>
       <DesktopHeader />
       <Row className="mt-5 mb-2">
-        <DropdownComponent title="Filter" options={["Test", "OneMore"]} />
+        <Col xs={2}>
+          <AccordionComponent header="Filter" />
+        </Col>
       </Row>
       <Row className="d-flex justify-content-between">
         <Col xs={12} md={8} lg={5} xxl={3}>
