@@ -1,7 +1,9 @@
 import { Button, Card } from "react-bootstrap";
+import { useLogout } from "../../../api/authentication/useLogout";
 import { BLIZZARD_AUTH_URL } from "../../../config/config";
 
 export const ValidateToken: React.FC = () => {
+  const logout = useLogout();
   return (
     <Card bg="secondary">
       <Card.Header as="h4" style={{ color: "var(--DYNColor)" }}>
@@ -22,7 +24,8 @@ export const ValidateToken: React.FC = () => {
           </a>
           <Button
             variant="danger"
-            style={{ fontWeight: "var(--buttonWeight)" }}>
+            style={{ fontWeight: "var(--buttonWeight)" }}
+            onClick={logout}>
             Logout
           </Button>
         </div>

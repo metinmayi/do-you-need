@@ -10,6 +10,7 @@ import { setRoster } from "../../store/features/roster/rosterSlice";
 import { useAppSelector } from "../../customHooks/useAppSelector";
 import { convertToServerName } from "../../utils/convertToServerName";
 import { convertToDYNName } from "../../utils/convertToDYNName";
+import { useLogout } from "../../api/authentication/useLogout";
 
 const DesktopHeader: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ const DesktopHeader: React.FC = () => {
     (state) => state.selectedBossReducer.bossName
   );
   const guild = useAppSelector((state) => state.guildReducer);
+  const logout = useLogout();
 
   // Changes the active boss. Updating the header name and the roster
   async function changeActiveBoss(e: React.MouseEvent<HTMLAnchorElement>) {
@@ -47,10 +49,7 @@ const DesktopHeader: React.FC = () => {
           size="lg"
           onClick={changeActiveBoss}
         />
-        {/* <Button variant="warning" size="lg">
-          Settings
-        </Button> */}
-        <Button variant="danger" size="lg">
+        <Button variant="danger" size="lg" onClick={logout}>
           Logout
         </Button>
       </Col>

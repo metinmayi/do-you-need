@@ -15,6 +15,11 @@ export const BASE_URL = "http://localhost:8000/" as const;
 export const LOGIN_URL = `${BASE_URL}authentication/login`;
 
 /**
+ * URL for logging out
+ */
+export const LOGOUT_URL = `${BASE_URL}authentication/logout`;
+
+/**
  * URL for checking authentication
  */
 export const AUTHENTICATED_URL = `${BASE_URL}authentication/isAuthenticated`;

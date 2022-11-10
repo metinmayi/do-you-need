@@ -4,6 +4,7 @@ import { StyledUl } from "./StyledUl";
 import HordeLogo from "../../../assets/images/HordeLogo.webp";
 import AllianceLogo from "../../../assets/images/AllianceLogo.webp";
 import { capitalizeFirstLetter } from "../../../utils/capitalizeFirstLetter";
+import { useLogout } from "../../../api/authentication/useLogout";
 
 interface CharacterSelectionProps {
   characters: RetrievedCharacter[];
@@ -16,6 +17,7 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
   characters,
   setSelectedCharacter,
 }) => {
+  const logout = useLogout();
   function setCharacterAndStep(character: RetrievedCharacter) {
     setSelectedCharacter(character);
   }
@@ -35,21 +37,19 @@ export const CharacterSelection: React.FC<CharacterSelectionProps> = ({
               <li
                 key={character.name + character.realm}
                 onClick={() => setCharacterAndStep(character)}
-                style={{ color: character.color }}
-              >
+                style={{ color: character.color }}>
                 {`${character.name} - ${capitalizeFirstLetter(
                   character.realm
                 )}`}
                 <img
                   src={getLogo(character)}
                   alt={character.faction}
-                  style={{ height: "1.5rem" }}
-                ></img>
+                  style={{ height: "1.5rem" }}></img>
               </li>
             ))}
           </StyledUl>
           <Card.Footer className="d-flex justify-content-end">
-            <Button variant="danger" size="sm">
+            <Button variant="danger" size="sm" onClick={logout}>
               Logout
             </Button>
           </Card.Footer>
