@@ -9,6 +9,7 @@ import { sortByItemUpgrade } from "./sortByItemUpgrade";
 import { sortByName } from "./sortByName";
 import { sortBySelected } from "./sortBySelected";
 import { sortByUpgradeCount } from "./sortByUpgradeCount";
+import { StyledTh } from "./StyledTh";
 import "./TableHead.css";
 
 const TableHead: React.FC = () => {
@@ -43,20 +44,26 @@ const TableHead: React.FC = () => {
   return (
     <thead>
       <tr style={{ textAlign: "center" }}>
-        <th onClick={(e) => sortBy(e.currentTarget.innerText)}>Selected</th>
-        <th onClick={(e) => sortBy(e.currentTarget.innerText)}>Name</th>
-        <th onClick={(e) => sortBy(e.currentTarget.innerText)}>Role</th>
+        <StyledTh onClick={(e) => sortBy(e.currentTarget.innerText)}>
+          Selected
+        </StyledTh>
+        <StyledTh onClick={(e) => sortBy(e.currentTarget.innerText)}>
+          Name
+        </StyledTh>
+        <StyledTh onClick={(e) => sortBy(e.currentTarget.innerText)}>
+          Role
+        </StyledTh>
         {headerItems.map((item, index) => (
-          <th
+          <StyledTh
             key={index}
             onClick={(e) => sortBy(e.currentTarget.innerText, index)}>
             {convertToDYNName(item)}
-          </th>
+          </StyledTh>
         ))}
-        <th onClick={(e) => sortBy(e.currentTarget.innerText)}>
+        <StyledTh onClick={(e) => sortBy(e.currentTarget.innerText)}>
           Upgrade Count
-        </th>
-        <th>Remove</th>
+        </StyledTh>
+        <StyledTh>Remove</StyledTh>
       </tr>
     </thead>
   );
