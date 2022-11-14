@@ -9,12 +9,14 @@ export function sortByUpgradeCount(roster: ICharacterUpgrade[]) {
   const clonedRoster = structuredClone(roster);
   const unchangedClone = structuredClone(clonedRoster);
 
-  const lastIndex = clonedRoster[0].upgrades.length;
-  clonedRoster.sort((a, b) => +a.upgrades[lastIndex] - +b.upgrades[lastIndex]);
+  const upgradeCountIndex = clonedRoster[0].upgrades.length - 1;
+  clonedRoster.sort(
+    (a, b) => +a.upgrades[upgradeCountIndex] - +b.upgrades[upgradeCountIndex]
+  );
 
   let isIdentical = true;
   for (let i = 0; i < clonedRoster.length; i++) {
-    if (+clonedRoster[i].selected !== +unchangedClone[i].selected) {
+    if (clonedRoster[i].name !== unchangedClone[i].name) {
       isIdentical = false;
       break;
     }
