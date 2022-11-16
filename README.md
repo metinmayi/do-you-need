@@ -5,6 +5,6 @@ DoYouNeed synchronizes with your Blizzard Battle.net account to collect data abo
 ## Tech Stack
 * React Typescript
 * React Redux
-* NodeJS Typescript server, hosted via Heroku.
+* NodeJS Express Typescript server, hosted via Heroku.
 * MySQL, hosted via Digital Ocean
-* PasportJS for user authentication
+* PassportJS for user authentication
