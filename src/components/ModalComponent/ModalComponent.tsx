@@ -22,7 +22,9 @@ const ModalComponent: React.FC<ModalComponentProps> = ({
         <Component></Component>
       </Modal.Body>
       <Modal.Footer>
-        <Button onClick={() => handleClick && handleClick()}>Close</Button>
+        <Button onClick={() => handleClick && handleClick()} variant="success">
+          Continue
+        </Button>
       </Modal.Footer>
     </Modal>
   );
