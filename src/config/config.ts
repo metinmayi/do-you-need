@@ -1,7 +1,7 @@
 /**
  * Toggles DEMO vs prod
  */
-export const ENVIRONMENT: "production" | "demo" = "demo" as const;
+export const ENVIRONMENT: "production" | "demo" = "production" as const;
 
 /**
  * Sets the domain for the project
