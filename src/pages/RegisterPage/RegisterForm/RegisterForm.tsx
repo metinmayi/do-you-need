@@ -23,8 +23,6 @@ export const RegisterForm = () => {
     e.preventDefault();
     const result = await registerUser(validMatch, validName, user, email, pwd);
 
-    console.log(result);
-
     if (result?.status === 200) {
       return setLoggedIn(true);
     }
