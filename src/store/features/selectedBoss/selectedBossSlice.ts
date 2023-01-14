@@ -5,7 +5,7 @@ interface SelectedBoss {
 }
 
 const initialState: SelectedBoss = {
-  bossName: "vigilant_guardian",
+  bossName: "eranog",
 };
 
 const selectedBossSlice = createSlice({
