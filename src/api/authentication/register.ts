@@ -34,13 +34,9 @@ export const registerUser = async (
       body: JSON.stringify(newUser),
     });
     const responseMessage = await response.text();
-    const suitableResponseMessage =
-      response.status === 200
-        ? "Registration Complete"
-        : getResponseMessage(responseMessage);
     return {
       error: false,
-      message: suitableResponseMessage,
+      message: responseMessage,
       status: response.status,
     };
   } catch (error: any) {
@@ -51,10 +47,4 @@ export const registerUser = async (
       status: 500,
     };
   }
-};
-
-const getResponseMessage = (responseMessage: string) => {
-  if (responseMessage === "Registration complete")
-    if (responseMessage.includes("@")) return "That email is already in use.";
-  return "That username is already in use.";
 };
