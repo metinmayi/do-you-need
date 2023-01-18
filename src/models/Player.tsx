@@ -15,7 +15,7 @@ export class IPlayer {
       | "monk"
       | "druid"
       | "demonHunter"
-      | "deathKnight",
+      | "death knight",
     public playerUpgrades: IUPgradeItem[]
   ) {}
   upgradeCount?: number;

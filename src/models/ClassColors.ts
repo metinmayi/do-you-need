@@ -10,5 +10,5 @@ export const ClassColors: Record<string, string> = {
   monk: "#00FF96",
   druid: "#FF7D0A",
   "demon hunter": "#A330C9",
-  deathKnight: "#C41F3B",
+  "death knight": "#C41F3B",
 } as const;
